@@ -1,0 +1,69 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="4">
+    <h1>Les arguments contre les utilitaires</h1>
+    <h2>Facilité de création d'inconsistences</h2>
+
+    <div class="slide-grid-gap flex flex-col">
+        <h3>Exemples d'inconsistences</h3>
+        <ul class="text-slide flex flex-1 flex-col justify-evenly p-0">
+            <li class="flex flex-col gap-2">
+                <span>Padding d'une page entière</span>
+                <span class="transition-medium before-step-2:-translate-x-screen before-step-2:opacity-0 text-cyan-800 transition-all">
+                    <code class="font-mono">p-page</code>
+                    ,
+                    <code class="font-mono">px-page</code>
+                    ,
+                    <code class="font-mono">py-page</code>
+                </span>
+            </li>
+            <li class="flex flex-col gap-2">
+                <span>Espacement entre éléments</span>
+                <span class="transition-medium before-step-3:-translate-x-screen before-step-3:opacity-0 text-cyan-800 transition-all">
+                    <code class="font-mono">gap-small</code>
+                    ,
+                    <code class="font-mono">mb-small</code>
+                    ,
+                    <code class="font-mono">mb-before-block</code>
+                </span>
+            </li>
+            <li class="flex flex-col gap-2">
+                <span>Nuancier de couleur</span>
+                <span class="transition-medium before-step-4:-translate-x-screen before-step-4:opacity-0 text-cyan-800 transition-all">
+                    <code class="font-mono">text-primary-default</code>
+                    ,
+                    <code class="font-mono">text-primary-light</code>
+                    ,
+                    <code class="font-mono">text-primary-dark</code>
+                </span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Lorsqu'on utilise de nombreux utilitaires, il serait facile de créer des incohérences dans notre design, en tout cas plus qu'avec du CSS sémantique.
+
+Même si certaines choses sont facilement factorisables, d'autre le sont moins. Par exemple le padding d'une page peut être appliqué à haut niveau, mais si vous avez plusieurs layout, ou des cas spécifiques, vous risquez de devoir le réécrire plusieurs fois.
+
+Si vous avez utiliser des classes utilitaires à chaque fois, il sera nécessaire d'aller rechercher les mêmes à chaque nouveau layout. Si vous voulez changer ce padding de facon gloable, vous devrez modifier à plusieurs endroits, si les classes ont été réorganisées, ca ne sera pas possible de le faire par une recherche, même via une expression régulière.
+
+Un autre exemple, lorsque vous créez une page, il est facile de définir des espacements "à l'oeil", après tout si ca correspond à la maquette, pourquoi pas. Mais en faisant ca, vous risquez de créer des petites incohérences d'espacement entre certains éléments. Ca ne sera pas critique, mais au fur à mesure, l'utilisateur ne pourra pas s'habituer à un certains format puisque celui-ci ne sera pas constant.
+
+<kbd>→</kbd>
+
+Pour ce genre d'exemple, rien ne vous empeche de faire VOS utilitaires. Vous pouvez ainsi définir un <code>p-page</code> qui sera appliqué à chaque page. Vous pouvez meme définir un utilitaire <code>-p-page</code> qui permet de retirer ce padding via des marges négatives, si vous avez des parties de vos pages qui ont besoin de prendre toute la largeur. Si vous allez jusqu'au bout, vous pouvez meme dépendre d'une variable CSS !
+
+<kbd>→</kbd>
+
+Pour les espacements, vous pouvez avoir une approche par quantifier avec <code>small</code>, <code>medium</code> etc ou vous pouvez avoir une approche par élément, par exemple <code>before-block</code>
+
+<kbd>→</kbd>
+
+Pour les couleurs, vous pouvez définir des palettes <code>primary</code>, <code>danger</code>, <code>warning</code> comme le fait bootstrap. Et au lieu d'utiliser les accentuation (<code>100</code> à <code>950</code>) vous pouvez en définir certaines de facon plus explicite
+
+Vous vous retrouvez avec des utilitaires sémantiques au lieu d'utilitaires techniques, ils permettent d'être plus cohérents au prix d'un apprentissage lorsqu'un nouveau arrive dans l'équipe. Ils permettent également une bonne factorisation de certains éléments de design.
+
+On verra qu'avec tailwind créer ce genre d'utilitaire tout en restant cohérent avec les utilitaires technique est très simple.
+</pre
+    >
+</aside>

@@ -1,0 +1,396 @@
+/**
+  You might need to configure your IDE plugin to use this file as config
+
+  On IDEA based IDEs you can do this by going to File -> Settings -> Languages & Frameworks -> Style Sheets -> Tailwind CSS
+
+  In the configuration file, you can define the path to this file in experimental.configFile
+*/
+
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant v3 (&:where(.tailwind-v3, .tailwind-v3 *));
+@custom-variant v4 (&:where(.tailwind-v4, .tailwind-v4 *));
+
+@base {
+    :root {
+        interpolate-size: allow-keywords; /* Allow transition to auto height */
+    }
+}
+
+@theme {
+    --spacing: 8px;
+}
+
+@layer components {
+    section:not(.homepage) {
+        @apply p-slide size-full bg-slide;
+
+        h1 {
+            @apply text-3xl font-bold text-cyan-950 md:text-5xl lg:text-7xl dark:text-cyan-200;
+        }
+
+        h2 {
+            @apply text-2xl font-bold text-cyan-800 md:text-4xl lg:text-6xl dark:text-cyan-400;
+        }
+
+        h3 {
+            @apply text-lg font-bold text-cyan-700 md:text-xl lg:text-4xl dark:text-cyan-300;
+        }
+
+        h4 {
+            @apply text-lg font-bold text-cyan-600 md:text-xl lg:text-4xl dark:text-cyan-200;
+        }
+    }
+
+    /* Allow us to manage size from pre */
+    pre:has(> code) {
+        @apply contents;
+    }
+
+    pre > code {
+        @apply size-full rounded-2xl;
+    }
+
+    kbd {
+        @apply rounded-sm py-px px-[2px] border-solid border-black border-1 bg-gray-100 text-center min-w-[1lh] inline-block font-bold text-xl mt-1;
+    }
+
+    /* List in notes viewer */
+    ul {
+        list-style: circle;
+        padding-left: 1.5rem;
+    }
+
+    .card {
+        @apply rounded-2xl bg-white p-4 shadow-md;
+    }
+}
+
+@utility text-slide {
+    @apply text-lg font-bold text-cyan-950 md:text-xl lg:text-4xl dark:text-cyan-200;
+}
+
+@utility grid-stack {
+    display: grid;
+    grid-template-areas: 'stack';
+
+    > * {
+        grid-area: stack;
+        z-index: 1;
+    }
+}
+
+@utility bg-slide {
+    @apply bg-gradient-to-tr from-cyan-200 to-cyan-100 dark:from-slate-950 dark:to-slate-900
+}
+@utility bg-section-slide {
+    @apply bg-gradient-to-tr from-cyan-950 to-cyan-800 dark:from-slate-950 dark:to-slate-900
+}
+
+@utility p-slide {
+    @apply p-2 sm:p-4 lg:p-6 xl:p-8;
+}
+
+/* Remove padding of the slide */
+@utility full-width {
+    @apply -m-2 sm:-m-4 lg:-m-6 xl:-m-8;
+}
+
+@utility slide-grid-gap {
+    @apply gap-2 md:gap-4 lg:gap-6;
+}
+
+@utility indication {
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* Useful for icons leading text */
+@utility size-text-* {
+    width: calc(--value(integer) * 1em);
+    height: calc(--value(integer) * 1em);
+}
+
+@utility list-dash {
+    list-style-type: '- ';
+}
+
+/* region Transition utilities */
+/* Those utilities are shorthands*/
+@utility transition-quick {
+    @apply transition-all duration-500 ease-in-out;
+}
+@utility transition-medium {
+    @apply transition-all duration-700 ease-in-out;
+}
+@utility transition-long {
+    @apply transition-all duration-1000 ease-in-out;
+}
+/* Add delay to transition to wait for another transition to finish */
+@utility delay-quick {
+    @apply delay-500;
+}
+@utility delay-medium {
+    @apply delay-700;
+}
+@utility delay-long {
+    @apply delay-1000;
+}
+/* endregion Transition utilities */
+
+@utility translate-x-screen {
+    @apply translate-x-[100vw];
+}
+@utility -translate-x-screen {
+    @apply -translate-x-[100vw];
+}
+@utility translate-y-screen {
+    @apply translate-y-[100vh];
+}
+@utility -translate-y-screen {
+    @apply -translate-y-[100vh];
+}
+
+@theme {
+    --animate-show-version: show-version 1.5s ease-in-out forwards;
+
+    @keyframes show-version {
+        0% {
+            translate: 0 -100%;
+        }
+        50% {
+            translate: 0 0;
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+}
+/* ---- COMPLEX UTILITIES ---- */
+/* Everything after this line has been generated from tailwind-utils.js and will be regenerated from gulp task tailwind-complex-util */
+
+@custom-variant step-1 (&:where([data-step="1"], [data-step="1"] *));
+
+@custom-variant step-2 (&:where([data-step="2"], [data-step="2"] *));
+
+@custom-variant step-3 (&:where([data-step="3"], [data-step="3"] *));
+
+@custom-variant step-4 (&:where([data-step="4"], [data-step="4"] *));
+
+@custom-variant step-5 (&:where([data-step="5"], [data-step="5"] *));
+
+@custom-variant step-6 (&:where([data-step="6"], [data-step="6"] *));
+
+@custom-variant step-7 (&:where([data-step="7"], [data-step="7"] *));
+
+@custom-variant before-step-2 (&:where(
+:is([data-step="1"]),
+:is([data-step="1"]) *
+));
+
+@custom-variant before-step-3 (&:where(
+:is([data-step="1"], [data-step="2"]),
+:is([data-step="1"], [data-step="2"]) *
+));
+
+@custom-variant before-step-4 (&:where(
+:is([data-step="1"], [data-step="2"], [data-step="3"]),
+:is([data-step="1"], [data-step="2"], [data-step="3"]) *
+));
+
+@custom-variant before-step-5 (&:where(
+:is([data-step="1"], [data-step="2"], [data-step="3"], [data-step="4"]),
+:is([data-step="1"], [data-step="2"], [data-step="3"], [data-step="4"]) *
+));
+
+@custom-variant before-step-6 (&:where(
+:is([data-step="1"], [data-step="2"], [data-step="3"], [data-step="4"], [data-step="5"]),
+:is([data-step="1"], [data-step="2"], [data-step="3"], [data-step="4"], [data-step="5"]) *
+));
+
+@custom-variant before-step-7 (&:where(
+:is([data-step="1"], [data-step="2"], [data-step="3"], [data-step="4"], [data-step="5"], [data-step="6"]),
+:is([data-step="1"], [data-step="2"], [data-step="3"], [data-step="4"], [data-step="5"], [data-step="6"]) *
+));
+
+@utility highlight-code-line-1 {
+    > span:not(.code-line-1) {
+        @apply opacity-30
+    }
+    > span.code-line-1 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-2 {
+    > span:not(.code-line-2) {
+        @apply opacity-30
+    }
+    > span.code-line-2 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-3 {
+    > span:not(.code-line-3) {
+        @apply opacity-30
+    }
+    > span.code-line-3 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-4 {
+    > span:not(.code-line-4) {
+        @apply opacity-30
+    }
+    > span.code-line-4 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-5 {
+    > span:not(.code-line-5) {
+        @apply opacity-30
+    }
+    > span.code-line-5 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-6 {
+    > span:not(.code-line-6) {
+        @apply opacity-30
+    }
+    > span.code-line-6 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-7 {
+    > span:not(.code-line-7) {
+        @apply opacity-30
+    }
+    > span.code-line-7 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-8 {
+    > span:not(.code-line-8) {
+        @apply opacity-30
+    }
+    > span.code-line-8 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-9 {
+    > span:not(.code-line-9) {
+        @apply opacity-30
+    }
+    > span.code-line-9 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-10 {
+    > span:not(.code-line-10) {
+        @apply opacity-30
+    }
+    > span.code-line-10 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-11 {
+    > span:not(.code-line-11) {
+        @apply opacity-30
+    }
+    > span.code-line-11 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-12 {
+    > span:not(.code-line-12) {
+        @apply opacity-30
+    }
+    > span.code-line-12 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-13 {
+    > span:not(.code-line-13) {
+        @apply opacity-30
+    }
+    > span.code-line-13 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-14 {
+    > span:not(.code-line-14) {
+        @apply opacity-30
+    }
+    > span.code-line-14 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-15 {
+    > span:not(.code-line-15) {
+        @apply opacity-30
+    }
+    > span.code-line-15 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-16 {
+    > span:not(.code-line-16) {
+        @apply opacity-30
+    }
+    > span.code-line-16 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-17 {
+    > span:not(.code-line-17) {
+        @apply opacity-30
+    }
+    > span.code-line-17 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-18 {
+    > span:not(.code-line-18) {
+        @apply opacity-30
+    }
+    > span.code-line-18 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-19 {
+    > span:not(.code-line-19) {
+        @apply opacity-30
+    }
+    > span.code-line-19 {
+        @apply opacity-100!
+    }
+}
+
+@utility highlight-code-line-20 {
+    > span:not(.code-line-20) {
+        @apply opacity-30
+    }
+    > span.code-line-20 {
+        @apply opacity-100!
+    }
+}

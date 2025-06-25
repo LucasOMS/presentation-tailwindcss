@@ -1,0 +1,31 @@
+<section class="slide-grid-gap grid auto-rows-max" data-steps="3">
+    <h1>La sémantique de Tailwind</h1>
+    <h2>Propriété arbitraire : le CSS exact</h2>
+
+    <div class="transition-medium before-step-2:opacity-0 step-2:col-span-full flex flex-col gap-2">
+        <h3>CSS arbitraire</h3>
+        <pre><code class="h-auto language-html">&lt;div class=&quot;[display:grid]&quot;&gt;...&lt;/div&gt;</code></pre>
+    </div>
+    <div class="transition-medium before-step-3:opacity-0 flex flex-col gap-2">
+        <h3>Utiliser des variables CSS</h3>
+        <pre><code class="h-auto language-html">&lt;div class=&quot;flex gap-(--gutter) [--gutter:2px] lg:[--gutter:4px]&quot;&gt;...&lt;/div&gt;</code></pre>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Bon, je pense qu'on a vu pas mal de chose qui ont pu vous hérisser le poil, on va aller jusqu'à l'ultime affront : faire du CSS inline dans les utilitaires.
+
+<kbd>→</kbd>
+
+En effet en utilisant tout entre crochet, cela va générer le code exact que vous avez écrit. Alors, question évidente : pourquoi faire ça ? Pourquoi vouloir à ce point que notre PR soit refusée ? Et bien l'argument majeur, c'est qu'on peut utiliser les variants sur cet utilitaire.
+
+Ainsi, là on n'aurait pas pu le faire dans l'attribut style, il est possible de définir une règle qui répondra à des media queries, à d'autres conditions.
+
+<kbd>→</kbd>
+
+L'exemple donné par tailwind, et je pense que c'est en effet la seule utilisation qu'on devrait tolérer, c'est de pouvoir définir des variables CSS.
+Ici on voit bien que la variable sera dépendante de la taille de l'écran, et j'utilise un utilitaire pour utiliser cette variable définie.
+</pre
+    >
+</aside>

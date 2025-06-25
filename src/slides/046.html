@@ -1,0 +1,35 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]">
+    <h1>Personnaliser Tailwind</h1>
+    <h2>Ajouter un composant</h2>
+
+    <div>
+        <pre class="not-v3:hidden"><code class="h-auto language-css">@layer components {
+    .button {
+        @apply inline-flex items-center justify-center rounded-md border border-transparent font-medium text-white;
+    }
+
+    .title {
+        font-size: theme(fontSize.3xl);
+        margin-bottom: --spacing(2);
+    }
+}</code></pre>
+        <pre class="not-v4:hidden"><code class="h-auto language-css">@layer components {
+    .button {
+        @apply inline-flex items-center justify-center rounded-md border border-transparent font-medium text-white;
+    }
+
+    .title {
+        font-size: var(--font-size-3xl);
+        margin-bottom: --spacing(2);
+    }
+}</code></pre>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Les composants CSS ont pour objectif de réunir un ensemble de styles. Ils sont plus spécifiques que ce qui est défini dans la base mais doivent pouvoir être surchargé par les utilitaires.
+
+Dans ma présentation j'ai souvent parlé du fait que les problemes induits par les utilitaires étaient la plupart du temps réglés par l'utilisation de framework et de composants. C'est ici une facon de les faire directement en CSS.
+    </pre>
+</aside>

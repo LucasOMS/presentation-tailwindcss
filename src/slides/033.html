@@ -1,0 +1,53 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="5">
+    <h1>La sémantique de Tailwind</h1>
+    <h2>Variant : pseudo class</h2>
+
+    <div class="slide-grid-gap grid h-fit grid-cols-1 *:flex *:flex-col *:gap-2 2xl:grid-cols-2">
+        <div class="before-step-2:opacity-0 transition-medium">
+            <h3>Empty</h3>
+            <pre><code class="h-auto language-html">&lt;div class=&quot;empty:hidden&quot;&gt;...&lt;/div&gt;</code></pre>
+        </div>
+        <div class="before-step-3:opacity-0 transition-medium">
+            <h3>Even</h3>
+            <pre><code class="h-auto language-html">&lt;li class=&quot;even:bg-gray-300&quot;&gt;&Eacute;l&eacute;ment&lt;/li&gt;</code></pre>
+        </div>
+        <div class="before-step-4:opacity-0 transition-medium">
+            <h3>First</h3>
+            <pre><code class="h-auto language-html">&lt;li class=&quot;first:rounded-t-xl&quot;&gt;&Eacute;l&eacute;ment&lt;/li&gt;</code></pre>
+        </div>
+        <div class="before-step-4:opacity-0 transition-medium">
+            <h3>Last</h3>
+            <pre><code class="h-auto language-html">&lt;li class=&quot;last:rounded-b-xl&quot;&gt;&Eacute;l&eacute;ment&lt;/li&gt;</code></pre>
+        </div>
+        <div class="before-step-5:opacity-0 transition-medium col-span-full">
+            <h3>Has checked</h3>
+            <pre><code class="h-auto language-html">&lt;label class=&quot;text-red-500 has-checked:text-green-500&quot;&gt;
+Case &agrave; cocher
+&lt;input type=&quot;checkbox&quot;&gt;
+&lt;/label&gt;</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Tailwind fourni à peu près toutes les variants possibles pour cibler les pseudo classes CSS.
+
+<kbd>→</kbd>
+
+Ici on masque un élément si il n'a pas d'enfant. Cela peut servir quand le contenu est conditionné et qu'on ne veut pas de toute l'arborescence lorsqu'elle est vide.
+
+<kbd>→</kbd>
+
+On peut cibler les éléments pairs pour leur appliquer un fond différent.
+
+<kbd>→</kbd>
+
+On peut cibler le premier et le dernier élément d'une liste pour ajouter des arrondis en haut et en bas.
+
+<kbd>→</kbd>
+
+On peut vérifier si l'élément contient un enfant coché par exemple pour styliser le label.
+</pre
+    >
+</aside>

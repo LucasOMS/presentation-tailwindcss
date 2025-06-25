@@ -1,0 +1,64 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="7">
+    <h1>La sémantique de Tailwind</h1>
+    <h2>Variant : Media query</h2>
+
+    <div class="slide-grid-gap grid h-fit grid-cols-1 *:flex *:flex-col *:gap-2 2xl:grid-cols-2">
+        <div class="before-step-2:-translate-x-screen transition-medium">
+            <h3>Prefer color scheme</h3>
+            <pre><code class="h-auto language-html">&lt;h1 class=&quot;text-black dark:text-white&quot;&gt;Titre&lt;/h1&gt;</code></pre>
+        </div>
+        <div class="before-step-3:-translate-x-screen 2xl:before-step-3:translate-x-screen transition-medium">
+            <h3>Prefer reduced motion</h3>
+            <pre><code class="h-auto language-html">&lt;h1 class=&quot;motion-safe:animate-bounce motion-reduce:text-white&quot;&gt;Titre&lt;/h1&gt;</code></pre>
+        </div>
+        <div class="before-step-4:-translate-x-screen transition-medium">
+            <h3>Prefer contrast</h3>
+            <pre><code class="h-auto language-html">&lt;h1 class=&quot;text-gray-400 contrast-more:text-white&quot;&gt;Titre&lt;/h1&gt;</code></pre>
+        </div>
+        <div class="before-step-5:-translate-x-screen 2xl:before-step-5:translate-x-screen transition-medium">
+            <h3>Orientation</h3>
+            <pre><code class="h-auto language-html">&lt;h1 class=&quot;text-start landscape:text-center&quot;&gt;Titre&lt;/h1&gt;</code></pre>
+        </div>
+        <div class="before-step-6:-translate-x-screen transition-medium">
+            <h3>Print</h3>
+            <pre><code class="h-auto language-html">&lt;h1 class=&quot;print:text-2xl&quot;&gt;Titre&lt;/h1&gt;</code></pre>
+        </div>
+        <div class="before-step-7:-translate-x-screen 2xl:before-step-7:translate-x-screen transition-medium">
+            <h3>Précision du pointer</h3>
+            <pre><code class="h-auto language-html">&lt;button class=&quot;m-1 pointer-coarse:m-2&quot;&gt;Appuyez moi dessus !&lt;/button&gt;</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Vous avez également accès à d'autres média queries assez classique, surtout prévu pour l'accéssiblité. Quelques exemples en vrac :
+
+        <kbd>→</kbd>
+
+Vous pouvez cibler le mode sombre à partir des préférences de l'utilisateur, par exemple pour mettre le texte en blanc sur fond noir. Par défaut, cela utilise forcément la préférence utilisateur, si vous voulez utiliser le mode sombre ou un autre theme sans utiliser la préférence navigateur par défaut, mais via du code, nous verrons plus tard comment faire.
+
+        <kbd>→</kbd>
+
+Vous pouvez n'utiliser certains effets que si l'utilisateur n'a pas désactivé les animations.
+
+        <kbd>→</kbd>
+
+Vous pouvez renforcer les contrastes si l'utilisateur le demande.
+
+        <kbd>→</kbd>
+
+Vous pouvez cibler l'orientation de l'écran, par exemple pour mettre le texte à gauche en portrait et centré en paysage.
+
+        <kbd>→</kbd>
+
+Vous pouvez cibler l'impression, par exemple pour mettre le texte en plus gros.
+
+        <kbd>→</kbd>
+
+Vous pouvez cibler la précision du pointer, par exemple pour rendre un bouton plus large lorsque l'utilisateur n'utilise pas une souris ou un stylet. Ici ca cible le pointeur principal, si vous voulez cibler au moins un des pointeurs disponibles, vous pouvez utiliser <code>any-pointer</code> comme utilitaire.
+
+<br />
+Sur tous ces variants, le not- marche très bien, vous pouvez par exemple utiliser un <code>not-print:hidden</code> pour avoir un élément uniquement visible à l'impression.
+</pre>
+</aside>

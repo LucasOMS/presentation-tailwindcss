@@ -1,0 +1,118 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr] overflow-y-auto 2xl:max-h-screen 2xl:overflow-y-clip">
+    <h1>Personnaliser Tailwind</h1>
+    <h2>Différence majeure v3/v4</h2>
+
+    <div class="slide-grid-gap grid 2xl:grid-cols-2 2xl:overflow-auto">
+        <div>
+            <h3 class="mb-2">Version 3 : tailwind.config.js</h3>
+            <pre><code class="language-js">const baseSpacing = 8;
+
+const colors = require(&#39;tailwindcss/colors&#39;);
+
+/** @type {import(&#39;tailwindcss&#39;).Config} */
+module.exports = {
+  content: [
+    &#39;./**/domotique-ui/**/*.{html,ts}&#39;,
+  ],
+  darkMode: &#39;selector&#39;,
+  theme: {
+    extend: {
+      colors: {
+        &#39;primary&#39;: colors.violet,
+        &#39;dark&#39;: {
+          &#39;50&#39;: &#39;hsl(264, 10%, 98%)&#39;,
+          &#39;100&#39;: &#39;hsl(264, 10%, 96%)&#39;,
+          &#39;200&#39;: &#39;hsl(264, 10%, 90%)&#39;,
+          &#39;300&#39;: &#39;hsl(264, 10%, 83%)&#39;,
+          &#39;400&#39;: &#39;hsl(264, 10%, 64%)&#39;,
+          &#39;500&#39;: &#39;hsl(264, 10%, 45%)&#39;,
+          &#39;600&#39;: &#39;hsl(264, 10%, 32%)&#39;,
+          &#39;700&#39;: &#39;hsl(264, 10%, 25%)&#39;,
+          &#39;800&#39;: &#39;hsl(264, 10%, 15%)&#39;,
+          &#39;900&#39;: &#39;hsl(264, 10%, 9%)&#39;,
+          &#39;950&#39;: &#39;hsl(264, 10%, 4%)&#39;,
+        },
+      },
+      fontFamily: {
+        mono: [&#39;Mono&#39;, &#39;monospace&#39;],
+      },
+    },
+    spacing: {
+      &#39;0.5&#39;: 0.5 * baseSpacing + &#39;px&#39;,
+      &#39;1&#39;: baseSpacing + &#39;px&#39;,
+      &#39;1.5&#39;: 1.5 * baseSpacing + &#39;px&#39;,
+      &#39;2&#39;: 2 * baseSpacing + &#39;px&#39;,
+      &#39;2.5&#39;: 2.5 * baseSpacing + &#39;px&#39;,
+      &#39;3&#39;: 3 * baseSpacing + &#39;px&#39;,
+      &#39;3.5&#39;: 3.5 * baseSpacing + &#39;px&#39;,
+      &#39;4&#39;: 4 * baseSpacing + &#39;px&#39;,
+      &#39;4.5&#39;: 4.5 * baseSpacing + &#39;px&#39;,
+      &#39;5&#39;: 5 * baseSpacing + &#39;px&#39;,
+      &#39;5.5&#39;: 5.5 * baseSpacing + &#39;px&#39;,
+      &#39;6&#39;: 6 * baseSpacing + &#39;px&#39;,
+      &#39;6.5&#39;: 6.5 * baseSpacing + &#39;px&#39;,
+    },
+    borderRadius: {
+      &#39;none&#39;: &#39;0&#39;,
+      &#39;sm&#39;: baseSpacing + &#39;px&#39;,
+      &#39;DEFAULT&#39;: 2 * baseSpacing + &#39;px&#39;,
+      &#39;md&#39;: 3 * baseSpacing + &#39;px&#39;,
+      &#39;lg&#39;: 4 * baseSpacing + &#39;px&#39;,
+      &#39;full&#39;: &#39;9999px&#39;,
+    },
+  },
+  plugins: [
+    require(&#39;@tailwindcss/container-queries&#39;),
+  ],
+  important: true,
+};</code></pre>
+        </div>
+        <div>
+            <h3 class="mb-2">Version 4 : tailwind.config.css</h3>
+            <pre><code class="language-css">@import &#39;tailwindcss&#39;;
+
+@config 'tailwind.config.js'; /* Retrocompatibilité v3 */
+
+@custom-variant dark (&amp;:where(.dark, .dark *));
+
+@theme {
+    /* Add custom mono font, used for timers */
+    --font-mono: &#39;Mono&#39;, monospace;
+
+    --spacing: 8px;
+
+    /* ==== Radius ==== */
+    --radius-none: 0;
+    --radius-sm: --spacing(1);
+    --radius: --spacing(2);
+    --radius-md: --spacing(3);
+    --radius-lg: --spacing(4);
+    --radius-full: 9999px;
+
+    /* ==== Colors ==== */
+    --color-primary-50: oklch(96.91% 0.0161 293.76);
+    --color-primary-100: oklch(94.33% 0.0284 294.59);
+    --color-primary-200: oklch(0.894 0.055 293.283);
+    --color-primary-300: oklch(0.811 0.101 293.571);
+    --color-primary-400: oklch(0.709 0.159 293.541);
+    --color-primary-500: oklch(0.606 0.219 292.717);
+    --color-primary-600: oklch(0.541 0.247 293.009);
+    --color-primary-700: oklch(0.491 0.241 292.581);
+    --color-primary-800: oklch(0.432 0.211 292.759);
+    --color-primary-900: oklch(0.38 0.178 293.745);
+    --color-primary-950: oklch(0.283 0.135 291.089);
+}</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+La configuration a changé entre la version 3 et 4, meme si la version 4 peut encore fonctionner avec la technique de la version 3.
+
+En version 3 cela se fait par un fichier javascript tandis qu'en v4 cela passe par un fichier css.
+
+Vous avez à l'écran une idée d'à quoi cela peut ressembler. On va rentrer dans le détails de quelques configuration. A partir d'ici, je vais commencer à alterner entre les différentes versions.
+</pre
+    >
+</aside>

@@ -1,0 +1,37 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="4">
+    <h1>La sémantique de Tailwind</h1>
+    <h2>Variant : pseudo éléments</h2>
+
+    <div class="slide-grid-gap grid h-fit grid-cols-1 *:flex *:flex-col *:gap-2 2xl:grid-cols-2">
+        <div class="transition-medium before-step-2:opacity-0 step-2:col-span-full">
+            <h3>Placeholder</h3>
+            <pre><code class="h-auto language-html">&lt;input class=&quot;placeholder:text-gray-400&quot;&gt;</code></pre>
+        </div>
+        <div class="transition-medium before-step-3:opacity-0">
+            <h3>Sélection</h3>
+            <pre><code class="h-auto language-html">&lt;p class=&quot;selection:bg-cyan-600 selection:text-white&quot;&gt;Texte&lt;/p&gt;</code></pre>
+        </div>
+        <div class="transition-medium before-step-4:opacity-0 col-span-full">
+            <h3>Before & After</h3>
+            <pre><code class="h-auto language-html">&lt;button class=&quot;relative before:absolute before:-top-1 before:-right-1 before:bg-red-500 before:rounded-full before:animate-bounce before:size-1&quot;&gt;Voir les messages&lt;/button&gt;</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Vous pouvez cibler les pseudos éléments avec Tailwind.
+
+<kbd>→</kbd>
+
+Ici vous pouvez styliser le <code>placeholder</code> d'un input.
+
+<kbd>→</kbd>
+
+Vous pouvez aussi spécifier à quoi doit ressembler la sélection du texte.
+
+<kbd>→</kbd>
+
+Vous pouvez aller jusqu'à cibler les pseudo éléments <code>:before</code> et <code>after</code>. Personellement, c'est là ou je fixe une des limites. Ca va souvent créer une liste de classes de plusieurs centaines de caractères. Notez que styliser ces élements va automatiquement définir <code>content: ''</code>, vous n'avez pas à le spécifier.
+</pre>
+</aside>

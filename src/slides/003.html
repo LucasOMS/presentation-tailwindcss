@@ -1,0 +1,47 @@
+<!-- We use a custom grid instead of Tailwind's default utilities because Tailwind relies on the repeat function. -->
+<!-- The repeat function prevents CSS from smoothly animating grid size transitions. -->
+<!-- In large displays, this slide transitions from two columns (with the second column initially at 0 width) to a 50/50 split. -->
+<!-- Note: To ensure the second column is ignored in the first step and no gap is created, we use col-span-full while displaying only one column. -->
+
+<section class="slide-grid-gap xl:step-2:grid-cols-[1fr_1fr] transition-quick grid grid-rows-[auto_auto_1fr] xl:grid-cols-[1fr_0fr]" data-steps="2">
+    <h1 class="col-span-full">
+        Avant les
+        <span class="italic">frameworks frontend</span>
+    </h1>
+    <h2 class="step-1:starting:translate-y-[100vh] transition-long col-1">Javascript</h2>
+    <!-- w-0 ensure the text size doesn't force a min width while transition is playing -->
+    <h2 class="step-1:hidden xl:col-2 xl:w-0 xl:text-nowrap">Javascript + HTML</h2>
+    <div class="step-1:starting:translate-y-[100vh] slide-grid-gap step-1:col-span-full transition-long col-1 grid grid-rows-[auto_1fr]">
+        <pre><code class="language-html">&lt;button id=&quot;js-button&quot;&gt;&lt;/button&gt;</code></pre>
+        <pre><code class="language-js">const button = document.getElementById(&#39;js-button&#39;);
+button.addEventListener(&#39;click&#39;, (e) =&gt; {
+    if(button.getAttribute(&#39;disabled&#39;)) {
+        return;
+    }
+    doSomething();
+    e.stopPropagation();
+})</code></pre>
+    </div>
+
+    <div class="slide-grid-gap step-1:hidden grid grid-rows-[auto_1fr] not-xl:row-3 xl:col-2">
+        <pre><code class="language-html">&lt;button onclick=&quot;clickHandler(event)&quot;&gt;&lt;/button&gt;</code></pre>
+        <pre><code class="language-js">function clickHandler(e){
+        if(e.target.getAttribute(&#39;disabled&#39;)) {
+            return;
+        }
+        doSomething();
+        e.stopPropagation();
+    }</code></pre>
+    </div>
+</section>
+
+<aside>
+    <pre>
+    Avant d'avoir des framework frontend, on avait deux facons de gérer l'interactivité. En javascript pur, on pouvait simplement ajouter un handler sur un élément en fonction d'un événement. Dans ce cas là, la séparation HTML/Js reste totale, dans le pire des cas (comme ici) on a simplement a préciser un identifiant pour cibler l'élément.
+
+    <kbd>→</kbd>
+
+    On peut également définir le handler d'un bouton directement en appelant la fonction javascript qui est liée. Dans ce cas, on commence déjà à avoir un peu de javascript dans notre HTML. Ici je n'ai mis que l'appel de fonction, mais on pourrait avoir du code bien plus complexe (et donc difficilement lisible) directement dans la valeur de l'attribut
+</pre
+    >
+</aside>

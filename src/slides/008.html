@@ -1,0 +1,55 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_auto_3fr]" data-steps="4">
+    <h1>
+        <span class="font-extrabold">Le</span>
+        <span class="italic">framework</span>
+        CSS : Bootstrap
+    </h1>
+    <h2>Le mobile first</h2>
+    <pre><code class="language-html h-fit mb-4">&lt;p class=&quot;text-center fw-sm-bold text-md-start&quot;&gt;Bienvenue sur notre site !&lt;/p&gt;
+</code></pre>
+
+    <div class="before-step-2:hidden transition-medium slide-grid-gap flex flex-col opacity-100 starting:opacity-0">
+        <h2>Rendu</h2>
+
+        <div class="slide-grid-gap flex items-center">
+            <div class="transition-medium step-3:w-[30vw] step-4:w-[40vw] card w-[20vw] rounded-2xl border-2 border-cyan-950">
+                <p class="step-3:font-bold step-4:font-bold step-4:text-start text-center text-4xl">Texte</p>
+            </div>
+            <div class="grid-stack *:w-fit">
+                <div class="transition-quick step-2:max-w-full step-2:delay-500 max-w-0 overflow-x-clip text-nowrap">
+                    <h3>Extra small</h3>
+                    <p class="transition-quick step-2:opacity-80 delay-long text-2xl font-bold text-cyan-900 opacity-0 dark:text-cyan-200">< 576px</p>
+                </div>
+                <div class="transition-quick step-3:max-w-full step-3:delay-500 max-w-0 overflow-x-clip text-nowrap">
+                    <h3>Small</h3>
+                    <p class="transition-quick step-3:opacity-80 delay-long text-2xl font-bold text-cyan-900 opacity-0 dark:text-cyan-200">> 576px</p>
+                </div>
+                <div class="transition-quick step-4:max-w-full step-4:delay-500 max-w-0 overflow-x-clip text-nowrap">
+                    <h3>Medium</h3>
+                    <p class="transition-quick step-4:opacity-80 delay-long text-2xl font-bold text-cyan-900 opacity-0 dark:text-cyan-200">> 768px</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+    <h1>Le mobile first</h1>
+    <p>
+        Avec sa manière de définir les utilitaires en fonction des breakpoints, Bootsrap demande de penser son interface "mobile first"
+
+        En effet les breakpoints ne s'applique pas à une taille précise mais <b>A PARTIR</b> de cette taille.
+
+        <kbd>→</kbd>
+
+        Exemple rapide : Par défaut, on applique <code>text-center</code> qui n'a pas de breakpoint défini
+
+        <kbd>→</kbd>
+        Sur petit écran, on applique toujours <code>text-center</code> puisque rien d'autre n'est précisé sur l'alignement, en revanche on met en gras
+
+        <kbd>→</kbd>
+        Sur écran moyen et supérieur, on aligne le texte à gauche (au début du sens de lecture) puisque l'utilitaire <code>text-md-start</code> va avoir une plus grande priorité que <code>text-center</code>. Et on applique toujours le texte en gras car rien ne redéfinit cette propriété.
+    </p>
+</pre>
+</aside>

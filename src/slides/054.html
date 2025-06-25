@@ -1,0 +1,96 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="6">
+    <h1>Les outils à avoir</h1>
+    <h2>Linter : ordonner les classes</h2>
+
+    <div class="grid-stack">
+        <div class="before-step-2:translate-x-screen step-2:translate-x-0 transition-medium -translate-x-screen">
+            <h3 class="mb-4">Prettier, solution officielle</h3>
+            <ul class="text-slide list-dash slide-grid-gap flex flex-col">
+                <li>Facile à mettre en place</li>
+                <li>
+                    Embarque
+                    <b class="font-extrabold">tout</b>
+                    prettier
+                </li>
+                <li>Aucune personnalisation</li>
+            </ul>
+        </div>
+        <div class="before-step-3:translate-x-screen step-3:translate-x-0 transition-medium -translate-x-screen">
+            <h3 class="mb-4">ESLint-plugin-tailwindcss</h3>
+            <ul class="text-slide list-dash slide-grid-gap flex flex-col">
+                <li>N'embarque pas Prettier</li>
+                <li>Ajoute quelques règles</li>
+                <li>Ne supporte pas la version 4</li>
+            </ul>
+        </div>
+        <div class="before-step-4:translate-x-screen step-4:translate-x-0 transition-medium -translate-x-screen">
+            <h3 class="mb-4">Plugin JetBrains : Tailwind Formatter</h3>
+            <ul class="text-slide list-dash slide-grid-gap flex flex-col">
+                <li>Aucune dépendance</li>
+                <li>Capricieux</li>
+            </ul>
+        </div>
+        <div class="before-step-5:translate-x-screen step-5:translate-x-0 transition-medium">
+            <h3 class="mb-4">ESLint-plugin-html-class-attribute</h3>
+            <ul class="text-slide list-dash slide-grid-gap mb-4 flex flex-col">
+                <li>N'embarque rien</li>
+                <li>Entièrement personnalisable</li>
+                <li class="step-6:hidden">
+                    Ajoute des règles
+                    <ul class="text-slide mt-4 flex flex-col gap-2">
+                        <li>Ordonner les classes</li>
+                        <li>Préférer certains groupes de classes à d'autres</li>
+                        <li>Interdire certaines classes</li>
+                    </ul>
+                </li>
+            </ul>
+            <pre><code class="before-step-6:opacity-0 transition-medium language-js h-auto">{
+    classList: [
+        `^${RegexBuilder.createVariable('negative', ['-', ''])}mr-${RegexBuilder.createVariable('marginX', 'decimal')}$`,
+        `^${RegexBuilder.createVariable('negative', ['-', ''])}ml-${RegexBuilder.createVariable('marginX', 'decimal')}$`,
+    ],
+    prefer: `${RegexBuilder.useVariable('negative')}mx-${RegexBuilder.useVariable('marginX')}`,
+},</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+L'une des choses qui m'a fait m'interesser à Tailwind à la base, c'est sa libisilité lorsqu'on a plusieurs classes lorsqu'on les ordonnes par variants appliqués, ce qui étaient assez facile à faire et maintenir vu la syntaxe.
+
+Si c'était une rigueur qu'on devait s'imposer au début, à partir de la version 3, plusieurs outils apparaissent pour forcer cet ordre de classes.
+
+<kbd>→</kbd>
+
+Tout d'abord la version officielle, à savoir un plugin de prettier. Il est très facile à configurer, mais cela implique d'avoir prettier dans votre projet. Vu que prettier n'a aucune option pour "désactiver" certaines règles par défaut, cela veut dire qu'il vous faudra le configurer pour correspondre à votre projet, ce qui peut être un peu lourd si vous n'utilisez pas prettier pour le reste de votre projet.
+
+Le plugin ne contient aucune personnalisation possible, il se contente de lire votre fichier de configuration et appliquer l'ordre défini. Pas besoin d'espérer que cela évolue, car l'équipe de Tailwind a comuniqué sur le fait qu'ils étaient d'accord avec la facon "bête et méchante" dont fonctionne Prettier, puisque cela enlève un sujet sur lequel débattre dans une équipe.
+
+<kbd>→</kbd>
+Vous avez ensuite un plugin ESLint, qui permet de faire la même chose, mais qui n'embarque pas prettier ! Il permet également d'ajouter quelques règles comme s'assurer qu'on utilise les sucres syntaxiques lorsque possible, empecher les valeurs arbitraires, envoyer une erreur lorsque deux utilitaires changent la meme propriété, etc.
+
+C'était ma solution jusqu'à la version 4. Malheureusement le mainteneur du repo est seul sur son outil et la version 4 change beaucoup de choses, il a indiqué qu'il allait réfléchir pour son support, mais que cela prendait du temps. C'est pour moi la solution qui était la plus complète, notamment pour l'écosystème Angular.
+
+<kbd>→</kbd>
+Chez JetBrains, vous avez un plugin, mais il est assez capricieux et ne fonctionne pas toujours. Son principal avantage est que l'on a besoin d'aucune configuration.
+
+<kbd>→</kbd>
+Ensuite un peu d'autopromo rapide, j'ai créé un plugin ESLint qui permet d'ordonner les classes dans l'attribut HTML à partir de groupes et d'expression régulières. Il est donc totalement personnalisable, pour une utilisation avancée de tailwind, il sera sans doute très dur à configurer voire trop gourmand. En revanche il peut vous permettre de faire passer quelque classes en premier, certaines en dernier assez facilement. Il permet également d'interdire certaines classes via des regex, cela permet donc très facilement d'interdire les crochets par exemple, ou le <code>*:</code>
+
+<kbd>→</kbd>
+Il permet également de vérifier qu'on utilise des sucres syntaxiques, par exemple ici je m'assure que si deux marges gauche et droite sont identiques, alors j'utilise la marge horizontale.
+Concrètement dans le code, je vérifie si j'ai ou non un moins devant, puis je capture le nom de l'utilitaire, et ensuite je capture sa valeur, si toutes les variables sont égales, alors c'est que j'ai équivalence.
+
+Vous pouvez l'utilisé en complément de prettier pour vous assurer de l'utilisation de sucres syntaxiques, même ceux spécifiques à votre projet. Vous pouvez également l'utiliser pour forcer la non utilisation de certaines classes, ca faciletera la relecture de vos PR.
+
+C'est mon premier projet open source donc il faudra vous montrer indulgent, si vous voulez contribuer ou demander quelque chose, n'hésitez pas à me contacter. Il a un README complet et des utilitaires pour vous aider à construire vos configurations, c'est ce que j'utilise dans mon exemple.
+
+
+Avec ESLint 9, il est possible de facilement avoir du code "local" à un projet en tant que plugin, vous pouvez donc carrément récupérer des bouts de mon code si vous ne souhaitez pas en dépendre.
+
+Je reprécise que vu qu'il est personnalisable, vous pouvez l'utiliser avec Bootstrap !
+
+Plus tôt je parlais d'un outil pour migrer depuis bootstrap, c'est celui-ci, vu qu'il permet de faire des regex et des remplacements automatiques assez complexe en ciblant uniquement l'attribut HTML class, c'est un assez bon outil pour faire des migrations de ce type.
+    </pre>
+</aside>

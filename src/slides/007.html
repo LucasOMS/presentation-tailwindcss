@@ -1,0 +1,44 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="4">
+    <h1>
+        <span class="font-extrabold">Le</span>
+        <span class="italic">framework</span>
+        CSS : Bootstrap
+    </h1>
+    <h2>Les inconvénients</h2>
+    <pre><code class="language-html h-auto self-start transition-medium starting:opacity-0 text-2xl *:transition-medium step-2:highlight-code-line-1 step-2:highlight-code-line-7 step-3:highlight-code-line-2 step-3:highlight-code-line-6 step-4:highlight-code-line-3 step-4:highlight-code-line-4 step-4:highlight-code-line-5">&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col-xs-12 col-sm-6 col-md-4&quot;&gt;Bloc 1&lt;/div&gt;
+      &lt;div class=&quot;col-xs-12 col-sm-6 col-md-4&quot;&gt;Bloc 2&lt;/div&gt;
+      &lt;div class=&quot;col-xs-12 col-sm-12 col-md-4&quot;&gt;Bloc 3&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</section>
+
+<aside>
+    <pre>
+    Alors la version de cette grille n'est pas parfaite, elle permet de facilement créer un layout, mais elle impose :
+    <ul>
+        <li>
+            <kbd>→</kbd>
+            L'utilisation d'un parent avec la classe <code>.container</code> ou <code>.container-fluid</code>
+        </li>
+        <li>
+            Suivre une structure HTML stricte : toujours suivre :
+
+            <ul>
+                <li>
+                    <kbd>→</kbd>
+                    Une div avec la classe row
+                </li>
+                <li>
+                    <kbd>→</kbd>
+                    Dedans une <code>div</code> avec une classe <code>col</code>
+                </li>
+                <li>Le contenu à l'intérieur</li>
+            </ul>
+        </li>
+        <li>Puisque la grille se base sur flex, elle crée des margins et des paddings, parfois des margins négatives qui peuvent s'avérer très dur à modifier quand on en a besoin</li>
+    </ul>
+</pre>
+</aside>

@@ -1,0 +1,29 @@
+<section class="slide-grid-gap grid auto-rows-max" data-steps="2">
+    <h1>Les outils à avoir</h1>
+    <h2>Surcharger les utilitaires facilement</h2>
+
+    <div class="starting:translate-y-screen flex flex-col gap-2">
+        <h3>Tailwind de base</h3>
+        <pre><code class="language-html h-auto">&lt;div class=&quot;bg-red-500&quot;&gt;Font rouge&lt;/div&gt;</code></pre>
+        <pre><code class="language-html h-auto">&lt;div class=&quot;bg-blue-500!&quot;&gt;Font bleu&lt;/div&gt;</code></pre>
+    </div>
+    <div class="before-step-2:translate-y-screen transition-medium flex flex-col gap-2">
+        <h3>Tailwind merge</h3>
+        <pre><code class="language-html h-auto">&lt;!-- Impossible de surcharger le background --&gt;
+&lt;div class=&quot;bg-blue-500!&quot;&gt;&lt;/div&gt;</code></pre>
+        <pre><code class="language-js h-auto">twMerge(&#39;bg-blue-500&#39;, &#39;bg-red-500&#39;); // &rarr; bg-blue-500</code></pre>
+        <pre><code class="language-js h-auto">twMerge(&#39;px-2 py-1&#39;, &#39;p-3&#39;); // &rarr; p-3</code></pre>
+    </div>
+</section>
+
+<aside>
+    <pre>
+On a vu que si on n'initialise pas tailwind avec le flag <code>important</code>, il sera possible de surcharger n'importe quel utilitaire de base en ajouter un <code>!</code>. Mais du coup, si on veut surcharger un utilitaire qui surchargeait déjà, et bien on se retrouve dans le cas initial, on est coincés !
+
+<kbd>→</kbd>
+
+Une bibliothèque javascript existe pour palier ce problème, elle s'appelle <code>tailwind-merge</code>. Elle fournit une fonction javascript qui s'assure que les utilitaires passés en second arguments seront appliqués quelque soit les utilitaires présents précédements.
+
+Elle est capable de gérer les raccourcis comme x et y. Si vous l'utilisez dans tout votre projet, cela vous assure que vos utilitaires seront toujours pris en compte. En revanche cela ajoute une dépendance et une petite couche de calcul à vos composants.
+    </pre>
+</aside>

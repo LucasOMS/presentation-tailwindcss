@@ -1,0 +1,44 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="3">
+    <h1>La sémantique de Tailwind</h1>
+    <h2>Utilitaire de base</h2>
+    <div class="flex flex-col items-center justify-center">
+        <div class="text-slide *:transition-long grid grid-cols-[repeat(2,auto)] gap-y-1 text-[6vw] font-bold">
+            <div class="step-1:text-cyan-600 step-2:text-cyan-600 starting:opacity-0">propriété</div>
+            <div class="before-step-3:max-w-0 delay-medium max-w-[calc(6vw_*_6)] overflow-x-clip text-nowrap">
+                <!-- Here we have to do custom style because prettier inject a new line after the first span, with no reason other than being the worst dev tool on this planet -->
+                <span class="-mr-[1.5vw]">-</span>
+                <span class="step-3:text-cyan-600">valeur</span>
+            </div>
+            <!-- Examples -->
+            <!-- Property -->
+            <div class="step-2:opacity-80 transition-medium m-auto inline-flex flex-col items-center gap-y-0.5 text-cyan-800 opacity-0 *:text-(length:--text-size) *:leading-(--text-size)">
+                <span class="[--text-size:2vw]">m, mr, mx, mt, my</span>
+                <span class="[--text-size:1.9vw]">p, pr, px, pt, py</span>
+                <span class="[--text-size:1.8vw]">grid-cols</span>
+                <span class="[--text-size:1.6vw]">items</span>
+                <span class="[--text-size:1.7vw]">text</span>
+                <span class="[--text-size:1.5vw]">gap</span>
+                <span class="[--text-size:1.4vw]">bg</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+La base des utilitaires de tailwind, ca va être le nom de la propriété ou son alias.
+
+<kbd>→</kbd>
+
+On va retrouver les alias les plus courants, comme <code>m</code> pour <code>margin</code>, <code>p</code> pour <code>padding</code>, <code>bg</code> pour <code>background</code>, souvent les memes que sur Bootstrap.
+
+Certaines propriétés sont aliasés comme items pour <code>align-items</code>, ou <code>grid-cols</code> pour <code>grid-template-columns</code>.
+
+Certaines propriétés sont utilisés pour différentes valeurs. Par exemple la propriété <code>text</code> servira autant à définir la taille que la couleur. C'est en fonction de la valeur qu'on indiquera que Tailwind saura quelle propriété utiliser.
+
+<kbd>→</kbd>
+
+Une fois qu'on a la propriété, on peut lui appliquer sa valeur après un tiret
+</pre
+    >
+</aside>

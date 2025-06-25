@@ -1,0 +1,91 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="7">
+    <h1>La sémantique de Tailwind</h1>
+    <h2>Utilitaire de base : valeurs</h2>
+    <div class="slide-grid-gap grid grid-cols-2 grid-rows-3">
+        <div>
+            <h3 class="mb-2">Valeur numérique</h3>
+            <div class="flex flex-col gap-2">
+                <pre><code class="language-html h-auto">&lt;div class=&quot;p-4&quot;&gt;&lt;/div&gt;</code></pre>
+                <pre class="not-v3:hidden"><code class="language-css h-auto">.p-4 {
+    padding: 1rem; /* 4 * 0.25rem */
+}</code></pre>
+                <pre class="not-v4:hidden"><code class="language-css h-auto">.p-4 {
+    padding: calc(4 * var(--spacing));
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="before-step-2:opacity-0 transition-medium">
+            <h3 class="mb-2">Valeur de taille</h3>
+            <div class="flex flex-col gap-2">
+                <pre><code class="language-html h-auto">&lt;div class=&quot;text-lg&quot;&gt;Texte&lt;/div&gt;</code></pre>
+                <pre class="not-v3:hidden"><code class="language-css h-auto">.text-lg {
+    font-size: 1.125rem;
+}</code></pre>
+                <pre class="not-v4:hidden"><code class="language-css h-auto">.text-lg {
+    padding: var(--text-lg);
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="before-step-3:opacity-0 transition-medium">
+            <h3 class="mb-2">Valeur composée</h3>
+            <div>
+                <pre><code class="language-html h-auto">&lt;div class=&quot;bg-red-500/50&quot;&gt;&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="before-step-4:opacity-0 transition-medium col-start-2 row-span-full">
+            <h3 class="mb-2">Valeur arbitraire</h3>
+            <div class="flex flex-col gap-2">
+                <pre><code class="language-html h-auto">&lt;div class=&quot;bg-[#ff0000]&quot;&gt;&lt;/div&gt;</code></pre>
+                <pre><code class="language-css h-auto">.bg-\[#ff0000\] {
+    background: #ff0000;
+}</code></pre>
+
+                <pre><code class="before-step-5:opacity-0 transition-medium language-html h-auto">&lt;div class=&quot;border border-[var(--border)] bg-(--background)&quot;&gt;&lt;/div&gt;</code></pre>
+                <pre><code class="before-step-5:opacity-0 transition-medium language-css h-auto">.border-\[var\(--border\)\] {
+    border-color: var(--border);
+}
+
+.bg-\(--background\) {
+    background: var(--background);
+}</code></pre>
+
+                <pre><code class="before-step-6:opacity-0 transition-medium language-html h-auto">&lt;div class=&quot;grid grid-rows-[auto_auto_1fr]&quot;&gt;...&lt;/div&gt;</code></pre>
+                <pre><code class="before-step-7:opacity-0 transition-medium language-html h-auto">&lt;div class=&quot;h-[calc(100vh-var(--header-height))]&quot;&gt;&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Sur tailwind 4, tout passe par des variables CSS. Les utilitaires vont référencer indirectement ces variables dans leur valeur. Par exemple si j'utilise <code>p-4</code>, cela veut dire que je définie un padding de 4 espacement, qui est la variable <code>--spacing</code>. La valeur est donc ici un simple nombre. Notez qu'en v4 on peut utiliser <code>p-4.5</code> et cela sera valide; en v3, il est necessaire de définir les valeurs flottantes dans le fichier de configuration.
+
+<kbd>→</kbd>
+
+On peut également avoir des variables de taille, par exemple <code>text-lg</code> qui correspond à la variable <code>--text-lg</code>. Les tailles par défaut vont du <code>xs</code> à <code>7xl</code>, mais on peut en ajouter autant que l'on souhaite dans le fichier de configuration. Ces valeurs sont utilisées pour les taille de polices mais également les arrondis.
+
+<kbd>→</kbd>
+
+Certains utilitaires ont des raccourcis pour impacter plusieurs propriétés, comme <code>bg</code> qui accepte des valeurs un peu plus spécialisée, par exemple <code>bg-red-500/50</code> va mettre la couleur de fond en <code>rouge-500</code> (variable <code>--color-red-500</code>) mais va également définir la transparence à <code>50%</code>. Pour le text, on pourra mettre <code>/</code> après la taille pour définir la hauteur de ligne en fonction de <code>--spacing</code>.
+
+<kbd>→</kbd>
+Enfin, et c'est à ce moment qu'en principe les gens adhère à Tailwind ou rejette en bloc le framework : on peut utiliser n'importe quelle valeur "en dur". On peut définir un utilitaire avec sa valeur entre crochet, cela fera que la valeur entre crochet sera la valeur écrite dans le CSS. Si j'écris <code>bg-[red]</code>, cela va mettre le fond en rouge, mais si j'écris <code>bg-[#ff0000]</code>, cela va mettre le fond en rouge, mais avec la valeur hexadécimale. On peut donc utiliser n'importe quelle valeur CSS valide, ce qui permet de faire des choses très spécifiques.
+    Notez qu'on peut toujours utiliser <code>/50</code> pour modifier l'opacité dans ce cas là.
+
+<kbd>→</kbd>
+
+Si on veut utiliser des variables CSS dans nos utilitaires, on pourrait le faire avec par exemple <code>bg-[var(--bg)]</code>, mais tailwind fourni un sucre syntaxique, on peut se contenter d'écrire <code>bg-(--bg)</code>, notez qu'on doit toujours utiliser les double tiret qui préfixe la variable.
+
+<kbd>→</kbd>
+
+Si on doit utiliser une valeur qui contiendrait des espaces, alors on utilise des underscores, par exemple <code>grid-rows-[auto_auto_1fr]</code> pour définir trois lignes dont deux automatique et une de l'espace restant. Ici sans l'espace il serait impossible pour tailwind de comprendre où sont les différentes valeurs.
+
+<kbd>→</kbd>
+
+Il y a une exception à cette règle, si on utilise <code>calc()</code>, on peut omettre les espaces, par exemple <code>h-[calc(100vh-var(--header-height))]</code> pour définir une hauteur de 100% de la hauteur de la fenêtre moins la hauteur du header. Dans du CSS, il faudrait les espaces pour qu'il soit valide, mais tailwind les ajoute automatiquement.
+</pre
+    >
+</aside>

@@ -1,0 +1,147 @@
+<section class="slide-grid-gap grid grid-rows-[auto_1fr]" data-steps="6">
+    <h1>
+        Les
+        <span class="italic">frameworks frontend</span>
+    </h1>
+    <div class="grid-stack step-5:hidden step-6:hidden">
+        <div class="step-2:opacity-100 transition-quick flex flex-col gap-2 opacity-0">
+            <h2>Angular</h2>
+            <div class="flex flex-1 gap-2 not-xl:flex-col">
+                <pre><code class="language-typescript">
+// button.component.ts
+@Component({
+    selector: &#39;app-button:not([click])&#39;,
+    imports: [IconComponent],
+    templateUrl: &#39;./button.component.html&#39;,
+})
+export class ButtonComponent {
+    @Output() action = new EventEmitter&lt;void&gt;();
+
+    readonly label = input.required&lt;string&gt;();
+    readonly icon = input&lt;IconName&gt;();
+    readonly disabled = input(false);
+
+    protected onClick(event: MouseEvent) {
+        if (this.disabled()) {
+            return;
+        }
+        this.action.emit();
+        event.stopPropagation();
+    }
+}
+            </code></pre>
+                <pre><code class="language-xml">
+&lt;!-- button.component.html --&gt;
+&lt;button (click)=&quot;onClick($event)&quot;&gt;
+    @if (icon()) {
+        &lt;app-icon [iconName]=&quot;icon()&quot; class=&quot;bg-white&quot;/&gt;
+    }
+    &lt;span class=&quot;font-bold&quot;&gt;{{ label() }}&lt;/span&gt;
+&lt;/button&gt;
+                </code></pre>
+            </div>
+        </div>
+
+        <div class="step-3:opacity-100 transition-quick flex flex-col gap-2 opacity-0">
+            <h2>React</h2>
+            <pre><code class="language-typescript">
+interface ButtonProps {
+    label: string;
+    icon?: React.ReactNode;
+    disabled?: boolean;
+    onAction?: () =&gt; void;
+}
+
+const Button: FC&lt;ButtonProps&gt; = ({ label, icon, disabled = false, onAction }) =&gt; {
+    const handleClick = (event: React.MouseEvent) =&gt; {
+        if (disabled) return;
+        onAction?.();
+        event.stopPropagation();
+    };
+
+    return (
+        &lt;button
+            onClick={handleClick}
+            disabled={disabled}
+        &gt;
+            {icon &amp;&amp; &lt;span className=&quot;bg-white&quot;&gt;{icon}&lt;/span&gt;}
+            &lt;span className=&quot;font-bold&quot;&gt;{label}&lt;/span&gt;
+        &lt;/button&gt;
+    );
+};
+
+export default Button;
+            </code></pre>
+        </div>
+
+        <div class="step-4:opacity-100 transition-quick flex flex-col gap-2 opacity-0">
+            <h2>Vue</h2>
+            <pre><code class="language-typescript">
+&lt;script setup lang=&quot;ts&quot;&gt;
+import { defineProps, defineEmits } from &#39;vue&#39;;
+
+interface ButtonProps {
+    label: string;
+    icon?: string;
+    disabled?: boolean;
+}
+
+const props = defineProps&lt;ButtonProps&gt;();
+const emit = defineEmits([&quot;action&quot;]);
+
+const handleClick = (event: MouseEvent) =&gt; {
+    if (props.disabled) return;
+    emit(&quot;action&quot;);
+    event.stopPropagation();
+};
+&lt;/script&gt;
+
+&lt;template&gt;
+    &lt;button
+        @click=&quot;handleClick&quot;
+        :disabled=&quot;disabled&quot;
+    &gt;
+        &lt;app-icon v-if=&quot;icon&quot; :icon-name=&quot;icon&quot; class=&quot;bg-white&quot; /&gt;
+        &lt;span class=&quot;font-bold&quot;&gt;{{ label }}&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/template&gt;
+            </code></pre>
+        </div>
+    </div>
+    <div class="before-step-5:hidden flex flex-col items-center justify-center gap-2 md:flex-row">
+        <div class="transition-medium flex aspect-square w-[30vw] max-w-[400px] min-w-[200px] flex-col items-center justify-center gap-2 rounded-full bg-red-500/50 p-4 starting:scale-0">
+            <span class="text-4xl font-bold lg:text-6xl">CSS</span>
+            <span class="text-2xl italic lg:text-4xl">design</span>
+        </div>
+        <div class="transition-medium flex aspect-square w-[30vw] max-w-[400px] min-w-[200px] flex-col items-center justify-center gap-2 rounded-full bg-green-500/50 p-4 starting:scale-0">
+            <span class="text-4xl font-bold lg:text-6xl">HTML</span>
+            <span class="text-2xl italic lg:text-4xl">données</span>
+        </div>
+        <div class="transition-medium not-md:step-6:-translate-y-8 md:step-6:-translate-x-8 flex aspect-square w-[30vw] max-w-[400px] min-w-[200px] flex-col items-center justify-center gap-2 rounded-full bg-blue-500/50 p-4 starting:scale-0">
+            <span class="text-4xl font-bold lg:text-6xl">Javascript</span>
+            <span class="text-2xl italic lg:text-4xl">dynamisme</span>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+    Maintenant, on a des framework frontend qui nous permettent de facilement gérer le dynamisme et l'interactivité d'une application.
+    <kbd>→</kbd>
+    Voici quelques exemples de template avec les frameworks les plus utilisés. On voit que le HTML contient des références au javascript, que ce soit des fonctions ou des valeurs
+    <span class="indication">Montrer l'endroit ou le HTML et le code se mélange</span>
+
+    <kbd>→</kbd>
+    En React, je pense que c'est le cas où le couplage javascript HTML est le plus fort, puisque le JSX nous demande d'écrire du Javascript pour générer le code HTML, on va directement utiliser la référence de fonction pour gérer les évènements
+
+    <kbd>→</kbd>
+    Avec Vue, on a également un entrelacement, peut être un peu plus dur à lire pour ceux qui n'y sont pas habitués
+
+    <br />
+    Donc finalement, si on reprend notre jolie théorie,
+    <kbd>→</kbd>
+    et bien elle ne tient plus trop trop, on se retrouve plutôt avec ça, où la ligne JS/HTML est plus floue
+
+    <kbd>→</kbd>
+</pre>
+</aside>

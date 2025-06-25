@@ -1,0 +1,29 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]">
+    <h1>La sémantique de Tailwind</h1>
+    <h2>Variant : état de l'élément</h2>
+
+    <div class="slide-grid-gap grid h-fit grid-cols-1 *:flex *:flex-col *:gap-2 2xl:grid-cols-2">
+        <div class="transition-medium starting:opacity-0">
+            <h3>Focus</h3>
+            <pre><code class="h-auto language-html">&lt;button class=&quot;focus:outline-2 outline-blue-400&quot;&gt;S&#39;abonner&lt;/button&gt;</code></pre>
+        </div>
+        <div class="transition-medium delay-200 starting:opacity-0">
+            <h3>Hover</h3>
+            <pre><code class="h-auto language-html">&lt;button class=&quot;hover:bg-blue-500 hover:text-white&quot;&gt;S&#39;abonner&lt;/button&gt;</code></pre>
+        </div>
+        <div class="transition-medium delay-400 starting:opacity-0">
+            <h3>Checked</h3>
+            <pre><code class="h-auto language-html">&lt;input type=&quot;checkbox&quot; class=&quot;checked:bg-blue-500 checked:text-white&quot;&gt;</code></pre>
+        </div>
+        <div class="transition-medium delay-600 starting:opacity-0">
+            <h3>Invalid</h3>
+            <pre><code class="h-auto language-html">&lt;input class=&quot;not-focus:invalid:outline-red-500 invalid:outline-1&quot;&gt;</code></pre>
+        </div>
+        <div class="transition-medium col-span-full delay-800 starting:opacity-0">
+            <h3>Required</h3>
+            <pre><code class="h-auto language-html">&lt;input class=&quot;required:placeholder:text-bold&quot;&gt;</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside><pre>Il existe des variants pour les différents états d'un élément, en vrac : <code>hover</code>, <code>focus</code>, <code>active</code>, <code>disabled</code>, <code>checked</code>, etc. Biensur on peut les combiner, vous pouvez faire en sorte d'appliquer un style que sur un input non focus et invalide</pre></aside>

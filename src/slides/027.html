@@ -1,0 +1,52 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="5">
+    <h1>La sémantique de Tailwind</h1>
+    <h2>Utilitaire de base : valeurs</h2>
+    <div class="slide-grid-gap grid auto-rows-max grid-cols-1 2xl:grid-cols-2">
+        <div class="before-step-2:opacity-0 transition-medium flex flex-col gap-2">
+            <h3>Rapidité</h3>
+            <pre><code class="language-html h-auto">&lt;div class=&quot;border border-[#123456]&quot;&gt;&lt;/div&gt;</code></pre>
+            <pre><code class="language-html h-auto">&lt;div class=&quot;border&quot; style=&quot;border-color: #123456&quot;&gt;&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="before-step-3:opacity-0 transition-medium flex flex-col gap-2">
+            <h3>Variants applicables</h3>
+            <pre><code class="language-html h-auto">&lt;div class=&quot;border border-[#123456] hover:border-[#654321]&quot;&gt;&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="before-step-4:opacity-0 transition-medium flex flex-col gap-2">
+            <h3>Communication facile avec framework</h3>
+            <pre><code class="language-html h-auto">&lt;div [style.--bg]=&quot;background&quot; class=&quot;bg-(--background)&quot;&gt;&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="before-step-5:opacity-0 transition-medium flex flex-col gap-2">
+            <h3>Comparaison</h3>
+            <pre><code class="language-html h-auto">&lt;div class=&quot;slide-grid-gap grid grid-rows-[auto_auto_1fr]&quot;&gt;...&lt;/div&gt;</code></pre>
+            <pre><code class="language-html h-auto">&lt;div class=&quot;slide-grid-gap grid&quot; style=&quot;grid-template-rows: auto auto 1fr;&quot;&gt;...&lt;/div&gt;</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+On peut du coup se demander pourquoi utiliser des utilitaires plutôt que d'écrire directement dans l'attribut style.
+
+<kbd>→</kbd>
+
+Tout d'abord, la classe utilitaire à écrire sera souvent plus rapide à écrire que son équivalent CSS et ca permet de ne pas lire le style à deux endroits différents.
+
+<kbd>→</kbd>
+
+Lorsqu'on utilise nos utilitaires même avec des valeurs "en dur", on va pouvoir leur appliquer les variants, pour n'appliquer du style que quand on veut. On verra ça juste après
+
+<kbd>→</kbd>
+
+Lorsqu'on utilise des variables CSS, ca peut nous permettre de renseigner cette variable via notre framework pour ensuite laisser les utilitaires l'utiliser.
+
+Biensur, c'est ce genre d'utilisation dont vous devrez parler avec votre équipe pour voir ce que vous considérez acceptable. Vous pouvez définir par exemple que dès lors qu'on a besoin d'underscore dans la classe et que cet utilitaire ne dépend pas directement des variables tailwind et n'a aucun variant appliqué, alors on peut utiliser l'attribut style.
+
+<kbd>→</kbd>
+
+Certains trouveront cela plus propre, d'autres n'aimeront pas avoir les choses à deux endroits.
+</pre
+    >
+</aside>

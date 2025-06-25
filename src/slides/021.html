@@ -1,0 +1,635 @@
+<section class="transition-long slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="4">
+    <h1>Digression : trop de classes ?!</h1>
+    <div>
+        <pre><code class="language-html max-h-[calc(100vh_-_230px)] max-w-[calc(100vw_-_135px)]">&lt;main class=&quot;py-6 px-4 sm:p-6 md:py-10 md:px-8&quot;&gt;
+  &lt;div class=&quot;max-w-4xl mx-auto grid grid-cols-1 lg:max-w-5xl lg:gap-x-20 lg:grid-cols-2&quot;&gt;
+    &lt;div class=&quot;relative p-3 col-start-1 row-start-1 flex flex-col-reverse rounded-lg bg-gradient-to-t from-black/75 via-black/0 sm:bg-none sm:row-start-2 sm:p-0 lg:row-start-1&quot;&gt;
+      &lt;h1 class=&quot;mt-1 text-lg font-semibold text-white sm:text-slate-900 md:text-2xl dark:sm:text-white&quot;&gt;Beach House in Collingwood&lt;/h1&gt;
+      &lt;p class=&quot;text-sm leading-4 font-medium text-white sm:text-slate-500 dark:sm:text-slate-400&quot;&gt;Entire house&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 sm:grid-cols-4 lg:gap-6 lg:col-start-2 lg:row-end-6 lg:row-span-6 lg:mb-0&quot;&gt;
+      &lt;img src=&quot;...&quot; class=&quot;w-full h-60 object-cover rounded-lg sm:h-52 sm:col-span-2 lg:col-span-full&quot;&gt;
+      &lt;img src=&quot;...&quot; class=&quot;hidden w-full h-52 object-cover rounded-lg sm:block sm:col-span-2 md:col-span-1 lg:row-start-2 lg:col-span-2 lg:h-32&quot;&gt;
+      &lt;img src=&quot;...&quot; class=&quot;hidden w-full h-52 object-cover rounded-lg md:block lg:row-start-2 lg:col-span-2 lg:h-32&quot;&gt;
+    &lt;/div&gt;
+    &lt;dl class=&quot;mt-4 text-xs font-medium flex items-center row-start-2 sm:mt-1 sm:row-start-3 md:mt-2.5 lg:row-start-2&quot;&gt;
+      &lt;dt class=&quot;sr-only&quot;&gt;Reviews&lt;/dt&gt;
+      &lt;dd class=&quot;text-indigo-600 flex items-center dark:text-indigo-400&quot;&gt;
+        &lt;svg class=&quot;mr-1 stroke-current dark:stroke-indigo-500&quot;&gt;...&lt;/svg&gt;
+        &lt;span&gt;4.89 &lt;span class=&quot;text-slate-400 font-normal&quot;&gt;(128)&lt;/span&gt;&lt;/span&gt;
+      &lt;/dd&gt;
+      &lt;dt class=&quot;sr-only&quot;&gt;Location&lt;/dt&gt;
+      &lt;dd class=&quot;flex items-center&quot;&gt;
+        &lt;svg class=&quot;mx-3 text-slate-300&quot;&gt;...&lt;/svg&gt;
+        &lt;svg class=&quot;mr-1 text-slate-400 dark:text-slate-500&quot;&gt;...&lt;/svg&gt;
+        Collingwood, Ontario
+      &lt;/dd&gt;
+    &lt;/dl&gt;
+    &lt;div class=&quot;mt-4 col-start-1 row-start-3 self-center sm:mt-0 sm:col-start-2 sm:row-start-2 sm:row-span-2 lg:mt-6 lg:col-start-1 lg:row-start-3 lg:row-end-4&quot;&gt;
+      &lt;button type=&quot;button&quot; class=&quot;bg-indigo-600 text-white text-sm leading-6 font-medium py-2 px-3 rounded-lg&quot;&gt;Check availability&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;mt-4 text-sm leading-6 col-start-1 sm:col-span-2 lg:mt-6 lg:row-start-4 lg:col-span-1 dark:text-slate-400&quot;&gt;
+      This sunny and spacious room is for those traveling light and looking for a comfy and cosy placeto lay their head for a night or two.This beach house
+        sits in a vibrant neighborhood littered with cafes, pubs, restaurants and supermarkets and is close to all the major attractions such as
+        Edinburgh Castle and Arthur&#39;s Seat.
+    &lt;/p&gt;
+  &lt;/div&gt;
+&lt;/main&gt;</code></pre>
+
+        <div class="step-1:hidden fixed inset-0 [&_code]:rounded-none">
+            <pre class="step-2:contents hidden"><code class="language-html">&lt;main&gt;
+    &lt;div class=&quot;grid-wrapper&quot;&gt;
+        &lt;div class=&quot;summary&quot;&gt;
+            &lt;h1&gt;Beach House in Collingwood&lt;/h1&gt;
+            &lt;p&gt;Entire house&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;pictures&quot;&gt;
+            &lt;img src=&quot;/beach-house.jpg&quot; alt=&quot;&quot; loading=&quot;lazy&quot;&gt;
+            &lt;img src=&quot;/beach-house-interior-1.jpg&quot; alt=&quot;&quot; loading=&quot;lazy&quot;&gt;
+            &lt;img src=&quot;/beach-house-interior-2.jpg&quot; alt=&quot;&quot; loading=&quot;lazy&quot;&gt;
+        &lt;/div&gt;
+        &lt;dl&gt;
+            &lt;dt&gt;Reviews&lt;/dt&gt;
+            &lt;dd class=&quot;grade&quot;&gt;
+                &lt;svg width=&quot;24&quot; height=&quot;24&quot; fill=&quot;none&quot; aria-hidden=&quot;true&quot;&gt;...&lt;/svg&gt;
+                &lt;span&gt;4.89 &lt;span class=&quot;review-count&quot;&gt;(128)&lt;/span&gt;&lt;/span&gt;
+            &lt;/dd&gt;
+            &lt;dt&gt;Location&lt;/dt&gt;
+            &lt;dd class=&quot;location&quot;&gt;
+                &lt;svg width=&quot;2&quot; height=&quot;2&quot; aria-hidden=&quot;true&quot;&gt;...&lt;/svg&gt;
+                &lt;svg width=&quot;24&quot; height=&quot;24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot;
+                    stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;...&lt;/svg&gt;
+                Collingwood, Ontario
+            &lt;/dd&gt;
+        &lt;/dl&gt;
+        &lt;div class=&quot;call-to-actions&quot;&gt;
+            &lt;button type=&quot;button&quot;&gt;Check availability&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;description&quot;&gt;
+            This sunny and spacious room is for those traveling light and looking for a comfy and cosy place to lay
+            their head for a night or two. This beach house sits in a vibrant neighborhood littered with cafes, pubs,
+            restaurants and supermarkets and is close to all the major attractions such as Edinburgh Castle and Arthur&#39;s
+            Seat.
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/main&gt;</code></pre>
+
+            <pre class="step-3:contents hidden"><code class="language-css">main {
+    padding: 6em 4em;
+    @media screen and (width &gt; 300px) {
+        padding: 6em;
+    }
+    @media screen and (width &gt; 450px) {
+        padding: 10em 8em;
+    }
+}
+
+.grid-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px; /* 4xl */
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @media screen and (width &gt; 600px) {
+        max-width: 1500px; /* 5xl */
+        grid-template-columns: repeat(2, 1fr);
+        gap-column: 20em;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.summary {
+    position: relative;
+    padding: 3em;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    border-radius: 1em; /* rounded-lg */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); /* from-black/75 via-black/0 */
+
+    @media screen and (width &gt; 300px) {
+        background: none;
+        grid-row-start: 2;
+        padding: 0;
+    }
+
+    h1 {
+        margin-top: 1em;
+        font-size: 1.125em; /* text-lg */
+        font-weight: 600; /* font-semibold */
+        color: white;
+
+        @media screen and (width &gt; 300px) and (prefers-color-scheme: light) {
+            color: #1e293b; /* sm:text-slate-900 */
+        }
+        @media screen and (width &gt; 300px) and (prefers-color-scheme: dark) {
+            color: #cbd5e1; /* sm:text-slate-400 */
+        }
+        @media screen and (width &gt; 450px) {
+            font-size: 2em; /* text-2xl */
+        }
+    }
+
+    p {
+        font-size: 0.875em; /* text-sm */
+        line-height: 1.25em; /* leading-4 */
+        font-weight: 500; /* font-medium */
+        color: white;
+
+        @media screen and (width &gt; 300px) and (prefers-color-scheme: light) {
+            color: #64748b; /* sm:text-slate-500 */
+        }
+        @media screen and (width &gt; 300px) and (prefers-color-scheme: dark) {
+            color: #cbd5e1; /* sm:text-slate-400 */
+        }
+    }
+}
+
+.pictures {
+    display: grid;
+    gap: 4em; /* gap-4 */
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+
+    @media screen and (width &gt; 300px) {
+        margin-bottom: 6em; /* mb-6 */
+        grid-template-columns: repeat(4, 1fr);
+    }
+    @media screen and (width &gt; 600px) {
+        gap: 6em; /* gap-6 */
+        grid-column-start: 2;
+        grid-row-end: 6;
+        grid-row-span: 6;
+        margin-bottom: 0;
+    }
+
+    img {
+        width: 100%;
+        height: 60em; /* h-60 */
+        object-fit: cover;
+        border-radius: 1em; /* rounded-lg */
+
+        @media screen and (width &gt; 300px) {
+            height: 52em; /* h-52 */
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+        @media screen and (width &gt; 450px) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+        @media screen and (width &gt; 600px) {
+            grid-row-start: 2;
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+
+        &amp;:nth-child(2), &amp;:nth-child(3) {
+            display: none;
+
+            @media screen and (width &gt; 600px) {
+                height: 32em; /* h-32 */
+            }
+        }
+
+        &amp;:nth-child(2) {
+            @media screen and (width &gt; 300px) {
+                display: block;
+            }
+        }
+
+        &amp;:nth-child(3) {
+            @media screen and (width &gt; 450px) {
+                display: block;
+            }
+        }
+    }
+}
+
+dl {
+    margin-top: 4em; /* mt-4 */
+    font-size: 0.75em; /* text-xs */
+    font-weight: 500; /* font-medium */
+    display: flex;
+    align-items: center;
+    grid-row-start: 2;
+
+    @media screen and (width &gt; 300px) {
+        margin-top: 1em; /* mt-1 */
+        grid-row-start: 3;
+    }
+
+    @media screen and (width &gt; 450px) {
+        margin-top: 2.5em; /* mt-2.5 */
+        grid-row-start: 2;
+    }
+
+    dt { /* sr-only */
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+
+    .grade {
+        color: #6366f1; /* text-indigo-600 */
+        display: flex;
+        align-items: center;
+        @media screen and (prefers-color-scheme: dark) {
+            color: #a5b4fc; /* dark:text-indigo-400 */
+        }
+
+        svg {
+            margin-right: 1em;
+            stroke: currentColor;
+            @media screen and (prefers-color-scheme: dark) {
+                stroke: #a5b4fc; /* dark:stroke-indigo-500 */
+            }
+        }
+
+        .review-count {
+            color: #cbd5e1; /* text-slate-400 */
+            font-weight: 400; /* font-normal */
+        }
+    }
+
+    .location {
+        display: flex;
+        align-items: center;
+
+        svg {
+            margin: 0 1em;
+            color: #cbd5e1; /* text-slate-400 */
+            @media screen and (prefers-color-scheme: dark) {
+                color: #cbd5e1; /* dark:text-slate-500 */
+            }
+        }
+    }
+}
+
+.call-to-actions {
+    margin-top: 4em; /* mt-4 */
+    grid-column-start: 1;
+    grid-row-start: 3;
+    align-self: center;
+    @media screen and (width &gt; 300px) {
+        margin-top: 0;
+        grid-column-start: 2;
+        grid-row-start: 2;
+        grid-row-span: 2;
+    }
+    @media screen and (width &gt; 600px) {
+        margin-top: 6em; /* mt-6 */
+        grid-column-start: 1;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+
+    button {
+        background-color: #4f46e5; /* bg-indigo-600 */
+        color: white;
+        font-size: 0.875em; /* text-sm */
+        line-height: 1.5em; /* leading-6 */
+        font-weight: 500; /* font-medium */
+        padding: 2em 3em; /* py-2 px-3 */
+        border-radius: 0.5em; /* rounded-lg */
+    }
+}
+
+.description {
+    margin-top: 4em; /* mt-4 */
+    font-size: 0.875em; /* text-sm */
+    line-height: 1.5em; /* leading-6 */
+    grid-column-start: 1;
+    grid-column-end: 3;
+    @media screen and (width &gt; 300px) {
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    @media screen and (width &gt; 600px) {
+        margin-top: 6em; /* mt-6 */
+        grid-column-start: 1;
+        grid-row-start: 4;
+        grid-column-end: 2;
+    }
+
+    @media screen and (prefers-color-scheme: dark) {
+        color: #cbd5e1; /* dark:text-slate-400 */
+    }
+}</code></pre>
+
+            <pre class="step-4:contents hidden"><code class="language-css">main {
+    padding: 6em 4em;
+}
+
+.grid-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px; /* 4xl */
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.summary {
+    position: relative;
+    padding: 3em;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    display: flex;
+    flex-direction: column-reverse;
+    border-radius: 1em; /* rounded-lg */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); /* from-black/75 via-black/0 */
+
+    h1 {
+        margin-top: 1em;
+        font-size: 1.125em; /* text-lg */
+        font-weight: 600; /* font-semibold */
+        color: white;
+    }
+
+    p {
+        font-size: 0.875em; /* text-sm */
+        line-height: 1.25em; /* leading-4 */
+        font-weight: 500; /* font-medium */
+        color: white;
+    }
+}
+
+.pictures {
+    display: grid;
+    gap: 4em; /* gap-4 */
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+
+    img {
+        width: 100%;
+        height: 60em; /* h-60 */
+        object-fit: cover;
+        border-radius: 1em; /* rounded-lg */
+
+        &amp;:nth-child(2), &amp;:nth-child(3) {
+            display: none;
+        }
+    }
+}
+
+dl {
+    margin-top: 4em; /* mt-4 */
+    font-size: 0.75em; /* text-xs */
+    font-weight: 500; /* font-medium */
+    display: flex;
+    align-items: center;
+    grid-row-start: 2;
+
+    dt { /* sr-only */
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+
+    .grade {
+        color: #6366f1; /* text-indigo-600 */
+        display: flex;
+        align-items: center;
+
+        svg {
+            margin-right: 1em;
+            stroke: currentColor;
+        }
+
+        .review-count {
+            color: #cbd5e1; /* text-slate-400 */
+            font-weight: 400; /* font-normal */
+        }
+    }
+
+    .location {
+        display: flex;
+        align-items: center;
+
+        svg {
+            margin: 0 1em;
+            color: #cbd5e1; /* text-slate-400 */
+        }
+    }
+}
+
+.call-to-actions {
+    margin-top: 4em; /* mt-4 */
+    grid-column-start: 1;
+    grid-row-start: 3;
+    align-self: center;
+
+    button {
+        background-color: #4f46e5; /* bg-indigo-600 */
+        color: white;
+        font-size: 0.875em; /* text-sm */
+        line-height: 1.5em; /* leading-6 */
+        font-weight: 500; /* font-medium */
+        padding: 2em 3em; /* py-2 px-3 */
+        border-radius: 0.5em; /* rounded-lg */
+    }
+}
+
+.description {
+    margin-top: 4em; /* mt-4 */
+    font-size: 0.875em; /* text-sm */
+    line-height: 1.5em; /* leading-6 */
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+/* Variant for dark mode and breakpoints */
+
+@media screen and (prefers-color-scheme: dark) {
+    .grade {
+        color: #a5b4fc; /* dark:text-indigo-400 */
+
+        svg {
+            stroke: #a5b4fc; /* dark:stroke-indigo-500 */
+        }
+    }
+
+    .location {
+        svg {
+            color: #cbd5e1; /* dark:text-slate-500 */
+        }
+    }
+
+    .description {
+        color: #cbd5e1; /* dark:text-slate-400 */
+    }
+}
+
+@media screen and (width &gt; 300px) {
+    /* sm size */
+    main {
+        padding: 6em;
+    }
+
+    .summary {
+        background: none;
+        grid-row-start: 2;
+        padding: 0;
+
+        h1 {
+            color: #1e293b; /* sm:text-slate-900 */
+
+            @media screen and (prefers-color-scheme: dark) {
+                color: #cbd5e1; /* sm:text-slate-400 */
+            }
+        }
+
+        p {
+            color: #64748b; /* sm:text-slate-500 */
+            @media screen and (prefers-color-scheme: dark) {
+                color: #cbd5e1; /* sm:text-slate-400 */
+            }
+        }
+    }
+
+    .pictures {
+        margin-bottom: 6em; /* mb-6 */
+        grid-template-columns: repeat(4, 1fr);
+
+        img {
+            height: 52em; /* h-52 */
+            grid-column-start: 2;
+            grid-column-end: 3;
+
+            &amp;:nth-child(2) {
+                display: block;
+            }
+        }
+    }
+
+    dl {
+        margin-top: 1em; /* mt-1 */
+        grid-row-start: 3;
+    }
+
+    .call-to-actions {
+        margin-top: 0;
+        grid-column-start: 2;
+        grid-row-start: 2;
+        grid-row-span: 2;
+    }
+
+    .description {
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+}
+
+@media screen and (width &gt; 450px) {
+    main {
+        padding: 10em 8em;
+    }
+
+    .summary h1 {
+        font-size: 2em; /* text-2xl */
+    }
+
+    .pictures img {
+        grid-column-start: 1;
+        grid-column-end: 2;
+
+        &amp;:nth-child(3) {
+            display: block;
+        }
+    }
+
+    dl {
+        margin-top: 2.5em; /* mt-2.5 */
+        grid-row-start: 2;
+    }
+}
+
+@media screen and (width &gt; 600px) {
+    .grid-wrapper {
+        max-width: 1500px; /* 5xl */
+        grid-template-columns: repeat(2, 1fr);
+        gap-column: 20em;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pictures {
+        gap: 6em; /* gap-6 */
+        grid-column-start: 2;
+        grid-row-end: 6;
+        grid-row-span: 6;
+        margin-bottom: 0;
+
+        img {
+            grid-row-start: 2;
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+
+        &amp;:nth-child(2), &amp;:nth-child(3) {
+            height: 32em; /* h-32 */
+        }
+    }
+
+    .call-to-actions {
+        margin-top: 6em; /* mt-6 */
+        grid-column-start: 1;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+
+    .description {
+        margin-top: 6em; /* mt-6 */
+        grid-column-start: 1;
+        grid-row-start: 4;
+        grid-column-end: 2;
+    }
+}</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Voilà le code en question. Petite aide contextuelle : c'est un encart pour louer une maison.
+<b>Est-ce que quelqu'un a une idée du rendu, ne serait-ce que sur petit écran ?</b>
+
+Alors oui, c'est atroce, et je pense que Tailwind pouvait difficilement se mettre une plus grosse balle dans le pieds sur sa page d'accueil. Mais si le HTML est illisible, je voudrais quand meme préciser que le CSS équivalent n'est pas mieux. Alors quand je dis équivalent, je n'ai pas juste réécrit tous les utilitaires, j'ai vraiment écrit le CSS qui aurait ce rendu si on ajoutait des classes qui ont du sens, avec les medias queries.
+
+<i>Notez que dans le CSS je n'ai mis que des valeurs en dur, ca pourrait être encore plus long à lire avec des variables SCSS et/ou des variables CSS. Je suis parti de données naïves où un espacement est égal à 1em et les écrans sont des incréments de <code>150px</code> à partir de <code>300px</code></i>
+
+<kbd>→</kbd>
+
+Un apercu rapide d'à quoi ressemble le HTML une fois qu'on a utilisé des classes sémantiques
+
+<kbd>→</kbd>
+
+Voilà le code CSS avec les medias queries directement dans les éléments
+
+<kbd>→</kbd>
+
+Voilà la version avec toutes les variants de theme et en fonction de la taille en fin de fichier. Ca permet de plus facilement voir les changement à chaque breakpoint.
+
+Alors je sais pas vous, mais perso que ce soit une version ou une autre, je trouve pas ca ultra abordable. Je pense qu'on peut admettre que le point de non lisibilité avec les utilitaires est atteint à peu près au meme moment que celui avec le CSS pur et les médias queries. Bon, et si jamais, voilà à quoi ressemble le résultat, avec les différents endpoints :
+
+<a target="_blank" href="https://v3.tailwindcss.com/">
+<i><b>Rendu live avec media queries jouables</b></i>
+</a>
+</pre>
+</aside>

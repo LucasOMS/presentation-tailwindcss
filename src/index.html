@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tailwind CSS</title>
+
+        <!-- Link tailwind CSS output-->
+        <link href="tailwind.css" rel="stylesheet" />
+
+        <style>
+            /* Force this at root level to prevent any note from displaying */
+            aside {
+                display: none;
+            }
+        </style>
+
+        <!-- Components -->
+        <script type="module" src="components/svg-loader.js"></script>
+
+        <!-- Highlight.js import -->
+        <link rel="stylesheet" href="/night-owl.min.css" />
+        <script src="/highlight.min.js"></script>
+    </head>
+    <body class="bg-slide relative h-screen lg:overflow-clip">
+        <div class="v3:animate-show-version v4:-translate-y-full fixed top-0 right-0 z-2 bg-cyan-950 py-1 pr-1 pl-2 text-2xl font-bold text-white dark:bg-cyan-300 dark:text-cyan-950">TailwindCSS v3</div>
+        <div class="v4:animate-show-version v3:-translate-y-full fixed top-0 right-0 z-2 bg-cyan-950 py-1 pr-1 pl-2 text-2xl font-bold text-white dark:bg-cyan-300 dark:text-cyan-950">TailwindCSS v4</div>
+        <div id="slides" class="size-screen grid-stack size-full"></div>
+        <script src="mini-framework/setup.js" type="module"></script>
+    </body>
+</html>

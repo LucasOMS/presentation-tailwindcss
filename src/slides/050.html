@@ -1,0 +1,53 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="4">
+    <h1>Ajouter tailwind à un projet</h1>
+    <h2>Migrer depuis Bootstrap</h2>
+
+    <div class="slide-grid-gap grid grid-cols-1 2xl:grid-cols-2">
+        <div class="before-step-2:opacity-0 transition-medium flex flex-col gap-2">
+            <h3>Étapes à prévoir</h3>
+            <ul class="text-slide list-dash flex flex-col gap-1">
+                <li>Créer la palette de couleur</li>
+                <li>Paramétrer l'espacement</li>
+                <li>Paramétrer les tailles (textes, arrondis)</li>
+            </ul>
+        </div>
+        <div class="before-step-3:opacity-0 transition-medium flex flex-col gap-2">
+            <h3>Utiliser des outils en lignes</h3>
+            <ul class="text-slide list-dash flex flex-col gap-1">
+                <li>Beaucoups de dispos</li>
+                <li>Pas automatisables sur l'ensemble du projet</li>
+            </ul>
+        </div>
+        <div class="before-step-4:opacity-0 transition-medium flex flex-col gap-2 2xl:col-span-full">
+            <h3>Utiliser une approche par regex</h3>
+            <ul class="text-slide list-dash flex flex-col gap-1">
+                <li>Nombreuses Regex à prévoir</li>
+                <li>Un utilitaire bootstrap correspond à 3 ou 4 de tailwind</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Petit mot rapide pour parler d'une migration depuis Bootstrap vers Tailwind.
+
+<kbd>→</kbd>
+
+Déjà, il va falloir anticiper les configurations que vous allez devoir mettre en place.
+Cela inclue la palette de couleur, l'espacement, les tailles de texte et les arrondis, qui peuvent différer de Bootstrap.
+Le reset CSS de Bootsrap est celui de Tailwind diffère également légèrement, il faudra donc le prendre en compte, notemment sur le texte
+
+<kbd>→</kbd>
+
+Vous pourrez ensuite trouver en ligne des outils qui permettent de convertir des templates Bootstrap en Tailwind mais ils ne permettent pas de faire tout le projet automatiquement.
+
+<kbd>→</kbd>
+
+Vous pouvez utiliser une approche par Regex pour remplacer au fur et à mesure. Cela fonctionnera bien pour tout ce qui est espacement, arrondi, taille, et layout en général. C'est vrai pour la plupart des layout à part la grille CSS. Celle-ci étant très spécifique, sa conversion créera souvent de nommbreuses classes utilitaires, notamment pour récréer les marges et les espacements.
+
+Pour utiliser des regex un peu plus avancé qui cible spécifiquement les classes dans votre HTML, je vous parlerez d'un des mes projets, un plugin eslint qui permet de cibler et remplacer des classes efficacements avec une syntaxe simple.
+
+De facon globale, une conversion créera souvent de nombreux utilitaires relativements peu lisibles ou cohérents, notemmant pour reproduire les différentes marges créées par Bootstrap.
+    </pre>
+</aside>

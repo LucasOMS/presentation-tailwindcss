@@ -1,0 +1,85 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="3">
+    <h1>Les outils à avoir</h1>
+    <h2>Rendre les classes encore plus lisibles</h2>
+
+    <div class="grid-stack">
+        <div class="transition-medium step-3:opacity-0 flex flex-col gap-2 starting:opacity-0">
+            <pre><code class="language-js h-auto">export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}</code></pre>
+            <pre class="step-1:hidden"><code class="language-jsx h-auto transition-medium starting:opacity-0">&lt;button
+    type=&quot;button&quot;
+    className={cn(
+        // Base styles
+        &#39;relative inline-flex items-center border px-4 py-2 text-sm font-semibold transition-colors focus:z-10 focus:outline-none focus:ring-1&#39;,
+
+        // Light-mode focus state
+        &#39;focus:border-teal-500 focus:ring-teal-500&#39;,
+
+        // Dark-mode focus state
+        &#39;dark:focus:border-teal-400 dark:focus:ring-teal-400&#39;
+
+        value === item.value
+          // Selected / hover states
+          ? &#39;border-teal-500 bg-teal-500 text-white hover:bg-teal-600&#39;
+          // Unselected / hover state
+          : &#39;border-zinc-300 bg-white text-zinc-700 hover:bg-zinc-50&#39;,
+
+        value !== item.value &amp;&amp;
+          // Dark-mode unselected state (selected is the same)
+          &#39;dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800&#39;,
+      )}
+&gt;
+    Hello, world.
+&lt;/button&gt;</code></pre>
+        </div>
+
+        <div class="before-step-3:opacity-0 step-3:delay-medium transition-medium">
+            <pre><code class="language-js h-auto">// Strings (variadic)
+clsx(&#39;foo&#39;, true &amp;&amp; &#39;bar&#39;, &#39;baz&#39;);
+//=&gt; &#39;foo bar baz&#39;
+
+// Objects
+clsx({ foo:true, bar:false, baz:isTrue() });
+//=&gt; &#39;foo baz&#39;
+
+// Objects (variadic)
+clsx({ foo:true }, { bar:false }, null, { &#39;--foobar&#39;:&#39;hello&#39; });
+//=&gt; &#39;foo --foobar&#39;
+
+// Arrays
+clsx([&#39;foo&#39;, 0, false, &#39;bar&#39;]);
+//=&gt; &#39;foo bar&#39;
+
+// Arrays (variadic)
+clsx([&#39;foo&#39;], [&#39;&#39;, 0, false, &#39;bar&#39;], [[&#39;baz&#39;, [[&#39;hello&#39;], &#39;there&#39;]]]);
+//=&gt; &#39;foo bar baz hello there&#39;
+
+// Kitchen sink (with nesting)
+clsx(&#39;foo&#39;, [1 &amp;&amp; &#39;bar&#39;, { baz:false, bat:null }, [&#39;hello&#39;, [&#39;world&#39;]]], &#39;cya&#39;);
+//=&gt; &#39;foo bar hello world cya&#39;</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+        Tailwind merge est souvent utilisé avec <code>clsx</code>, qui permet de déclarer des classes conditionnelles de manière lisible.
+
+        Vous trouverez souvent dans les projets un utilitaire de ce genre. Cela prend le résultat de <code>clsx</code> à savoir la liste des classes à appliquées, et s'assure que les dernières sont toujours appliquées, même si elles sont précédées par des classes qui pourraient les écraser.
+
+        Vous avez également un bibliothèqyue <code>clsx-for-tailwind</code> qui vous fournit cet utilitaire déjà prêt à l'emploi.
+
+        <kbd>→</kbd>
+
+        On va ensuite pouvoir utiliser cet utilitaire, voilà un exemple en React :
+
+        <i>Crédit <b>Hayden Bleasel</b> : https://www.haydenbleasel.com/blog/using-clsx-tailwind-composition</i>
+
+        Ici on voit qu'on peut ajouter des commentaires à l'intérieur du bloc puisque c'est du JSX, cela permet de mieux comprendre ce que l'on définit, et tailwind merge s'assurera à la fin que les classes soient appliquées correctement.
+
+        <kbd>→</kbd>
+
+        Si on parle seulement de la bibliothèque <code>clsx</code>, elle permet de définir des classes conditionnelles, voilà un exemple de code valide, directement depuis le README de <code>clsx</code>.
+    </pre>
+</aside>

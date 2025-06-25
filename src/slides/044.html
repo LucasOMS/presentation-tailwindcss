@@ -1,0 +1,65 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="3">
+    <h1>Personnaliser Tailwind</h1>
+    <h2>Fonctions et directives</h2>
+
+    <div class="slide-grid-gap flex flex-col">
+        <div class="transition-medium starting:opacity-0">
+            <h3 class="mb-2">
+                Directive
+                <span class="font-mono">@apply</span>
+            </h3>
+            <pre><code class="h-auto language-css">h1 {
+    @apply text-3xl font-bold text-cyan-950 md:text-5xl lg:text-7xl dark:text-cyan-200;
+}</code></pre>
+        </div>
+        <div class="before-step-2:opacity-0 transition-medium">
+            <h3 class="mb-2">Référencer le theme</h3>
+            <pre class="not-v3:hidden"><code class="h-auto language-css">h1 {
+    margin-bottom: theme(spacing.1);
+    margin-top: theme(spacing[0.5]): /* [] car variable avec un point */
+}</code></pre>
+            <pre class="not-v4:hidden"><code class="h-auto language-css">h1 {
+    margin-bottom: var(--spacing);
+    margin-top: calc(var(--spacing) * 0.5);
+}</code></pre>
+        </div>
+        <div class="before-step-3:opacity-0 transition-medium">
+            <h3 class="mb-2">
+                Fonction
+                <span class="font-mono">--spacing()</span>
+            </h3>
+            <div class="not-v3:hidden text-slide text-red-500">N'existe pas !</div>
+            <pre class="not-v4:hidden"><code class="h-auto language-css">h1 {
+    margin-bottom: --spacing(1);
+    margin-top: calc(var(--spacing) * 0.5);
+}</code></pre>
+            <pre class="not-v4:hidden"><code class="mt-1 h-auto language-html">&lt;div class=&quot;py-[calc(--spacing(4)-1px)]&quot;&gt;&lt;/div&gt;</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+En v3 comme en v4, on peut utiliser la directive <code>@apply</code> dans le CSS pour appliquer le style d'un utilitaire.
+Ici par exemple en une ligne j'applique de nombreuse règle et je vais même jusqu'à appliquer des styles en fonction du theme et des breakpoints.
+Cela permet de facilement conserver la cohérence du style personnalisé et du style de Tailwind.
+Il faut savoir qu'utiliser <code>@apply</code> juste pour rendre le CSS "plus court" ou "plus lisible" va quand même à l'encontre de la philosophie de Tailwind, puisque cela revient quand même à écrire du CSS.
+
+<kbd>→</kbd>
+
+Lorsqu'on fait du CSS à la main, on peut vouloir référencer le theme de Tailwind pour appliquer des styles.
+
+En v3 on peut utiliser la fonction <code>theme()</code> qui sera interprétée par Tailwind lors de la compilation.
+
+<kbd>V</kbd>
+
+En v4, on peut toujours utiliser ca mais c'est déprécié, il est recommandé d'utiliser directement la variable CSS dont on veut la valeur.
+
+<kbd>→</kbd>
+
+Ici vous voyez que j'ai utilisé calc avec la variable, mais dans le cas du spacing, on peut utiliser la fonction <code>--spacing</code> de tailwind qui prend en argument le multiplicateur.
+
+Cela permet d'être plus efficace, et cette fonction peut également être utilisée dans des utilitaires
+</pre
+    >
+</aside>

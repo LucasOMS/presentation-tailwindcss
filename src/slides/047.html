@@ -1,0 +1,90 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="2">
+    <h1>Personnaliser Tailwind</h1>
+    <h2>Ajouter un utilitaire</h2>
+
+    <div class="step-1:block hidden">
+        <pre class="not-v3:hidden"><code class="h-auto language-css">@layer utilities {
+    .transition-medium {
+        @apply transition-all duration-500 ease-in-out;
+    }
+
+    .grid-stack {
+        display: grid;
+        grid-template-areas: &#39;stack&#39;;
+
+        &gt; * {
+            grid-area: stack;
+            z-index: 1;
+        }
+    }
+}</code></pre>
+        <pre class="not-v4:hidden"><code class="h-auto language-css">@utility transition-medium {
+    @apply transition-all duration-500 ease-in-out;
+}
+
+@utility grid-stack {
+    display: grid;
+    grid-template-areas: &#39;stack&#39;;
+
+    &gt; * {
+        grid-area: stack;
+        z-index: 1;
+    }
+}
+</code></pre>
+    </div>
+    <div class="step-2:block hidden">
+        <div class="not-v3:hidden text-slide text-red-500">Non disponible en v3</div>
+        <pre class="not-v4:hidden"><code class="h-auto language-css">@utility scrollbar-hidden {
+    &amp;::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@utility size-text-* {
+    width: calc(--value(integer) * 1em);
+    height: calc(--value(integer) * 1em);
+}
+
+@theme {
+  --tab-size-github: 8;
+}
+
+@utility tab-* {
+  tab-size: --value(--tab-size-*, integer, [integer]);
+}
+
+@utility opacity-* {
+  opacity: calc(--value(integer) * 1%);
+  opacity: --value(--opacity-*, [percentage]);
+}</code></pre>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Pour créer un utilitaire en v4, on utilise la directive <code>@utility</code>. Si l'utilitaire est simple, alors la classe générée sera la meme que ce qui suit <code>@utility</code>.
+On peut ajouter des propriétés CSS à appliquer et meme ajouter des cibles en profondeur.
+Tailwind n'ajoutera les utilitaires que si ils sont utilisés dans le projet.
+
+<kbd>V</kbd>
+
+En v3, on ajoute au layer <code>utilities</code> et on définit notre classe utilitaire. Dans ce cas, l'utilitaire sera ajouté qu'il soit utilisé ou non dans le projet.
+
+<kbd>→</kbd>
+
+Pour créer des utilitaires avec des paramètres ou des utilitaires complexes, il va falloit utiliser la v4.
+
+<kbd>V</kbd>
+
+Dans le premier cas ici vous voyez l'utilisation de <code>&</code> pour référencer le nom de l'utilitaire lui même.
+
+Dans le second exemple, l'astérisque représente la partie "variable" de l'utilitaire. Je peux utiliser la fonction <code>--value</code> avec le type pour que tailwind remplace par la valeur utilisée dans l'utilitaire. Si j'utilise <code>size-text-1</code>, alors <code>--value(integer)</code> sera remplacé par <code>1</code>.
+La fonction <code>--value</code> peut avoir plusieurs arguments, qu'elle résoudra de la gauche vers la droite, dans le cas où il n'y a pas à appliquer un traitement différent en fonction de la valeur. Ici sur l'utilitaire <code>tab-*</code> je référence uen variable du thème, puis un chiffre, puis un chiffre entre crochets.
+
+Dans l'utilitaire <code>opacity-*</code>, je différencie les utilisations en fonction de la valeur, si c'est un entier, je le converti en pourcentage. Si c'est une valeur du thème ou si c'est un pourcentage, je l'utilise tel quel.
+
+Ces utilitaires peuvent vous permettre de créer des alias pour certains utilitaires que vous utiliseeriez avec toujours les mêmes valeurs. Cela permet également d'avoir un framework CSS qui est plus flexible que Bootstrap et qui répond mieux à vos besoins, sans avoir à générer des utilitaires à la pelle à chaque fois qu'on a besoin d'une nouvelle valeur.
+</pre
+    >
+</aside>

@@ -1,0 +1,95 @@
+<section class="slide-grid-gap grid grid-rows-[auto_1fr]" data-steps="2">
+    <h1>
+        <span class="font-extrabold">Le</span>
+        <span class="italic">framework</span>
+        CSS : Bootstrap
+    </h1>
+    <div class="grid-stack">
+        <div class="transition-medium slide-grid-gap step-1:flex step-2:transition-long step-2:translate-y-screen hidden flex-col overflow-y-clip transition-discrete starting:opacity-0">
+            <h2>La prévolution de la grille CSS</h2>
+            <div class="mt-4 flex flex-wrap items-center justify-around text-6xl font-bold">
+                <p class="transition-long text-cyan-500 delay-500 starting:scale-0">16 colonnes</p>
+                <p class="transition-long text-cyan-500 delay-1000 starting:scale-0">940px</p>
+                <p class="transition-long text-cyan-500 delay-1500 starting:scale-0">Offset, span</p>
+            </div>
+            <div class="slide-grid-gap starting:translate-y-screen transition-long flex flex-col delay-1750">
+                <h3>Exemple</h3>
+                <!-- Bootstrap grid reproduction -->
+                <div class="grid grid-cols-4 gap-2 text-center font-bold text-white transition-all duration-[2500ms] *:rounded-lg *:bg-cyan-500 *:p-1">
+                    <!-- 4 by line -->
+                    <span>span 4</span>
+                    <span>span 4</span>
+                    <span>span 4</span>
+                    <span>span 4</span>
+                    <!-- 2 by line -->
+                    <span class="col-span-2">span 8</span>
+                    <span class="col-span-2">span 8</span>
+                    <!-- 2 with different sizes -->
+                    <span>span 4</span>
+                    <span class="col-span-3">span 12</span>
+
+                    <!-- with offset -->
+                    <span class="col-span-2 col-start-2">offset 4 | span 8</span>
+                </div>
+
+                <pre><code class="language-html">&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;span8 columns offset4&quot;&gt;offset 4 | span 8&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+        <div class="before-step-2:hidden transition-medium slide-grid-gap flex flex-col delay-100 starting:scale-0">
+            <h2 class="flex flex-wrap">
+                Bootstrap 3&nbsp;:&nbsp;
+                <div class="transition-long max-w-fit max-w-full overflow-x-clip text-nowrap delay-1000 starting:max-w-0">la grille parfaite ?</div>
+            </h2>
+            <div class="transition-medium before-step-2:hidden flex flex-wrap items-center justify-around text-6xl font-bold delay-1500 starting:opacity-0">
+                <p class="text-cyan-500">12 colonnes</p>
+                <p class="text-cyan-500">Mobile First</p>
+            </div>
+            <pre><code class="language-html h-auto transition-medium starting:opacity-0 delay-1500">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-xs-12 col-sm-6 col-md-4&quot;&gt;Bloc 1&lt;/div&gt;
+  &lt;div class=&quot;col-xs-12 col-sm-6 col-md-4&quot;&gt;Bloc 2&lt;/div&gt;
+  &lt;div class=&quot;col-xs-12 col-sm-12 col-md-4&quot;&gt;Bloc 3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+            <!-- Reproduction with simple grid-->
+            <div class="slide-grid-gap transition-long grid items-baseline text-center font-bold delay-1500 md:grid-cols-2 lg:grid-cols-3 starting:opacity-0">
+                <div class="inline-grid grid-cols-1 gap-2 *:flex *:items-center *:justify-center">
+                    <h3 class="col-span-full">Mobile</h3>
+                    <span class="rounded-lg bg-cyan-500 p-2 text-white">Bloc 1</span>
+                    <span class="rounded-lg bg-cyan-700 p-2 text-white">Bloc 2</span>
+                    <span class="rounded-lg bg-cyan-900 p-2 text-white">Bloc 3</span>
+                </div>
+                <div class="inline-grid grid-cols-2 gap-2 *:flex *:items-center *:justify-center">
+                    <h3 class="col-span-full">Tablette</h3>
+                    <span class="rounded-lg bg-cyan-500 p-2 text-white">Bloc 1</span>
+                    <span class="rounded-lg bg-cyan-700 p-2 text-white">Bloc 2</span>
+                    <span class="col-span-2 rounded-lg bg-cyan-900 p-2 text-white">Bloc 3</span>
+                </div>
+                <div class="inline-grid grid-cols-3 gap-2 *:flex *:items-center *:justify-center md:col-span-full not-lg:md:row-1 lg:col-span-1">
+                    <h3 class="col-span-full">Ordinateur</h3>
+                    <span class="rounded-lg bg-cyan-500 p-2 text-white">Bloc 1</span>
+                    <span class="rounded-lg bg-cyan-700 p-2 text-white">Bloc 2</span>
+                    <span class="rounded-lg bg-cyan-900 p-2 text-white">Bloc 3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+        L'exemple parfait de ces classes, ce sont celles pour la grille de Bootstrap.
+
+    Quand il sort en 2011, il propose un layout en grille, il définit 16 colonnes, chacune espacées de <code>20px</code>, pour une largeur totale de <code>940px</code>. On peut définir des offsets pour décaler les éléments, et des spans pour définir la largeur de l'élément. Cela permet de faire des layout complexe facilements, mais c'est à partir de bootstrap 3 que la grille s'impose comme un standard.
+
+    <kbd>→</kbd>
+
+    A partir de la version 3, on a une grille facilement configurable en fonction des tailles d'écrans.
+
+    <kbd>→</kbd>
+
+    Maintenant, la grille fait 12 colonnes, et on peut donner à chaque élément sa position et le nombre de colonne à occuper en fonction de l'écran.
+</pre
+    >
+</aside>

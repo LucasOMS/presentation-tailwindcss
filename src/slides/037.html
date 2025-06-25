@@ -1,0 +1,27 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="1">
+    <h1>La sémantique de Tailwind</h1>
+    <h2>Variant : support de fonctionnalité</h2>
+
+    <div class="slide-grid-gap flex flex-col">
+        <pre><code class="h-auto language-html">&lt;div class=&quot;flex supports-[display:grid]:grid&quot;&gt;
+  &lt;!-- ... --&gt;
+&lt;/div&gt;</code></pre>
+        <pre><code class="h-auto language-html">&lt;div class=&quot;grid not-supports-[display:grid]:flex&quot;&gt;
+  &lt;!-- ... --&gt;
+&lt;/div&gt;</code></pre>
+        <pre><code class="h-auto language-html">&lt;div class=&quot;bg-black/75 supports-backdrop-filter:bg-black/25 supports-backdrop-filter:backdrop-blur ...&quot;&gt;
+  &lt;!-- ... --&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Tailwind permet d'utiliser les variants pour n'appliquer un style qu'en fonction du support de certaines fonctionnalités CSS.
+
+Ici quelques exemples, pour vérifier si le navigateur supporte les grilles ou non, et si il supporte le <code>backdrop-filter</code>.
+
+La syntaxe entre crochet doit être utilisée pour vérifier le support d'une fonctionnalité avec une valeur précise (ici <code>display:grid</code>) tandis que la syntaxe sans valeur vérifie juste si la fonctionnalité est supportée.
+</pre
+    >
+</aside>

@@ -1,0 +1,45 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="4">
+    <h1>La sémantique de Tailwind</h1>
+    <h2>Variant : état du groupe parent</h2>
+
+    <div class="slide-grid-gap grid h-fit grid-cols-1 *:flex *:flex-col *:gap-2 2xl:grid-cols-2">
+        <div class="transition-medium before-step-2:opacity-0 step-2:col-span-full">
+            <h3>Créer un groupe</h3>
+            <pre><code class="h-auto language-html">&lt;div class=&quot;group&quot;&gt;&lt;/div&gt;</code></pre>
+        </div>
+        <div class="transition-medium before-step-3:hidden starting:opacity-0">
+            <h3>Styler en fonction du groupe</h3>
+            <pre><code class="h-auto language-html">&lt;div class=&quot;group&quot;&gt;
+&lt;h1 class=&quot;group-hover:text-bold&quot;&gt;Titre&lt;/h1&gt;
+&lt;p&gt;Description&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        <div class="transition-medium before-step-4:hidden col-span-full starting:opacity-0">
+            <h3>Différencier des groupes</h3>
+            <pre><code class="h-auto language-html">&lt;div class=&quot;group/container&quot;&gt;
+    &lt;div class=&quot;group/card&quot;&gt;
+        &lt;h1 class=&quot;group-hover/container:text-bold group-hover/card:text-blue-900&quot;&gt;&lt;/h1&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+On vient de voir qu'on peut styliser en fonction des enfants, mais on peut aussi réagir en fonction du parent. C'est assez commun de changer du style quand par exemple toute la card est survolée. Pour ces cas, tailwind fourni un systeme de groupe.
+
+<kbd>→</kbd>
+
+Tout d'abord on va appliquer à notre élément parent la classe <code>group</code>. Cela va créer un groupe anonyme que l'on pourra utiliser dans les enfants.
+
+<kbd>→</kbd>
+
+Dans les enfants, on peut utiliser <code>group-hover:</code> pour appliquer le style lorsque le parent est survolé.
+
+<kbd>→</kbd>
+
+Ici on a deux groupes différents. Les groupes tailwdind sont assez puissant et on peut aller assez loin dans leur utilisation, notamment quand on commence à les utiliser avec des valeurs arbitraires. Je vous invite à voir la doc, c'est assez difficile de vous montrer ce qu'on peut en faire sans vous noyer ou sans vous faire rejeter tailwind en bloc directement.
+</pre
+    >
+</aside>

@@ -1,0 +1,29 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="3">
+    <h1>La sémantique de Tailwind</h1>
+    <h2>Utilitaire de base</h2>
+    <div class="flex flex-col items-center justify-center">
+        <div class="text-slide *:transition-long grid grid-cols-[repeat(4,auto)] gap-y-1 text-[6vw] font-bold">
+            <div class="before-step-3:max-w-0 step-3:delay-medium max-w-[calc(6vw_*_9)] overflow-x-clip text-nowrap text-cyan-600">variant:</div>
+            <div>propriété</div>
+            <div>
+                <!-- Here we have to do custom style because prettier inject a new line after the first span, with no reason other than being the worst dev tool on this planet -->
+                <span class="-mr-[1.5vw]">-</span>
+                <span>valeur</span>
+            </div>
+            <div class="step-2:max-w-[calc(6vw_*_6)] step-2:text-cyan-600 max-w-0 overflow-x-clip text-nowrap">!</div>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Une fois qu'on a l'utilitaire de base <kbd>→</kbd> on peut le suffixer avec un <code>!</code>, cela aura pour effet de définir la règle CSS avec le modificateur <code>!important</code>.
+
+<kbd>→</kbd>
+
+Pour chaque utilitaire, on va pouvoir ajouter des variants avant l'utilitaire de base, on peut en ajouter autant que l'on souhaite. On verra juste après tout ce que cela nous permet de spécifier.
+
+Pour chaque variant, il sera possible de préfixer par <code>not-</code> pour inverser le variant. En fonction de comment ces variants sont définis, cela marchera plus ou moins bien.
+</pre
+    >
+</aside>

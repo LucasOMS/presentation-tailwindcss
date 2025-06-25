@@ -1,0 +1,89 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="7">
+    <h1>La sémantique de Tailwind</h1>
+    <h2>Variant : cible</h2>
+
+    <div class="slide-grid-gap grid h-fit grid-cols-1 *:flex *:flex-col *:gap-2 2xl:grid-cols-2">
+        <div class="transition-medium before-step-2:opacity-0 step-2:col-span-full">
+            <h3>Les enfants directs 🤔</h3>
+            <pre><code class="h-auto language-html">&lt;div class=&quot;flex gap-2 *:flex-1&quot;&gt;
+    &lt;div class=&quot;bg-green-500 text-white&quot;&gt;1/2&lt;/div&gt;
+    &lt;div class=&quot;bg-red-500 text-white&quot;&gt;1/2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            <pre class="not-v3:hidden"><code class="h-auto language-html">&lt;ul class=&quot;*:first:text-red-500&quot;&gt;
+    &lt;li&gt;Rouge&lt;/li&gt;
+    &lt;li&gt;Pas rouge&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            <pre class="not-v4:hidden"><code class="h-auto language-html">&lt;ul class=&quot;first:*:text-red-500&quot;&gt;
+    &lt;li&gt;Rouge&lt;/li&gt;
+    &lt;li&gt;Pas rouge&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+        <div class="transition-medium before-step-3:opacity-0">
+            <h3>Tous les descendants 🤢</h3>
+            <pre><code class="h-auto language-html">&lt;div class=&quot;**:data-highlighted:bg-yellow-300&quot;&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Valeur&lt;/li&gt;
+        &lt;li data-highlighted&gt;Valeur mise en avant&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        <div class="transition-medium before-step-4:opacity-0 col-span-full">
+            <h3>Variants arbitraires 🤮</h3>
+            <pre><code class="transition-medium before-step-5:opacity-0 h-auto language-html">&lt;div class=&quot;[&amp;.active]:bg-red-500&quot;&gt;Pas rouge&lt;/div&gt;
+&lt;div class=&quot;active [&amp;.active]:bg-red-500&quot;&gt;Rouge&lt;/div&gt;</code></pre>
+            <div class="gap-2 *:flex-1 sm:flex">
+                <pre><code class="transition-medium before-step-6:opacity-0 h-auto language-html">&lt;div class=&quot;[&amp;_p]:text-red&quot;&gt;
+    &lt;p&gt;Rouge&lt;/p&gt;
+    &lt;div&gt;Pas rouge&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <pre class="before-step-7:hidden"><code class="transition-medium h-auto language-html starting:w-0 overflow-x-clip!">&lt;div class=&quot;[&amp;_&gt;_p]:text-red&quot;&gt;
+    &lt;p&gt;Rouge&lt;/p&gt;
+    &lt;div&gt;&lt;p&gt;Pas rouge&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Tailwind permet d'utiliser des utilitaires qui vont cibler des éléments enfants.
+
+Même is on pourrait y voir une facon de factoriser du code, je rappelle que cela va à l'encontre de la philosophie des utilitaires. En effet, on va ainsi créer des classes qui vont appliquer une cascade, l'une des choses que l'on voulait éviter à la base.
+
+Il faut voir ces utilisations comme des exceptions, cela peut notamment servir pour appliquer du style à un élément dont vous n'avez pas le contrôle ou avec un HTML généré par un outil tiers.
+
+<kbd>→</kbd>
+
+En utilisant <code>*:</code> on va cibler les enfants directs de l'élément. Ca peut par exemple permettre de facilement forcer un <code>flex-1</code> sur tous les enfants d'un élément <code>flex</code>.
+
+Lorsqu'il y a plusieurs variants, l'ordre peut être important. En version 3 ils s'appliquent de droite à gauche, <kbd>V</kbd> tandis qu'en version 4 ils s'appliquent de gauche à droite.
+L'ordre de la version 4 vous semblera plus naturel car c'est celui que l'on utiliserai en CSS.
+
+<kbd>→</kbd>
+
+Un utilisant <code>**:</code> on va cibler tous les descendants de l'élément. On va généralement l'utiliser avec un autre variant pour cibler en profondeur ce qu'on voulait. Ici dans mon exemple je vais en profondeur et je ne cible que les éléments avec l'attribut <code>data-highlighted</code>.
+
+<kbd>→</kbd>
+
+Attention on va passer un cap. En principe vous allez hurler interieurement : on peut utiliser des sélecteurs directement dans les utilitaires. Comme pour les valeurs où il nous suffisait de mettre des crochets, on peut écrire un sélecteur CSS entre crochets. Le <code>&</code> va représenté l'élément sur lequel on applique la classe utilitaire, et ensuite on peut utiliser les règles CSS classiques. Si on est obligé d'utiliser des espaces, alors on utilisera un <code>_</code> comme pour les valeurs arbitraires. Quelques exemples en vrac :
+
+<kbd>→</kbd>
+
+Ici on applique l'utilitaire que si l'élément a la classe active.
+
+<kbd>→</kbd>
+
+Ici on cible uniquement les éléments <code>p</code> dans les descendants de l'élément.
+
+<kbd>→</kbd>
+
+Ici on cible uniquement les éléments <code>p</code> qui sont des enfants directs.
+
+Alors si vous consulter le code de mon diapo, vous allez voir que j'utilise pas mal de fois ce genre d'utilitaires. C'est uniquement pour gagner du temps et plus facilement éditer. Mais ce code n'a pas pour vocation a être maintenu après la présentation, donc ne prenez pas ces utilisations comme du code à suivre.
+Je vous invite à discuter de ces utilitaires avec votre équipe pour voir dans quel cadre vous les acceptez. Dans du code en prod, je pense que le seul que j'utiliserai vraiment c'est <code>*:flex-1</code>, car je trouve qu'il indique le layout encore plus clairement que si il était sur chaque enfant.
+
+Il faut aussi prendre en compte qu'utiliser ces utilitaires génère une spécificité supérieure à celle des utilitaires classiques. Cela veut dire que leur utilisation vous empêchera de surcharger par un utilitaire sur cet élément, ou alors il vous faudra utiliser <code>!important</code> pour forcer le style.
+</pre
+    >
+</aside>

@@ -1,0 +1,56 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="5">
+    <h1>Les arguments contre les utilitaires</h1>
+    <h2>Surcharger une classe utilitaire</h2>
+
+    <div class="slide-grid-gap flex flex-col">
+        <div class="before-step-2:opacity-0 transition-medium transition-opacity">
+            <!-- Surcharger une classe appliquée par défaut -->
+            <pre><code class="language-typescript h-fit">@Component({
+    selector: &#39;app-card&#39;,
+    host: {
+        class: &#39;block rounded-2xl bg-white p-4 shadow-md text-gray-950&#39;,
+    },
+    template: `&lt;ng-content&gt;&lt;/ng-content&gt;`,
+}
+export class CardComponent {}</code></pre>
+        </div>
+        <div class="before-step-3:translate-y-screen transition-medium transition-transform">
+            <h3 class="mb-4">Appliqué</h3>
+            <pre><code class="language-html h-fit mb-4">&lt;card class=&quot;p-6&quot;&gt;&lt;/card&gt;</code></pre>
+        </div>
+
+        <div class="grid-stack">
+            <div class="before-step-4:translate-y-screen step-5:-translate-x-screen transition-medium transition-transform">
+                <h3 class="mb-4">Non appliqué</h3>
+
+                <pre><code class="language-html h-fit mb-4">&lt;card class=&quot;p-2&quot;&gt;&lt;/card&gt;</code></pre>
+            </div>
+            <div class="before-step-5:translate-x-screen transition-medium transition-transform">
+                <h3 class="mb-4">Correction : style appliqué</h3>
+
+                <pre><code class="language-html h-fit mb-4">&lt;card class=&quot;p-2!&quot;&gt;&lt;/card&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Dans certains cas, utiliser des classes utilitaires peut rendre difficile le fait de changer un style appliqué par défaut sur un composant.
+
+<kbd>→</kbd>
+
+Si on reprend notre exemple de card de tout à l'heure, j'applique par défaut un padding de 4 espacements. Mettons que je veuille une card avec un padding de 6 espacements à la place, je peux appliquer un utilitaire <code>p-6</code> <kbd>→</kbd>. Cela fera que j'aurais une classe <code>p-4</code> et <code>p-6</code>, <code>p-6</code> étant défini plus loin que <code>p-4</code> dans le code, j'ai bien un padding de 6 espacements.
+
+<kbd>→</kbd>
+
+Maintenant si je veux RÉDUIRE le padding, et que j'applique la classe <code>p-2</code>, vu qu'elle est défini avant dans le code, je ne peux pas le faire.
+
+<kbd>→</kbd>
+
+Pour bootstrap, cette problématique est vrai, et on serait obligé de passer par du style inline ou un fichier CSS avec un sélecteur plus précis, ou bien utiliser <code>!important</code>. Dans tailwind, il est possible de spécifier ce !important directement dans l'utilitaire, afin de pouvoir utiliser cette mécanique de surcharge.
+
+J'évoquerai aussi un outil permettant de faire cela meme avec deux styles importants
+</pre
+    >
+</aside>

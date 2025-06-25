@@ -1,0 +1,123 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="3">
+    <h1>Personnaliser Tailwind</h1>
+    <h2>Configurer le thème</h2>
+
+    <div class="not-step-2:hidden transition-medium starting:opacity-0">
+        <div class="not-v3:hidden">
+            <h3 class="mb-2">Ajouter une couleur</h3>
+            <pre><code class="h-auto language-js">// tailwind.config.js
+const colors = require(&#39;tailwindcss/colors&#39;);
+
+/** @type {import(&#39;tailwindcss&#39;).Config} */
+module.exports = {
+  // ...
+  theme: {
+    extend: {
+      colors: {
+        &#39;primary&#39;: colors.violet,
+        &#39;dark&#39;: {
+          &#39;50&#39;: &#39;hsl(264, 10%, 98%)&#39;,
+          &#39;100&#39;: &#39;hsl(264, 10%, 96%)&#39;,
+          &#39;200&#39;: &#39;hsl(264, 10%, 90%)&#39;,
+          &#39;300&#39;: &#39;hsl(264, 10%, 83%)&#39;,
+          &#39;400&#39;: &#39;hsl(264, 10%, 64%)&#39;,
+          &#39;500&#39;: &#39;hsl(264, 10%, 45%)&#39;,
+          &#39;600&#39;: &#39;hsl(264, 10%, 32%)&#39;,
+          &#39;700&#39;: &#39;hsl(264, 10%, 25%)&#39;,
+          &#39;800&#39;: &#39;hsl(264, 10%, 15%)&#39;,
+          &#39;900&#39;: &#39;hsl(264, 10%, 9%)&#39;,
+          &#39;950&#39;: &#39;hsl(264, 10%, 4%)&#39;,
+        },
+      },
+    },
+  },
+};</code></pre>
+        </div>
+        <div class="not-v4:hidden">
+            <h3 class="mb-2">Ajouter une couleur</h3>
+            <pre><code class="h-auto language-css">/* tailwind.css */
+@import &quot;tailwindcss&quot;
+
+@theme {
+    --color-primary-50: hsl(264, 10%, 98%);
+    --color-primary-100: hsl(264, 10%, 96%);
+    --color-primary-200: hsl(264, 10%, 90%);
+    --color-primary-300: hsl(264, 10%, 83%);
+    --color-primary-400: hsl(264, 10%, 64%);
+    --color-primary-500: hsl(264, 10%, 45%);
+    --color-primary-600: hsl(264, 10%, 32%);
+    --color-primary-700: hsl(264, 10%, 25%);
+    --color-primary-800: hsl(264, 10%, 15%);
+    --color-primary-900: hsl(264, 10%, 9%);
+    --color-primary-950: hsl(264, 10%, 4%);
+}</code></pre>
+        </div>
+    </div>
+    <div class="not-step-3:hidden transition-medium starting:opacity-0">
+        <div class="not-v3:hidden">
+            <h3 class="mb-2">Espacement</h3>
+            <pre><code class="h-auto language-js">// tailwind.config.js
+const baseSpacing = 8; // px
+
+/** @type {import(&#39;tailwindcss&#39;).Config} */
+module.exports = {
+  // ...
+  theme: {
+    extend: {
+      spacing: {
+        &#39;0.5&#39;: 0.5 * baseSpacing + &#39;px&#39;,
+        &#39;1&#39;: baseSpacing + &#39;px&#39;,
+        &#39;1.5&#39;: 1.5 * baseSpacing + &#39;px&#39;,
+        &#39;2&#39;: 2 * baseSpacing + &#39;px&#39;,
+        &#39;2.5&#39;: 2.5 * baseSpacing + &#39;px&#39;,
+        &#39;3&#39;: 3 * baseSpacing + &#39;px&#39;,
+        &#39;3.5&#39;: 3.5 * baseSpacing + &#39;px&#39;,
+        &#39;4&#39;: 4 * baseSpacing + &#39;px&#39;,
+        &#39;4.5&#39;: 4.5 * baseSpacing + &#39;px&#39;,
+        &#39;5&#39;: 5 * baseSpacing + &#39;px&#39;,
+        &#39;5.5&#39;: 5.5 * baseSpacing + &#39;px&#39;,
+        &#39;6&#39;: 6 * baseSpacing + &#39;px&#39;,
+        &#39;6.5&#39;: 6.5 * baseSpacing + &#39;px&#39;,
+    },
+  },
+};</code></pre>
+        </div>
+        <div class="not-v4:hidden">
+            <h3 class="mb-2">Espacement</h3>
+            <pre><code class="h-auto language-css">/* tailwind.css */
+@import &quot;tailwindcss&quot;
+
+@theme {
+    --spacing: 8px;
+}</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Puisque tailwind dépends de nombreuse variables, il est possible de les personnaliser ou d'en ajouter.
+
+<kbd>→</kbd>
+
+Pour les couleurs par exemple, on peut utiliser la valeur colors du theme. Puisqu'on est en JS, il est possible en v3 d'utiliser directement les valeurs par défaut. Par exemple ici je défini une couleur <code>primary</code> en utilisant la couleur violette de Tailwind.
+
+<kbd>V</kbd>
+
+En v4, on va définir un bloc <code>@theme</code> dans lequel on va définir des variables CSS. Ces variables doivent suivrent un certains format, et c'est ce format qui va permettre à tailwind de les utiliser dans ses utilitaires.
+
+Pour réutiliser du code existant, on peut soit utiliser les variables qui auraient été générées, soit retrouver la valeur sur la doc de tailwind.
+
+Entre tailwind v3 et v4, la palette de couleur a légèrement changé, je vous conseille donc d'éviter de dépendre de leurs couleurs par défaut.
+
+<kbd>→</kbd>
+
+On peut également redéfinir l'espacement, via la variable <code>spacing</code>. Ici je défini seulement l'espacement de base à savoir <code>8px</code> pour moi.
+
+<kbd>V</kbd>
+
+En v3 j'utilise la valeur <code>spacing</code>, et je défini les différents espacements utilisables. En v4 je n'avais pas eu à le faire car une fois le <code>spacing</code> défini, on peut utiliser les utilitaires avec des valeurs flottantes et tailwind les utilisent telles quelles dans le CSS via la fonction <code>calc()</code> de CSS.
+
+</pre
+    >
+</aside>

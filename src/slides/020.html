@@ -1,0 +1,86 @@
+<section class="transition-long slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="3">
+    <h1>Les avantages des utilitaires</h1>
+    <h2>Aperçu rapide de la page</h2>
+    <div class="grid-stack step-1:opacity-0">
+        <div class="step-2:translate-x-0 -translate-x-screen step-1:translate-x-screen transition-long">
+            <h3>
+                Définir le
+                <i>layout</i>
+            </h3>
+            <div class="mt-4 grid grid-cols-2 gap-2">
+                <h4 class="row-1">Sans utilitaire</h4>
+                <pre><code class="language-html row-2">&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Accueil&lt;/li&gt;
+        &lt;li&gt;Options&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                <pre><code class="language-css row-3">nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}</code></pre>
+                <h4 class="row-1">Avec utilitaires</h4>
+                <pre><code class="language-html row-span-2">&lt;nav&gt;
+    &lt;ul class=&quot;flex flex-row gap-1&quot;&gt;
+        &lt;li&gt;Accueil&lt;/li&gt;
+        &lt;li&gt;Options&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="step-3:translate-x-0 step-4:translate-x-0 -translate-x-screen before-step-3:translate-x-screen transition-long">
+            <h3>S'adapter aux écrans</h3>
+            <div class="mt-4 grid grid-cols-2 gap-2">
+                <h4 class="row-1">Sans utilitaire</h4>
+                <!-- Highlight non existing line to apply not hgighlight style to all lines -->
+                <pre><code class="language-html row-2 step-4:highlight-code-line-7">&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Accueil&lt;/li&gt;
+        &lt;li&gt;Options&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                <pre><code class="language-css row-3">nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (width >= 576px) {
+    nav ul {
+        flex-direction: row;
+    }
+}
+@media (width >= 768px) {
+    nav ul {
+        gap: 2rem;
+    }
+}</code></pre>
+                <h4 class="row-1">Avec utilitaires</h4>
+                <pre><code class="language-html row-span-2">&lt;nav&gt;
+    &lt;ul class=&quot;flex gap-1 sm:flex-row md:gap-2&quot;&gt;
+        &lt;li&gt;Accueil&lt;/li&gt;
+        &lt;li&gt;Options&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+L'autre gros point positif des utilitaires, c'est la facilité qu'on a avoir un apercu mental de la page à partir de l'HTML.
+
+<kbd>→</kbd>
+
+En effet, pour le layout simple, c'est assez agréable de l'avoir directement dans le HTML, ici dans mon exemple, c'est impossible de prévoir que la liste est horizontale quand c'est fait en CSS pur.
+
+<kbd>→</kbd>
+
+Pareil pour les breakpoints, avec tailwdind, qui préfixe les classes avec le nom du breakpoint, ca permet de très rapidement voir quels sont les breakpoints appliqués, et au fur à mesure de la lecture des classes, savoir ce qui change entre la version mobile et la version desktop.
+
+<i>Alors, on pourrait se dire que c'est vrai que si on a pas trop de classe sur un meme élément, et je suis d'accord avec vous. Mais je voudrais vous montrer l'exemple qui était présent sur la doc de tailwind 3 (en page d'accueil hein !)</i>
+</pre>
+</aside>

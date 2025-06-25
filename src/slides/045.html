@@ -1,0 +1,20 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]">
+    <h1>Personnaliser Tailwind</h1>
+    <h2>Ajouter un configuration de base</h2>
+
+    <div>
+        <pre><code class="h-auto language-css">@layer base {
+    color: var(--color-gray-950);
+}</code></pre>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Tailwind v3 comme v4 utilise les layers CSS pour organiser ses styles, dans l'ordre : <code>base</code>, <code>components</code>, <code>utililities</code>.
+
+Le layer <code>base</code> devrait contenir le style global ayant pour vocation le reset des styles par défaut du navigateur, ainsi que les styles de typographie de base.
+
+Pour ajouter un élément au layer de base de tailwind, il suffit de le cibler en CSS.
+    </pre>
+</aside>

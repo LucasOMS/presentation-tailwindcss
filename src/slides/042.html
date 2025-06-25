@@ -1,0 +1,48 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]">
+    <h1>Personnaliser Tailwind</h1>
+    <h2>Préfixer les utilitaires</h2>
+
+    <div>
+        <div class="not-v3:hidden">
+            <h3 class="mb-2">Configuration</h3>
+            <pre><code class="h-auto language-js">// tailwind.config.js
+/** @type {import(&#39;tailwindcss&#39;).Config} */
+module.exports = {
+  // ...
+  prefix: 'tw-',
+};</code></pre>
+            <h3 class="my-2">Utilisation</h3>
+            <pre><code class="h-auto language-js">&lt;div class=&quot;hover:tw-bg-gray-500&quot;&gt;&lt;/div&gt;</code></pre>
+        </div>
+        <div class="not-v4:hidden">
+            <h3 class="mb-2">Configuration</h3>
+            <pre><code class="h-auto language-css">/* tailwind.css */
+@import &quot;tailwindcss&quot; prefix(tw);</code></pre>
+            <h3 class="my-2">Utilisation</h3>
+            <pre><code class="h-auto language-js">&lt;div class=&quot;hover:tw-bg-gray-500&quot;&gt;&lt;/div&gt;</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Il est possible de définir un préfixe pour les utilitaires tailwinds, cela oblige tous les utilitaires à commencer par ce préfixe.
+
+Il y a plusieurs différences entre la version 3 et la version 4.
+
+<kbd>→</kbd>
+
+En v4, c'est au moment de l'import que ca se joue. Cette fois le préfixe est considéré comme une variant qui doit être utilisée avant toutes les autres. Cela veut dire que vous aurez toujours <code>pr&eacute;fixe:</code>
+
+Lorsque vous utilisez un préfixe, il n'est pas nécessaire de préfixer les variables dans la configuration de tailwind. En revanche les variables CSS générées utiliseront ce préfixe afin de ne pas rentrer en conflit avec d'autres variables CSS de votre projet.
+
+<kbd>V</kbd>
+
+En v3, il suffit de définir la propriété <code>prefix</code> dans la configuration. Le préfixe doit être utilisé comme tel.
+
+Il faut considérer que le préfixe s'applique avant le nom de la propriété de l'utilitaire. Cela veut dire que le préfixe se retrouvera après les variants comme <code>hover:</code> par exemple.
+
+Toute classe que vous définirez n'utilisera pas le préfixe par défaut, il faudra le respécifier.
+</pre
+    >
+</aside>

@@ -1,0 +1,37 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="2">
+    <h1>Personnaliser Tailwind</h1>
+    <h2>
+        Générer les utilitaires avec
+        <span class="font-mono">!important</span>
+    </h2>
+
+    <div class="before-step-2:translate-x-screen transition-medium">
+        <div class="not-v3:hidden">
+            <pre><code class="language-js">// tailwind.config.js
+/** @type {import(&#39;tailwindcss&#39;).Config} */
+module.exports = {
+  // ...
+  important: true,
+};</code></pre>
+        </div>
+        <div class="not-v4:hidden">
+            <pre><code class="language-css">/* tailwind.css */
+@import &quot;tailwindcss&quot; important;</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Comme je l'ai dit précédemment, et contrairement à Bootstrap, les utilitaires tailwind par défaut n'utilisent pas <code>!important</code>. C'est logique puisque le flag <code>!important</code> peut se définir à la volée sur un utilitaire.
+
+<kbd>→</kbd>
+
+En v3, il suffit d'utiliser la propriété <code>important</code> dans la configuration.
+
+<kbd>V</kbd>
+
+En v4, ca se configure au moment de l'import de tailwind dans le fichier CSS.
+</pre
+    >
+</aside>

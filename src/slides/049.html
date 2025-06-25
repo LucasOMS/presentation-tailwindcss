@@ -1,0 +1,56 @@
+<section class="slide-grid-gap grid grid-rows-[auto_1fr]" data-steps="4">
+    <h1>Ajouter tailwind à un projet</h1>
+
+    <div class="slide-grid-gap grid grid-cols-1 2xl:grid-cols-2">
+        <div class="transition-medium flex flex-col gap-2 starting:opacity-0">
+            <h3>Avec la CLI</h3>
+            <ul class="text-slide list-dash flex flex-col gap-1">
+                <li>Installer les dépendances</li>
+                <li>Ajouter le fichier de configuration : JS ou CSS</li>
+                <li>Lancer tailwind avec la ligne de commande</li>
+                <li>Ajouter le fichier CSS généré dans votre projet</li>
+            </ul>
+        </div>
+        <div class="before-step-2:opacity-0 transition-medium flex flex-col gap-2">
+            <h3>Avec PostCSS</h3>
+            <ul class="text-slide list-dash flex flex-col gap-1">
+                <li>Installer les dépendances</li>
+                <li>Ajouter tailwind en tant que plugin postcss</li>
+                <li>Importer tailwind dans votre CSS</li>
+                <li>Ajouter le fichier CSS généré dans votre projet</li>
+            </ul>
+        </div>
+        <div class="before-step-3:opacity-0 transition-medium flex flex-col gap-2">
+            <h3>Play CDN</h3>
+            <ul class="text-slide list-dash flex flex-col gap-1">
+                <li>Ajouter le script dans le HTML</li>
+                <li>Ajouter une logique pour lui donner vos configurations</li>
+            </ul>
+            <div class="text-slide mt-2 w-max rounded-xl bg-red-400 p-2 text-white dark:bg-red-800">Pour le développement seulement</div>
+        </div>
+        <div class="before-step-4:opacity-0 transition-medium flex flex-col gap-2">
+            <h3>Les frameworks</h3>
+            <div class="text-slide">RTFM !</div>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Je passe rapidement sur les différents moyens d'ajouter Tailwind, biensur le plus efficace est d'aller directement voir leur documentation et suivre ces étapes.
+
+On peut utiliser la CLI de tailwind, dans ce cas, ca veut dire que tailwind ne se lancera que quand on utilisera une ligne de commande spécifique. Il faudra donc passer par un autre outil pour que tailwind se lance lorsque vos fichiers sont modifiés. C'est pas exemple ce qui est utilisé pour la réalisation de cette présentation, j'ai une tache Gulp qui lance tailwind quand je modifie un de mes fichiers HTML, la configuration de tailwind, où les fichiers qui peuvent contenir des classes utilitaires.
+
+<kbd>→</kbd>
+On peut utiliser tailwind en tant que plugin postcss. Dans ce cas si postcss est configuré dans notre projet, tailwind sera lancé en même temps. C'est par exemple ce qui est préconisé pour l'utilisation dans des frameworks comme Angular ou Next.js.
+
+<kbd>→</kbd>
+Tailwind propose également un script qui permet de charger tailwind dynamiquement et qui analyse constamment notre DOM pour générer les éventuels nouveaux utilitaires. Il ne devrait être utilisé qu'en développement.
+
+Je l'évoquais tout à l'heure, travailler en live avec tailwind peut être interessant. Si vous le souhaitez vous pouvez créer une configuration de dev qui charge le CDN, met à disposition votre configuration tailwind en tant que fichier statique afin de le charger au lancement de votre application. Cela vous permettra d'utiliser tailwind en live tout en ayant une configuration commune à celui de votre projet.
+
+<kbd>→</kbd>
+Pour tous les frameworks, il faut directement consulter la doc, il y a plus d'une quinzaine de frameworks supportés, et la configuration est souvent très simple.
+</pre
+    >
+</aside>

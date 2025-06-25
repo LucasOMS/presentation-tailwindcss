@@ -1,0 +1,27 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="3">
+    <h1>Les arguments contre les utilitaires</h1>
+    <h2>Travailler "en live" dans le navigateur</h2>
+    <ul class="text-slide *:transition-medium flex flex-col justify-evenly *:transition-all">
+        <li class="step-1:translate-x-screen">Impossible d'utiliser un nouvel utilitaire</li>
+        <li class="before-step-3:translate-x-screen">Plus difficile de désactiver du style précédemment appliqué</li>
+    </ul>
+</section>
+
+<aside>
+    <pre>
+    Le dernier point que je voudrais aborder dans la partie "contre" les utilitaires, c'est la facon de travailler dans le navigateur.
+
+    En soi, c'est un point qui peut être ni bon ni mauvais, cela dépend de vos habitudes de travail. En effet si vous avez l'habitude de faire du CSS dans l'inspecteur de votre navigateur pour voir en live le résultat avant de copier ce que vous avez ajouter dans votre code, les classes utilitaires risquent de vous compliquer la tâche.
+
+    <kbd>→</kbd>
+    Avec bootstrap, vous avez toujours toutes les classes dans votre CSS, donc vous pouvez ajouter/retirer des classes sur vos éléments pour voir le résultat. Mais sur tailwind, vu que tout est généré à la volée, vous n'avez que ce vous utilisez déjà. Cela veut dire que plus vous avancer dans votre projet, moins ca sera un problème, puisque vous aurez déjà utilisé les utilitaires les plus communs. En revanche, en début de projet, vous ne pourrez pas utiliser ces utilitaires, ou alors il vous faudra un outil supplémentaire, que vous devez configurer, on le verra plus tard.
+
+    <i>Je me permet de préciser que si vous voulez faire du CSS basique (notamment du layout) et ensuite le convertir en classe tailwind, copilot peut faire ca assez facilement, mais ca reste une étape supplémentaire.</i>
+
+    Dans tous les cas, si vous utilisez un framework css qui purge les classes inutiles ou qui les génère à la volée, vous n'aurez pas d'autocomplétion sur les classes qui ne sont pas encore utilisées.
+
+    <kbd>→</kbd>
+
+    Pour désactiver du style déjà existant, c'est également plus compliqué, puisque dans les DevTool il faut activer la visualisation des classes, puis cocher/décocher celle que vous voulez désactiver. C'est souvent plus lisible en CSS pur car la lecture en diagonale est facilité par les Devtools.
+</pre>
+</aside>

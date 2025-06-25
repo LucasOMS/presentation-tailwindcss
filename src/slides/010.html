@@ -1,0 +1,59 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="2">
+    <h1>Les arguments contre les utilitaires</h1>
+    <h2>Lisibilité du HTML</h2>
+
+    <div class="grid-stack">
+        <div class="slide-grid-gap step-2:-translate-x-screen transition-medium flex flex-col transition-all">
+            <h3>Trop de classes</h3>
+            <pre><code class="language-html h-fit mb-4">&lt;div class=&quot;rounded-2xl bg-white p-4 shadow-md text-gray-950&quot;&gt;&lt;/div&gt;</code></pre>
+            <pre><code class="language-css h-fit">.card {
+    border-radius: 1rem;
+    background-color: white;
+    padding: 2rem;
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+}</code></pre>
+        </div>
+        <div class="slide-grid-gap step-1:hidden transition-medium starting:translate-x-screen grid translate-x-0 grid-cols-2 transition-all">
+            <div>
+                <h3 class="mb-4">Créer des composants avec son framwork</h3>
+                <pre><code class="language-html h-fit mb-4">&lt;card&gt;&lt;/card&gt;</code></pre>
+                <pre><code class="language-typescript h-fit">@Component({
+    selector: &#39;app-card&#39;,
+    host: {
+        class: &#39;block rounded-2xl bg-white p-4 shadow-md text-gray-950&#39;,
+    },
+    template: `&lt;ng-content&gt;&lt;/ng-content&gt;`,
+}
+export class CardComponent {}</code></pre>
+            </div>
+            <div>
+                <h3 class="mb-4">Créer un composants CSS à partir des utilitaires</h3>
+                <ul class="text-slide list-none">
+                    <li class="mb-4">
+                        <span class="mr-1 font-bold text-green-700">&check;</span>
+                        Possible avec TailwindCSS
+                    </li>
+                    <li>
+                        <span class="mr-1 font-bold text-red-800">&cross;</span>
+                        Impossible avec Bootstrap
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+    A partir de maintenant, tous les exemples que je prendrais utiliseront les classes de Tailwind, nous verrons leur syntaxe plus tard, ce n'est pas important pour le moment.
+
+        LLorsqu'on applique de nombreux utilitaires sur un élément, on peut forcément se poser la question de l'impact sur la lisibiltié du HTML.
+
+    <kbd>→</kbd>
+
+    Lorsqu'on utilise un framework, on peut déclarer des composants afin de les réutiliser, ce qui fait que les classes utilitaires ne sont présentes que dans un fichier puis sont abstraites par la suite. Si on s'y prend bien, on peut toujours surcharger ces classes plus tard si nécessaire. Ici dans mon exemple angular, il est possible de réappliquer des classes, l'ordre de déclaration primera alors. On verra plus tard que l'ont peut meme appliquer un utilitaire qui serait déclarer avant les classes que j'utilise ici.
+</pre
+    >
+</aside>

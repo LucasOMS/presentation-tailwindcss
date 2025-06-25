@@ -1,0 +1,66 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="2">
+    <h1>Les arguments contre les utilitaires</h1>
+    <h2>Taille du CSS</h2>
+
+    <div class="starting:-translate-x-screen transition-medium flex transition-transform *:flex-1">
+        <div class="pr-4">
+            <h3 class="mb-4">Les autres frameworks</h3>
+            <ul class="text-slide *:not-last:mb-4">
+                <li>Définit un reset CSS</li>
+                <li>Génère tous les utilitaires existants</li>
+                <li>
+                    Certains ou via outil externe :
+                    <ul class="mt-4 *:not-last:mb-4">
+                        <li>Scan le projet</li>
+                        <li>Retire les classes inutilisées</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="transition-medium before-step-2:translate-y-screen border-l-2 border-l-cyan-950 pl-4 transition-transform">
+            <!-- Div required for animating entering from right animation after divider is in place -->
+            <div class="delay-quick before-step-2:translate-x-screen transition-medium transition-transform">
+                <h3 class="mb-4">Tailwind</h3>
+                <ul class="text-slide *:not-last:mb-4">
+                    <li>Définit un reset CSS</li>
+                    <li>Scan le projet</li>
+                    <li>Génère tous les utilitaires valides trouvés</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Puisque le framweork CSS a pour but de nous fournir de nombreux utilitaires, il est évident qu'il génère un CSS plus lourd. Pour bootstrap 4 par exemple, la version minifié est de <code>26kB</code>. Si on utilise beaucoup de ces utilitaires, ca deviendra rentable, mais pas si l'on utilise seulement quelques utilitaires.
+
+Pour donner un ordre d'idée, Bootstrap 4 génère environ 1600 classes différentes, semblable pour bootstrap 5. Certaines de ces classes sont utilisées en combinaisons d'autre, donc on n'a pas une ligne par classe.
+
+
+
+Il est possible d'utiliser des outils de purge qui retirent tout le code CSS inutilisé par le projet, mais ces outils sont souvent couteux à mettre en place et à maintenir.
+
+Par ce que les navigateurs ne font pas tous la même chose, chaque framework fourni un "reset CSS" qui a pour objectif d'enlever au maximum les styles ajoutés par les navigateurs, afin de partir sur la base la plus commune possible.
+
+Pour donner une idée de ce que ca représente, le reset CSS de tailwind, une fois minifié, prend un peu moins de <code>3kB</code>. Pour bootstrap c'est plus difficile à estimer car ce n'est pas dans un endroit précis
+
+<kbd>→</kbd>
+
+Tailwind fonctionne différement, puisqu'il scan le projet à la recherche d'utilitaire qui serait valide et génère ensuite le CSS associé. Pour le moment, il n'a pas de fonction d'optimisation, c'est à dire que si une média query est utilisé plusieurs fois, elle sera réécrite plusieurs fois. Il utilise beaucoup d'imbrication pour générer le CSS, certaines imbrications pourraient être écrites en une seule fois.
+
+On peut espérer que cela soit fait dans une future version. Le fait de générer à la volée ce dont on a besoin permet de fournir une infinité d'utilitaires tant qu'ils suivent une syntaxe définie.
+
+<h1>Pas si pire</h1>
+
+Il faut garder en tête que le CSS à la main prend quand meme de la place. Ainsi, plus on réutilise les classes utilitaires, plus on rentabilisera leur utilisation. Puisque tailwind propose un nombre infini de possiblité, il est vrai qu'il pourrait tendre à être plus gourmand in fine que d'autres frameworks.
+
+Il me semble aussi bon de rappeler que du CSS mal écrit, mal refactoré peut facilement être assez gros, ayant le meme effet que des classes utilitaires trop précises et donc peu utilisées..
+
+Il faut souligner que l'utilisation de classe utilitaire casse les fonctionnalités de lazy-loading de code qui embarque leur CSS. En effet, les utilitaires seront toujours tous fourni au départ, il sera complexe de partitionner les fichiers par module ou composant sans créer de la duplication et entrainant une complexité d'outillage et de maintenance.
+
+Sur ce sujet, on peut aussi s'interroger de la pertinence de la taille des fichiers dans un contexte où les navigateurs font de la mise en cache et nos connexion étant très bonne. Pour du B2B, c'est souvent peu pertinent.
+
+Biensur si votre site doit être disponible sur mobile, la taille redvient importante, il faudra réfléchir à ce qui est acceptable ou non, et bien utiliser les outils de minification.
+</pre>
+</aside>

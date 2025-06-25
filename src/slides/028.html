@@ -1,0 +1,37 @@
+<section class="slide-grid-gap grid grid-rows-[auto_auto_1fr]" data-steps="4">
+    <h1>La sémantique de Tailwind</h1>
+    <h2>Quelques exceptions</h2>
+    <div class="slide-grid-gap grid-rows- grid auto-rows-max grid-cols-1 2xl:auto-rows-auto 2xl:grid-cols-2">
+        <div class="before-step-2:opacity-0 transition-medium flex flex-col gap-2 2xl:items-center 2xl:justify-center">
+            <h3>Propriété implicite</h3>
+            <div class="text-slide font-mono 2xl:text-center">display, position</div>
+        </div>
+        <div class="before-step-3:opacity-0 transition-medium flex flex-col gap-2 2xl:items-center 2xl:justify-center">
+            <h3>Espacement</h3>
+            <div class="text-slide font-mono 2xl:text-center">space-x, space-y</div>
+        </div>
+        <div class="before-step-4:opacity-0 transition-medium flex flex-col gap-2 self-baseline 2xl:col-span-full 2xl:items-center 2xl:justify-center">
+            <h3>Raccourcis x et y</h3>
+            <div class="text-slide font-mono 2xl:text-center">padding, margin, gap, inset, border-radius</div>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Il existe quelques exceptions à cette syntaxe.
+Certains utilitaires omettent le nom de la propriété qu'ils modifient.
+
+<kbd>→</kbd>
+
+C'est le cas de display et position, pour lesquels on utilisera simplement <code>flex</code> ou <code>absolute</code> sans préfixe.
+
+<kbd>→</kbd>
+
+J'aborde également l'utilitaire <code>space-x</code> et <code>space-y</code>, qui permet de définir un espacement entre les éléments enfants via la propriété margin. Il existe également un utilitaire <code>space-x-reverse</code> qui est nécessaire lorsque les enfants sont affichés en ordre inversé
+
+<kbd>→</kbd>
+
+Les utilitaires qui utilisent des positions ont souvent un raccourci avec x et y, qui permettent de spécifier haut et bas ou gauche et droite en une seule fois.
+    </pre>
+</aside>

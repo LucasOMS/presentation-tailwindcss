@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // Le code cible sera compatible avec ES6 ou plus
+    "module": "ESNext", // Utilise les modules ES6
+    "moduleResolution": "node", // Résolution des modules comme dans Node.js (utile si tu utilises des packages)
+    "esModuleInterop": true, // Permet l'importation de modules CommonJS de manière compatible avec ES6
+    "skipLibCheck": true, // Ignorer les vérifications de types dans les fichiers de définitions de librairies
+    "outDir": "./dist", // Sortie du code compilé dans le dossier "dist"
+    "strict": true, // Active les vérifications strictes
+    "declaration": false, // Génère des fichiers de déclaration .d.ts
+    "sourceMap": true // Génère des fichiers de carte source pour le débogage
+  },
+  "include": ["src/**/*.{ts, tsx}"]
+}
