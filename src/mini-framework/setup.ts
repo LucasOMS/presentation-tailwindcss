@@ -4,7 +4,8 @@ import { slideEventsFromKey } from './slide-events-from-key.js';
 import { openNoteViewer } from './note-viewer/viewer-notes.js';
 import { getAnimationIsEnabledFromUrl, getCodeSizeFromUrl, getCurrentSlideStepCount, getDarkModeFromUrl, getSlideAndStepFromUrl, getTailwindVersionFromUrl, setAnimationInUrl, setCodeSizeInUrl, setDarkModeInUrl, setSlideAndStepInUrl, setTailwindVersionInUrl } from './slides/utils.js';
 
-const TOTAL_SLIDE = 100;
+const TOTAL_SLIDE = 57;
+const DEFAULT_CODE_SIZE = 16; // Default code size in pixels
 
 function displayDarkmode(enabled: boolean) {
     if (enabled) {
@@ -83,7 +84,7 @@ async function setup() {
         if (currentSlideStepCount > currentPosition.step) {
             setSlideAndStepInUrl({ step: currentPosition.step + 1 });
         } else {
-            const nextSlide = currentPosition.slide + 1 > TOTAL_SLIDE ? 1 : currentPosition.slide + 1;
+            const nextSlide = currentPosition.slide + 1 > TOTAL_SLIDE ? TOTAL_SLIDE : currentPosition.slide + 1;
             setSlideAndStepInUrl({ slide: nextSlide, step: 1 });
         }
     });
@@ -129,19 +130,15 @@ async function setup() {
 
     // Code size events
     window.addEventListener(SlideEventType.CODE_SIZE_REDUCTION, async () => {
-        const currentSize = getCodeSizeFromUrl();
-        if (currentSize) {
-            setCodeSizeInUrl(currentSize - 1);
-        }
+        const currentSize = getCodeSizeFromUrl() ?? DEFAULT_CODE_SIZE;
+        setCodeSizeInUrl(currentSize - 1);
     });
     window.addEventListener(SlideEventType.CODE_SIZE_INCREASE, async () => {
-        const currentSize = getCodeSizeFromUrl();
-        if (currentSize) {
-            setCodeSizeInUrl(currentSize + 1);
-        }
+        const currentSize = getCodeSizeFromUrl() ?? DEFAULT_CODE_SIZE;
+        setCodeSizeInUrl(currentSize + 1);
     });
     window.addEventListener(SlideEventType.CODE_SIZE_RESET, async () => {
-        setCodeSizeInUrl(16);
+        setCodeSizeInUrl(DEFAULT_CODE_SIZE);
     });
 
     let isAnimationEnabled = getAnimationIsEnabledFromUrl();

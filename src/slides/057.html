@@ -1,0 +1,62 @@
+<section class="slide-grid-gap grid grid-rows-[auto_1fr]" data-steps="7">
+    <h1>Container queries</h1>
+
+    <div class="slide-grid-gap grid auto-rows-max grid-cols-1 2xl:grid-cols-2">
+        <div class="before-step-2:-translate-x-screen transition-medium flex flex-col gap-2">
+            <h3>Créer un container</h3>
+            <pre><code class="language-html h-auto">&lt;div class=&quot;@container&quot;&gt;...&lt;/div&gt;</code></pre>
+        </div>
+        <div class="before-step-3:-translate-x-screen 2xl:before-step-3:translate-x-screen transition-medium flex flex-col gap-2">
+            <h3>Créer un container nommé</h3>
+            <pre><code class="language-html h-auto">&lt;div class=&quot;@container/card&quot;&gt;...&lt;/div&gt;</code></pre>
+        </div>
+        <div class="before-step-4:-translate-x-screen transition-medium flex flex-col gap-2">
+            <h3>Cibler en fonction de la taille</h3>
+            <pre><code class="language-html h-auto">&lt;div class=&quot;p-2 @sm:text-left @sm/card:p-1&quot;&gt;...&lt;/div&gt;</code></pre>
+        </div>
+        <div class="before-step-5:-translate-x-screen 2xl:before-step-5:translate-x-screen transition-medium flex flex-col gap-2">
+            <h3>Cibler une taille maximale</h3>
+            <pre><code class="language-html h-auto">&lt;div class=&quot;@max-lg:text-left&quot;&gt;...&lt;/div&gt;</code></pre>
+        </div>
+        <div class="before-step-6:-translate-x-screen transition-medium flex flex-col gap-2">
+            <h3>Cibler une plage de taille</h3>
+            <pre><code class="language-html h-auto">&lt;div class=&quot;@sm:@max-lg:text-left&quot;&gt;...&lt;/div&gt;</code></pre>
+        </div>
+        <div class="before-step-7:-translate-x-screen 2xl:before-step-7:translate-x-screen transition-medium flex flex-col gap-2">
+            <h3>Cibler une valeur arbitraire</h3>
+            <pre><code class="language-html h-auto">&lt;div class=&quot;@min-[300px]:text-left @max-[600px]:p-1&quot;&gt;...&lt;/div&gt;</code></pre>
+        </div>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Tailwind permet de créer des utilitaires pour les containers queries. En v3 c'était un plugin, dans la version 4, c'est fourni de base.
+
+Leur utilisation va ressembler à celle des groupes pour les hover, focus, etc.
+
+<kbd>→</kbd>
+
+On va pouvoir créer un container avec la classe <code>@container</code>.
+
+<kbd>→</kbd>
+
+<code>@container/nom</code> nous permet de créer un container nommé.
+
+<kbd>→</kbd>
+Pour cibler une taille de container au lieu d'une taille d'écran, on va ajouter un <code>@</code> devant la taille. Si on cible un container nommé, on ajoute son nom après la taille avec un slash.
+Par défaut les tailles sont les mêmes que celles pour les écrans, mais ce ne sont pas les mémes variables qui sont impliquées, vous pouvez donc les personnaliser indépendamment.
+
+<kbd>→</kbd>
+Comme pour la taille d'écran, il est possible de cibler une taille maximale en préfixant la taille par <code>@max-</code>.
+
+<kbd>→</kbd>
+Il est possible de cibler une plage de taille en combinant les deux, avec <code>@&lt;taille-min&gt;</code> et <code>@max-&lt;taille-max&gt;</code>.
+
+<kbd>→</kbd>
+Si on veut cibler une taille en étant au pixel prêt, il est possible d'utiliser une valeur arbitraire en utilisant les préfixes <code>@min</code> et <code>@max</code> suivis de la valeur exacte entre crochets.
+Il faut se rappeler que ces valeurs seront utilisés dans des containers queries, il est donc impossible d'utiliser des variables CSS ici.
+
+Les containers queries sont en cours d'implémentations dans les navigateurs, il y a des brouillons actuellement pour permettre de cibler le style du container. Pour le moment il n'y a aucun support dans tailwind, je n'ai vu aucune communication sur le sujet, je ne sais pas si cela arrivera comme un plugin ou si ce sera pour une future version. De toute facon, c'est probablement trop jeune pour pouvoir être utilisé en production.
+    </pre>
+</aside>
