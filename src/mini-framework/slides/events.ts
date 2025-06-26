@@ -12,7 +12,9 @@ export enum SlideEventType {
 
     CODE_SIZE_REDUCTION = 'code-size-reduction',
     CODE_SIZE_INCREASE = 'code-size-increase',
-    CODE_SIZE_RESET = 'code-size-reset'
+    CODE_SIZE_RESET = 'code-size-reset',
+
+    TOGGLE_ANIMATION = 'toggle-animations'
 }
 
 export function askPreviousSlide() {
@@ -70,6 +72,11 @@ export function askCodeSizeReduction() {
 export function askCodeSizeIncrease() {
     window.dispatchEvent(new CustomEvent<DisplayStepEventDetail>(SlideEventType.CODE_SIZE_INCREASE));
 }
+
 export function askCodeSizeReset() {
     window.dispatchEvent(new CustomEvent<DisplayStepEventDetail>(SlideEventType.CODE_SIZE_RESET));
+}
+
+export function toggleAnimations() {
+    window.dispatchEvent(new CustomEvent(SlideEventType.TOGGLE_ANIMATION));
 }

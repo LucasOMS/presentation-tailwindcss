@@ -2,7 +2,7 @@ import { askSlide, SlideEventType } from './slides/events.js';
 import { displaySlide } from './slides/display.js';
 import { slideEventsFromKey } from './slide-events-from-key.js';
 import { openNoteViewer } from './note-viewer/viewer-notes.js';
-import { getCodeSizeFromUrl, getCurrentSlideStepCount, getDarkModeFromUrl, getSlideAndStepFromUrl, getTailwindVersionFromUrl, setCodeSizeInUrl, setDarkModeInUrl, setSlideAndStepInUrl, setTailwindVersionInUrl } from './slides/utils.js';
+import { getAnimationIsEnabledFromUrl, getCodeSizeFromUrl, getCurrentSlideStepCount, getDarkModeFromUrl, getSlideAndStepFromUrl, getTailwindVersionFromUrl, setAnimationInUrl, setCodeSizeInUrl, setDarkModeInUrl, setSlideAndStepInUrl, setTailwindVersionInUrl } from './slides/utils.js';
 
 const TOTAL_SLIDE = 100;
 
@@ -25,6 +25,14 @@ function defineCodeSize(size: number | undefined) {
         document.documentElement.style.setProperty('--code-size', `${size}px`);
     } else {
         document.documentElement.style.removeProperty('--code-size');
+    }
+}
+
+function setAnimationState(enabled: boolean) {
+    if (enabled) {
+        document.body.classList.remove('no-anim');
+    } else {
+        document.body.classList.add('no-anim');
     }
 }
 
@@ -60,10 +68,12 @@ async function setup() {
         const tailwindVersion = getTailwindVersionFromUrl();
         const darkMode = getDarkModeFromUrl();
         const codeSize = getCodeSizeFromUrl();
+        const animationIsEnabled = getAnimationIsEnabledFromUrl();
         displaySlide(position.slide, position.step);
         displayTailwindVersion(tailwindVersion);
         displayDarkmode(darkMode);
         defineCodeSize(codeSize);
+        setAnimationState(animationIsEnabled);
     });
 
     // Next events
@@ -132,6 +142,13 @@ async function setup() {
     });
     window.addEventListener(SlideEventType.CODE_SIZE_RESET, async () => {
         setCodeSizeInUrl(16);
+    });
+
+    let isAnimationEnabled = getAnimationIsEnabledFromUrl();
+    setAnimationState(isAnimationEnabled);
+    window.addEventListener(SlideEventType.TOGGLE_ANIMATION, async () => {
+        isAnimationEnabled = !isAnimationEnabled;
+        setAnimationInUrl(isAnimationEnabled);
     });
 }
 

@@ -66,6 +66,14 @@ export function getCodeSizeFromUrl(): number | undefined {
     return undefined;
 }
 
+export function getAnimationIsEnabledFromUrl(): boolean {
+    const fromUrl = getParamFromHash('animation');
+    if (fromUrl === 'false') {
+        return false;
+    }
+    return true;
+}
+
 export function setSlideAndStepInUrl(position: { slide?: number; step?: number }) {
     const currentPosition = getSlideAndStepFromUrl();
     setParamInHash('slide', position.slide ?? currentPosition.slide);
@@ -91,6 +99,14 @@ export function setDarkModeInUrl(darkMode: boolean) {
 
 export function setCodeSizeInUrl(size: number) {
     setParamInHash('code-size', size);
+}
+
+export function setAnimationInUrl(enabled: boolean) {
+    if (enabled) {
+        removeParamFromHash('animation');
+    } else {
+        setParamInHash('animation', 'false');
+    }
 }
 
 declare var hljs: any;

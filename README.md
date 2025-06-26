@@ -10,6 +10,7 @@ La présentation s'ouvrira dans votre navigateur à l'adresse `http://localhost:
 - `←` pour passer à l'étape précédente
 - `Ctrl` + `→` pour passer à la diapositive suivante
 - `Ctrl` + `←` pour passer à la diapositive précédente (dernière étape)
+- `a` pour activer/désactiver les animations (permet de naviguer plus facilement)
 
 ## Divers
 

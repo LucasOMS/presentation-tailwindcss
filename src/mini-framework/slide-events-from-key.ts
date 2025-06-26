@@ -1,4 +1,4 @@
-import { askCodeSizeIncrease, askCodeSizeReduction, askCodeSizeReset, askNextSlide, askNextStep, askPreviousSlide, askPreviousStep, changeTailwindVersion, toggleDarkMode } from './slides/events.js';
+import { askCodeSizeIncrease, askCodeSizeReduction, askCodeSizeReset, askNextSlide, askNextStep, askPreviousSlide, askPreviousStep, changeTailwindVersion, toggleAnimations, toggleDarkMode } from './slides/events.js';
 
 export function slideEventsFromKey(event: KeyboardEvent) {
     if (event.altKey) {
@@ -37,6 +37,9 @@ export function slideEventsFromKey(event: KeyboardEvent) {
             break;
         case 'KeyR':
             askCodeSizeReset();
+            break;
+        case 'KeyQ':
+            toggleAnimations();
             break;
         default:
             prevent = false;
