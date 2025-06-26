@@ -41,6 +41,12 @@
         h4 {
             @apply text-lg font-bold text-cyan-600 md:text-xl lg:text-4xl dark:text-cyan-200;
         }
+
+
+        h1, h2, h3, h4 {
+            /* Transition from dark mode */
+            @apply transition-colors duration-500;
+        }
     }
 
     /* Allow us to manage size from pre */
@@ -51,6 +57,11 @@
     pre > code {
         @apply size-full rounded-2xl;
         font-size: var(--code-size, 16px);
+
+        &, * {
+            /* Only usefull when changed to dark mode */
+            @apply transition-colors duration-500;
+        }
     }
 
     kbd {
@@ -83,14 +94,19 @@
 }
 
 @utility bg-slide {
-    @apply bg-gradient-to-tr from-cyan-300 to-cyan-200 dark:from-slate-950 dark:to-slate-900
+    @apply bg-gradient-to-tr from-cyan-300 to-cyan-200 dark:from-slate-950 dark:to-slate-900 transition-colors duration-500;
 }
 @utility bg-section-slide {
-    @apply bg-gradient-to-tr from-cyan-950 to-cyan-800 dark:from-slate-950 dark:to-slate-900
+    @apply bg-gradient-to-tr from-cyan-950 to-cyan-800 dark:from-slate-950 dark:to-slate-900 transition-colors duration-500;
 }
 
 @utility p-slide {
-    @apply p-2 sm:p-4 lg:p-6 xl:p-8;
+    /* Create a variable to use it several times */
+    @apply pt-(--padding-slide) px-(--padding-slide) [--padding-slide:--spacing(2)] sm:[--padding-slide:--spacing(4)] lg:[--padding-slide:--spacing(6)] xl:[--padding-slide:--spacing(8)];
+
+    /* Simulate padding at bottom WITHOUT creating scroll when this padding overflows */
+    /* The slide will create a scroll only if the content overflows the height of the slide */
+    height: calc(100% - var(--padding-slide));
 }
 
 /* Remove padding of the slide */
