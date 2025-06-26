@@ -86,7 +86,7 @@ gulp.task('build', gulp.series('clean', gulp.parallel('typescript', 'html', 'ass
 gulp.task(
     'presentation',
     gulp.series('clean', 'build', () => {
-        connect.server({ root, port, host, livereload: true });
+        connect.server({ root, port, host, livereload: { port: 35729 } });
 
         // Reload typeScript files
         gulp.watch(['src/**/*.ts'], gulp.series('typescript', 'reload'));
@@ -116,7 +116,7 @@ gulp.task(
 );
 
 gulp.task('tp', () => {
-    connect.server({ root: 'tp', port: port + 1, host, livereload: true });
+    connect.server({ root: 'tp', port: port + 1, host, livereload: { port: 35730 } });
 
     gulp.watch(['tp/answers/**.html'], gulp.task('tp-reload'));
 });
