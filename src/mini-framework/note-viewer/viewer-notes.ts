@@ -1,6 +1,6 @@
 import { noteViewerTemplate } from './template.js';
 import { slideEventsFromKey } from '../slide-events-from-key.js';
-import { getDarkModeFromUrl, getSlideAndStepFromUrl, getTailwindVersionFromUrl } from '../slides/utils.js';
+import { getCodeSizeFromUrl, getDarkModeFromUrl, getSlideAndStepFromUrl, getTailwindVersionFromUrl } from '../slides/utils.js';
 
 let noteWindow: WindowProxy | null = null;
 let currentNote: string | null = null;
@@ -89,10 +89,14 @@ async function displayPreviewSlide(slide: number, step: number): Promise<void> {
         const iframe = getPreviewIframe();
         const tailwindVersion = getTailwindVersionFromUrl();
         const darkMode = getDarkModeFromUrl();
+        const codeSize = getCodeSizeFromUrl();
 
         let src = `http://localhost:8000/#slide=${slide}&step=${step}&version=${tailwindVersion}`;
         if (darkMode) {
             src += '&dark=true';
+        }
+        if (codeSize) {
+            src += `&code-size=${codeSize}`;
         }
         iframe.src = src;
 

@@ -1,4 +1,4 @@
-import { askNextSlide, askNextStep, askPreviousSlide, askPreviousStep, changeTailwindVersion, toggleDarkMode } from './slides/events.js';
+import { askCodeSizeIncrease, askCodeSizeReduction, askCodeSizeReset, askNextSlide, askNextStep, askPreviousSlide, askPreviousStep, changeTailwindVersion, toggleDarkMode } from './slides/events.js';
 
 export function slideEventsFromKey(event: KeyboardEvent) {
     if (event.altKey) {
@@ -28,6 +28,15 @@ export function slideEventsFromKey(event: KeyboardEvent) {
             break;
         case 'KeyV':
             changeTailwindVersion();
+            break;
+        case 'NumpadSubtract':
+            askCodeSizeReduction();
+            break;
+        case 'NumpadAdd':
+            askCodeSizeIncrease();
+            break;
+        case 'KeyR':
+            askCodeSizeReset();
             break;
         default:
             prevent = false;

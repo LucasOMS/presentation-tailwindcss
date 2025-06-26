@@ -1,0 +1,166 @@
+/* Based on cybertopia-cherry theme */
+.dark {
+    pre code.hljs {
+        display: block;
+        overflow-x: auto;
+        padding: 1em;
+    }
+
+    code.hljs {
+        padding: 3px 5px;
+    }
+
+    .hljs {
+        color: rgb(203, 214, 226);
+        background-image: linear-gradient(to top right, hsl(229deg 85% 15% / 40%), hsl(229deg 85% 20% / 40%)) !important;
+    }
+
+    .hljs ::selection, .hljs::selection {
+        background-color: rgb(64, 92, 121);
+        color: rgb(203, 214, 226);
+    }
+
+    .hljs-comment {
+        color: rgb(98, 126, 153);
+    }
+
+    .hljs-tag {
+        color: rgb(170, 188, 206);
+    }
+
+    .hljs-operator, .hljs-punctuation, .hljs-subst {
+        color: rgb(203, 214, 226);
+    }
+
+    .hljs-operator {
+        opacity: 0.7;
+    }
+
+    .hljs-bullet, .hljs-deletion, .hljs-name, .hljs-selector-tag, .hljs-template-variable, .hljs-variable {
+        color: rgb(191, 139, 86);
+    }
+
+    .hljs-attr, .hljs-link, .hljs-literal, .hljs-number, .hljs-symbol, .hljs-variable.constant_ {
+        color: rgb(191, 191, 86);
+    }
+
+    .hljs-class .hljs-title, .hljs-title, .hljs-title.class_ {
+        color: rgb(139, 191, 86);
+    }
+
+    .hljs-strong {
+        font-weight: 700;
+        color: rgb(139, 191, 86);
+    }
+
+    .hljs-addition, .hljs-code, .hljs-string, .hljs-title.class_.inherited__ {
+        color: rgb(86, 191, 139);
+    }
+
+    .hljs-built_in, .hljs-doctag, .hljs-keyword.hljs-atrule, .hljs-quote, .hljs-regexp {
+        color: rgb(86, 139, 191);
+    }
+
+    .hljs-attribute, .hljs-function .hljs-title, .hljs-section, .hljs-title.function_, .ruby .hljs-property {
+        color: rgb(139, 86, 191);
+    }
+
+    .diff .hljs-meta, .hljs-keyword, .hljs-template-tag, .hljs-type {
+        color: rgb(191, 86, 139);
+    }
+
+    .hljs-emphasis {
+        color: rgb(191, 86, 139);
+        font-style: italic;
+    }
+
+    .hljs-meta, .hljs-meta .hljs-keyword, .hljs-meta .hljs-string {
+        color: rgb(191, 86, 86);
+    }
+
+    .hljs-meta .hljs-keyword, .hljs-meta-keyword {
+        font-weight: 700;
+    }
+
+    pre code.hljs {
+        display: block;
+        overflow-x: auto;
+        padding: 1em;
+    }
+
+    code.hljs {
+        padding: 3px 5px;
+    }
+
+    .hljs {
+        color: rgb(203, 214, 226);
+        background: rgb(11, 28, 44);
+    }
+
+    .hljs ::selection, .hljs::selection {
+        background-color: rgb(64, 92, 121);
+        color: rgb(203, 214, 226);
+    }
+
+    .hljs-comment {
+        color: rgb(98, 126, 153);
+    }
+
+    .hljs-tag {
+        color: rgb(170, 188, 206);
+    }
+
+    .hljs-operator, .hljs-punctuation, .hljs-subst {
+        color: rgb(203, 214, 226);
+    }
+
+    .hljs-operator {
+        opacity: 0.7;
+    }
+
+    .hljs-bullet, .hljs-deletion, .hljs-name, .hljs-selector-tag, .hljs-template-variable, .hljs-variable {
+        color: rgb(191, 139, 86);
+    }
+
+    .hljs-attr, .hljs-link, .hljs-literal, .hljs-number, .hljs-symbol, .hljs-variable.constant_ {
+        color: rgb(191, 191, 86);
+    }
+
+    .hljs-class .hljs-title, .hljs-title, .hljs-title.class_ {
+        color: rgb(139, 191, 86);
+    }
+
+    .hljs-strong {
+        font-weight: 700;
+        color: rgb(139, 191, 86);
+    }
+
+    .hljs-addition, .hljs-code, .hljs-string, .hljs-title.class_.inherited__ {
+        color: rgb(86, 191, 139);
+    }
+
+    .hljs-built_in, .hljs-doctag, .hljs-keyword.hljs-atrule, .hljs-quote, .hljs-regexp {
+        color: rgb(86, 139, 191);
+    }
+
+    .hljs-attribute, .hljs-function .hljs-title, .hljs-section, .hljs-title.function_, .ruby .hljs-property {
+        color: rgb(139, 86, 191);
+    }
+
+    .diff .hljs-meta, .hljs-keyword, .hljs-template-tag, .hljs-type {
+        color: rgb(191, 86, 139);
+    }
+
+    .hljs-emphasis {
+        color: rgb(191, 86, 139);
+        font-style: italic;
+    }
+
+    .hljs-meta, .hljs-meta .hljs-keyword, .hljs-meta .hljs-string {
+        color: rgb(191, 86, 86);
+    }
+
+    .hljs-meta .hljs-keyword, .hljs-meta-keyword {
+        font-weight: 700;
+    }
+}

@@ -2,7 +2,7 @@ import { askSlide, SlideEventType } from './slides/events.js';
 import { displaySlide } from './slides/display.js';
 import { slideEventsFromKey } from './slide-events-from-key.js';
 import { openNoteViewer } from './note-viewer/viewer-notes.js';
-import { getCurrentSlideStepCount, getDarkModeFromUrl, getSlideAndStepFromUrl, getTailwindVersionFromUrl, setDarkModeInUrl, setSlideAndStepInUrl, setTailwindVersionInUrl } from './slides/utils.js';
+import { getCodeSizeFromUrl, getCurrentSlideStepCount, getDarkModeFromUrl, getSlideAndStepFromUrl, getTailwindVersionFromUrl, setCodeSizeInUrl, setDarkModeInUrl, setSlideAndStepInUrl, setTailwindVersionInUrl } from './slides/utils.js';
 
 const TOTAL_SLIDE = 100;
 
@@ -20,6 +20,14 @@ function displayTailwindVersion(version: 3 | 4) {
     document.body.classList.add('tailwind-v' + version);
 }
 
+function defineCodeSize(size: number | undefined) {
+    if (size) {
+        document.documentElement.style.setProperty('--code-size', `${size}px`);
+    } else {
+        document.documentElement.style.removeProperty('--code-size');
+    }
+}
+
 function getCurrentPosition() {
     const fromUrl = getSlideAndStepFromUrl();
     if (fromUrl.step !== -1) {
@@ -32,7 +40,7 @@ function getCurrentPosition() {
 }
 
 async function setup() {
-    console.log('Framework setup, use arrows to navigate slides, d to open notes viewer');
+    console.log('Framework setup, use arrows to navigate slides, n to open notes viewer');
 
     window.addEventListener('keydown', (event) => {
         slideEventsFromKey(event);
@@ -44,15 +52,18 @@ async function setup() {
 
     await displaySlide(getCurrentPosition().slide, getCurrentPosition().step ?? 1);
     displayTailwindVersion(4);
+    defineCodeSize(getCodeSizeFromUrl());
 
     // DOM Events will only trigger when the url changes
     window.addEventListener('popstate', () => {
         const position = getSlideAndStepFromUrl();
         const tailwindVersion = getTailwindVersionFromUrl();
         const darkMode = getDarkModeFromUrl();
+        const codeSize = getCodeSizeFromUrl();
         displaySlide(position.slide, position.step);
         displayTailwindVersion(tailwindVersion);
         displayDarkmode(darkMode);
+        defineCodeSize(codeSize);
     });
 
     // Next events
@@ -93,7 +104,8 @@ async function setup() {
         setSlideAndStepInUrl({ slide, step });
     });
 
-    let darkMode = false;
+    let darkMode = getDarkModeFromUrl();
+    displayDarkmode(darkMode);
     window.addEventListener(SlideEventType.TOGGLE_DARK_MODE, async () => {
         darkMode = !darkMode;
         setDarkModeInUrl(darkMode);
@@ -103,6 +115,23 @@ async function setup() {
         const currentVersion = getTailwindVersionFromUrl();
         const newVersion = currentVersion === 3 ? 4 : 3;
         setTailwindVersionInUrl(newVersion);
+    });
+
+    // Code size events
+    window.addEventListener(SlideEventType.CODE_SIZE_REDUCTION, async () => {
+        const currentSize = getCodeSizeFromUrl();
+        if (currentSize) {
+            setCodeSizeInUrl(currentSize - 1);
+        }
+    });
+    window.addEventListener(SlideEventType.CODE_SIZE_INCREASE, async () => {
+        const currentSize = getCodeSizeFromUrl();
+        if (currentSize) {
+            setCodeSizeInUrl(currentSize + 1);
+        }
+    });
+    window.addEventListener(SlideEventType.CODE_SIZE_RESET, async () => {
+        setCodeSizeInUrl(16);
     });
 }
 

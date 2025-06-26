@@ -50,6 +50,7 @@
 
     pre > code {
         @apply size-full rounded-2xl;
+        font-size: var(--code-size, 16px);
     }
 
     kbd {
@@ -82,7 +83,7 @@
 }
 
 @utility bg-slide {
-    @apply bg-gradient-to-tr from-cyan-200 to-cyan-100 dark:from-slate-950 dark:to-slate-900
+    @apply bg-gradient-to-tr from-cyan-300 to-cyan-200 dark:from-slate-950 dark:to-slate-900
 }
 @utility bg-section-slide {
     @apply bg-gradient-to-tr from-cyan-950 to-cyan-800 dark:from-slate-950 dark:to-slate-900
@@ -219,6 +220,7 @@
     > span:not(.code-line-1) {
         @apply opacity-30
     }
+
     > span.code-line-1 {
         @apply opacity-100!
     }
@@ -228,6 +230,7 @@
     > span:not(.code-line-2) {
         @apply opacity-30
     }
+
     > span.code-line-2 {
         @apply opacity-100!
     }
@@ -237,6 +240,7 @@
     > span:not(.code-line-3) {
         @apply opacity-30
     }
+
     > span.code-line-3 {
         @apply opacity-100!
     }
@@ -246,6 +250,7 @@
     > span:not(.code-line-4) {
         @apply opacity-30
     }
+
     > span.code-line-4 {
         @apply opacity-100!
     }
@@ -255,6 +260,7 @@
     > span:not(.code-line-5) {
         @apply opacity-30
     }
+
     > span.code-line-5 {
         @apply opacity-100!
     }
@@ -264,6 +270,7 @@
     > span:not(.code-line-6) {
         @apply opacity-30
     }
+
     > span.code-line-6 {
         @apply opacity-100!
     }
@@ -273,6 +280,7 @@
     > span:not(.code-line-7) {
         @apply opacity-30
     }
+
     > span.code-line-7 {
         @apply opacity-100!
     }
@@ -282,6 +290,7 @@
     > span:not(.code-line-8) {
         @apply opacity-30
     }
+
     > span.code-line-8 {
         @apply opacity-100!
     }
@@ -291,6 +300,7 @@
     > span:not(.code-line-9) {
         @apply opacity-30
     }
+
     > span.code-line-9 {
         @apply opacity-100!
     }
@@ -300,6 +310,7 @@
     > span:not(.code-line-10) {
         @apply opacity-30
     }
+
     > span.code-line-10 {
         @apply opacity-100!
     }
@@ -309,6 +320,7 @@
     > span:not(.code-line-11) {
         @apply opacity-30
     }
+
     > span.code-line-11 {
         @apply opacity-100!
     }
@@ -318,6 +330,7 @@
     > span:not(.code-line-12) {
         @apply opacity-30
     }
+
     > span.code-line-12 {
         @apply opacity-100!
     }
@@ -327,6 +340,7 @@
     > span:not(.code-line-13) {
         @apply opacity-30
     }
+
     > span.code-line-13 {
         @apply opacity-100!
     }
@@ -336,6 +350,7 @@
     > span:not(.code-line-14) {
         @apply opacity-30
     }
+
     > span.code-line-14 {
         @apply opacity-100!
     }
@@ -345,6 +360,7 @@
     > span:not(.code-line-15) {
         @apply opacity-30
     }
+
     > span.code-line-15 {
         @apply opacity-100!
     }
@@ -354,6 +370,7 @@
     > span:not(.code-line-16) {
         @apply opacity-30
     }
+
     > span.code-line-16 {
         @apply opacity-100!
     }
@@ -363,6 +380,7 @@
     > span:not(.code-line-17) {
         @apply opacity-30
     }
+
     > span.code-line-17 {
         @apply opacity-100!
     }
@@ -372,6 +390,7 @@
     > span:not(.code-line-18) {
         @apply opacity-30
     }
+
     > span.code-line-18 {
         @apply opacity-100!
     }
@@ -381,6 +400,7 @@
     > span:not(.code-line-19) {
         @apply opacity-30
     }
+
     > span.code-line-19 {
         @apply opacity-100!
     }
@@ -390,6 +410,7 @@
     > span:not(.code-line-20) {
         @apply opacity-30
     }
+
     > span.code-line-20 {
         @apply opacity-100!
     }

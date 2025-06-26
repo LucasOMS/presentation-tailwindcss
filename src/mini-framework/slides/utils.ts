@@ -50,12 +50,20 @@ export function getTailwindVersionFromUrl(): 3 | 4 {
     } else if (version === '3') {
         return 3;
     }
-    return 3; // Default to version 3 if not specified
+    return 4; // Default to version 4 if not specified
 }
 
 export function getDarkModeFromUrl(): boolean {
     const darkMode = getParamFromHash('dark');
     return darkMode === 'true';
+}
+
+export function getCodeSizeFromUrl(): number | undefined {
+    const fromUrl = getParamFromHash('code-size');
+    if (fromUrl) {
+        return parseInt(fromUrl, 10);
+    }
+    return undefined;
 }
 
 export function setSlideAndStepInUrl(position: { slide?: number; step?: number }) {
@@ -79,6 +87,10 @@ export function setDarkModeInUrl(darkMode: boolean) {
     } else {
         removeParamFromHash('dark');
     }
+}
+
+export function setCodeSizeInUrl(size: number) {
+    setParamInHash('code-size', size);
 }
 
 declare var hljs: any;

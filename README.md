@@ -10,9 +10,18 @@ La présentation s'ouvrira dans votre navigateur à l'adresse `http://localhost:
 - `←` pour passer à l'étape précédente
 - `Ctrl` + `→` pour passer à la diapositive suivante
 - `Ctrl` + `←` pour passer à la diapositive précédente (dernière étape)
+
+## Divers
+
 - `n` pour ouvrir la vue présentateur avec les notes de la diapositive
 - `v` pour changer la version de Tailwind affichée (persiste entre les étapes/diapositives)
 - `d` pour alterner entre light mode et dark mode (persiste entre les étapes/diapositives)
+
+## Taille du code
+
+- `-` (pavé numérique) réduit la taille du code
+- `+` (pavé numérique) augmente la taille du code
+- `r` réinitiation la taille du code à sa valeur par défaut
 
 # Faire les exercices
 

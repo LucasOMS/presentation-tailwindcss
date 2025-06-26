@@ -8,7 +8,11 @@ export enum SlideEventType {
     CHANGE_TAILWIND_VERSION = 'change-tailwind-version',
 
     DISPLAY_SLIDE = 'display-slide',
-    DISPLAY_STEP = 'display-step'
+    DISPLAY_STEP = 'display-step',
+
+    CODE_SIZE_REDUCTION = 'code-size-reduction',
+    CODE_SIZE_INCREASE = 'code-size-increase',
+    CODE_SIZE_RESET = 'code-size-reset'
 }
 
 export function askPreviousSlide() {
@@ -57,4 +61,15 @@ export interface DisplayStepEventDetail {
 
 export function askStep(step: number) {
     window.dispatchEvent(new CustomEvent<DisplayStepEventDetail>(SlideEventType.DISPLAY_STEP, { detail: { step } }));
+}
+
+export function askCodeSizeReduction() {
+    window.dispatchEvent(new CustomEvent<DisplayStepEventDetail>(SlideEventType.CODE_SIZE_REDUCTION));
+}
+
+export function askCodeSizeIncrease() {
+    window.dispatchEvent(new CustomEvent<DisplayStepEventDetail>(SlideEventType.CODE_SIZE_INCREASE));
+}
+export function askCodeSizeReset() {
+    window.dispatchEvent(new CustomEvent<DisplayStepEventDetail>(SlideEventType.CODE_SIZE_RESET));
 }
