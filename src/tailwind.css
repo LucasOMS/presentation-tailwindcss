@@ -23,8 +23,12 @@
 }
 
 @layer components {
+    #slides:has(section:not(.homepage)) {
+        @apply bg-slide;
+    }
+
     section:not(.homepage) {
-        @apply p-slide size-full bg-slide;
+        @apply p-slide size-full;
 
         h1 {
             @apply text-3xl font-bold text-cyan-950 md:text-5xl lg:text-7xl dark:text-cyan-200;
