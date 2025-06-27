@@ -28,6 +28,7 @@
             <ul class="text-slide list-dash slide-grid-gap flex flex-col">
                 <li>Aucune dépendance</li>
                 <li>Capricieux</li>
+                <li>Liste statique</li>
             </ul>
         </div>
         <div class="before-step-5:translate-x-screen step-5:translate-x-0 transition-medium">
@@ -73,7 +74,7 @@ Vous avez ensuite un plugin ESLint, qui permet de faire la même chose, mais qui
 C'était ma solution jusqu'à la version 4. Malheureusement le mainteneur du repo est seul sur son outil et la version 4 change beaucoup de choses, il a indiqué qu'il allait réfléchir pour son support, mais que cela prendait du temps. C'est pour moi la solution qui était la plus complète, notamment pour l'écosystème Angular.
 
 <kbd>→</kbd>
-Chez JetBrains, vous avez un plugin, mais il est assez capricieux et ne fonctionne pas toujours. Son principal avantage est que l'on a besoin d'aucune configuration.
+Chez JetBrains, vous avez un plugin, mais il est assez capricieux et ne fonctionne pas toujours. Son principal avantage est qu'il est indépendant de notre projet. En revanche, il classe selon une liste prédéfinie, ce qui veut dire qu'un utilitaire qui n'est pas là de base ne sera pas ordonné. Il est possible de rajouter des configs, mais ca ajoute un coût.
 
 <kbd>→</kbd>
 Ensuite un peu d'autopromo rapide, j'ai créé un plugin ESLint qui permet d'ordonner les classes dans l'attribut HTML à partir de groupes et d'expression régulières. Il est donc totalement personnalisable, pour une utilisation avancée de tailwind, il sera sans doute très dur à configurer voire trop gourmand. En revanche il peut vous permettre de faire passer quelque classes en premier, certaines en dernier assez facilement. Il permet également d'interdire certaines classes via des regex, cela permet donc très facilement d'interdire les crochets par exemple, ou le <code>*:</code>
