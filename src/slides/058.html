@@ -1,0 +1,60 @@
+<section class="slide-grid-gap grid auto-rows-max" data-steps="3">
+    <h1>Starting styles</h1>
+
+    <div
+        class="before-step-2:translate-y-screen step-2:translate-0 -translate-x-screen transition-medium flex flex-col gap-2">
+        <h3>Utilitaire</h3>
+        <pre><code
+            class="language-html h-auto">&lt;div class=&quot;starting:opacity-0&quot;&gt;...&lt;/div&gt;</code></pre>
+        <pre><code class="language-css h-auto">div {
+    @starting-style {
+        opacity: 0;
+    }
+}</code></pre>
+    </div>
+    <div
+        class="before-step-3:-translate-x-screen 2xl:before-step-3:translate-x-screen transition-medium flex flex-col gap-2">
+        <h3>Transitions</h3>
+        <ul class="list-dash flex flex-col gap-2">
+            <li>
+                <span class="font-mono">transition-colors</span>, <span class="font-mono">transition-opacity</span>,
+                <span class="font-mono">transition-transform</span>, <span class="font-mono">transition-all</span>,
+                <span class="font-mono">transition-none</span>
+            </li>
+            <li>
+                <span class="font-mono">duration-300</span>, valeur en ms, peut varier. <span class="font-mono">duration-initial</span>
+                pour réinitialiser
+            </li>
+            <li>
+                <span class="font-mono">delay-300</span>, valeur en ms, peut varier.
+            </li>
+            <li>
+                <span class="font-mono">transition-discrete</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<aside>
+    <pre>
+En 2023, CSS sortait la fonction de "starting style", cela permet de définir un style qui n'est appliqué qu'au moment du premier rendu dans le DOM de l'élément. Combiné à une transition, cela permet de facilement créer des animations d'entrée.
+
+<kbd>→</kbd>
+
+Concernant le support, le caniuse est autour des 88%. Les principaux navigateurs le supportent depuis quelques années, évidemment, si vous ciblez Internet Explorer, vous êtes foutus :)
+
+<kbd>→</kbd>
+
+Puisque cela est une "at rule" de CSS, Tailwind le traite comme un variant. Il suffit de rajouter <code>starting:</code> devant l'utilitaire et il ne sera appliquée que quand l'élément est rendu une première fois. Si vous voulez l'utiliser avec des transitions, il faudra utiliser les utilitaires de tailwinds pour les transitions.
+
+<kbd>→</kbd>
+
+Voilà les utilitaires principaux qui sont liés aux transitions et animations. D'abord il faut pouvoir spécifier sur quoi on active les transitions, par défaut, on a quelques valeurs, sinon il faudra utiliser le "all" ou bien une valeur arbitraire pour être plus spécifique.
+
+Ensuite vous pouvez spécifier la durée le la transition. Biensur en faisant comme ca, ca spécifie une seule durée pour toutes les transitions.
+
+Si vous avez besoin d'ajouter un délai, vous pouvez utiliser l'utilitaire <code>delay-&lt;dur&eacute;e&gt;</code>
+
+Enfin, si vous avez besoin de transitions ou d'animation sur des valeurs qui ne sont pas linéaires, vous pouvez spécifier <code>transition-behavior: allow-discrete</code> avec l'utilitaire <code>transition-discrete</code>
+    </pre>
+</aside>

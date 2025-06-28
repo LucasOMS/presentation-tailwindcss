@@ -4,7 +4,7 @@ import { slideEventsFromKey } from './slide-events-from-key.js';
 import { openNoteViewer } from './note-viewer/viewer-notes.js';
 import { getAnimationIsEnabledFromUrl, getCodeSizeFromUrl, getCurrentSlideStepCount, getDarkModeFromUrl, getSlideAndStepFromUrl, getTailwindVersionFromUrl, setAnimationInUrl, setCodeSizeInUrl, setDarkModeInUrl, setSlideAndStepInUrl, setTailwindVersionInUrl } from './slides/utils.js';
 
-const TOTAL_SLIDE = 57;
+const TOTAL_SLIDE = 58;
 const DEFAULT_CODE_SIZE = 16; // Default code size in pixels
 
 function displayDarkmode(enabled: boolean) {
