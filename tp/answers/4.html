@@ -1,0 +1,37 @@
+<style type="text/tailwindcss">
+    :root {
+        --padding-card: --spacing(8);
+    }
+
+    @theme {
+        /* Define custom theme variables here */
+    }
+
+    /* Add utilities here */
+
+    /* Relevant infos :
+       The gradient is from bottom left to top right : --color-pink-500, --color-red-500, --color-yellow-500
+       For checkmark and cross, use html entities &check; and &cross;
+       Checkmark use --color-green-600
+       Cross use --color-red-500
+
+     */
+
+    /* Following code is relevant for the exercise */
+    /* Simulate a body using 100% */
+    div.root {
+        overflow: auto;
+        height: 100vh;
+        width: 100vw;
+        padding: 16px;
+        background-color: #f0f0f0;
+    }
+</style>
+<!-- Don't remove .root, define your HTML as children -->
+<div class="root"></div>
+
+<h1>Mise en pratique concrète</h1>
+<p>
+    Vous devez réaliser une carte pour une offre d'un SaaS. La première étape consiste à réalisé le design attendue. Ensuite, vous pouvez ajouter l'effet de hover lorsqu'on survole la carte.
+    <i>Note : quand la carte est survolée, le bouton ajoute également une ombre portée</i>
+</p>

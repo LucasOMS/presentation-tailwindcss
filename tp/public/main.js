@@ -38,7 +38,7 @@ async function displayExerciseFromHash() {
         const width = expected.size.split('x')[0];
         const height = expected.size.split('x')[1];
 
-        const title = `Size : ${width}×${height}`;
+        const title = `Taille : ${width}×${height}`;
         const h2 = document.createElement('h2');
         h2.textContent = title;
         expectedAndAnswerElement.appendChild(h2);
@@ -84,20 +84,20 @@ async function displayExerciseFromHash() {
 
     const previousButton = document.getElementById('js-previous');
     if (currentExercise === 1) {
-        previousButton.style.display = 'none';
+        previousButton.setAttribute('disabled', true)
     } else {
-        previousButton.style.display = 'block';
+        previousButton.removeAttribute('disabled')
     }
     const nextButton = document.getElementById('js-next');
     if (currentExercise >= exercises.length) {
-        nextButton.style.display = 'none';
+        nextButton.setAttribute('disabled', true)
     } else {
-        nextButton.style.display = 'block';
+        nextButton.removeAttribute('disabled')
     }
 
     function wrapWithTitle(element, title) {
         const wrapper = document.createElement('div');
-        const h2 = document.createElement('h2');
+        const h2 = document.createElement('h3');
         h2.textContent = title;
         wrapper.style.display = 'flex';
         wrapper.style.flexDirection = 'column';

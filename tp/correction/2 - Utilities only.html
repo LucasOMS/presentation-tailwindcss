@@ -1,0 +1,74 @@
+<style type="text/tailwindcss">
+    /* Css variables to use */
+    :root {
+        --card-max-width: 300px;
+    }
+
+    @theme {
+        /* Define custom theme variables here */
+    }
+
+    /* Relavant colors :
+       - Primary: #4f46e5
+       - Primary Dark: #4338ca
+       - Soft: #f3f4f6
+       - Gray: #9b9b9b
+
+       Description can use --color-gray-600
+
+       Card should use 10px border radius
+    */
+
+    /* Add utilities here */
+    @utility bg-primary {
+        background-color: #4f46e5;
+    }
+    @utility bg-primary-dark {
+        background-color: #4338ca;
+    }
+    @utility text-primary {
+        color: #4f46e5;
+    }
+    @utility bg-soft {
+        background-color: #f3f4f6;
+    }
+
+    @utility p-section {
+        padding: 3.5rem;
+    }
+    @utility px-btn-x {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    @utility py-btn-y {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+
+    @utility rounded-card {
+        border-radius: 1.25rem;
+    }
+
+    @utility shadow-card {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Following code is relevant for the exercise */
+    /* Simulate a body using 100% */
+    div.root {
+        overflow: auto;
+        height: 100vh;
+        width: 100vw;
+        padding: 16px;
+        background-color: #ccc;
+    }
+</style>
+<!-- The structure should not be modified, only add utilities -->
+<div class="root">
+    <div class="p-section bg-soft rounded-card shadow-custom mx-auto max-w-(--card-max-width) text-center">
+        <img src="/public/assets/avatar.jpg" alt="Avatar" class="mx-auto mb-4 h-24 w-24 rounded-full" />
+        <h2 class="text-primary text-xl font-bold">Marie Durand</h2>
+        <p class="mb-4 text-gray-600">Développeuse Front-End</p>
+        <button class="bg-primary px-btn-x py-btn-y hover:bg-primary-dark rounded-full text-white transition">Contacter</button>
+    </div>
+</div>

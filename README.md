@@ -30,8 +30,8 @@ La présentation s'ouvrira dans votre navigateur à l'adresse `http://localhost:
 
 Installer les dépendances avec `npm install` et lancer le tp avec `npm run tp`.
 
-Cela ouvrira le fichier `index.html` dans votre navigateur et réactualisera automatiquement la page à chaque
-modification d'un fichier de réponse.
+Cela lancera le serveur sur `localhost:8001`, ouvrez le dans votre navigateur. La page se réactualisera automatiquement
+à chaque modification d'un fichier de réponse.
 
 Par défaut, le port utilisé est `8001`, vous pouvez donc ouvrir la présentation en même temps que le TP.
 
