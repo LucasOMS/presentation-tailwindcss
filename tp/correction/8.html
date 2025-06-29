@@ -1,0 +1,16 @@
+<style type="text/tailwindcss">
+    @theme {
+    }
+    .root {
+        @apply flex h-screen w-screen items-center justify-center bg-gray-100;
+    }
+</style>
+
+<div class="root">
+    <div class="relative h-40 w-64 transition-transform duration-700 transform-3d hover:rotate-y-180">
+        <!-- Front face-->
+        <div class="absolute flex h-full w-full items-center justify-center rounded-lg border bg-white text-xl font-bold text-blue-600 backface-hidden">Bonjour 👋</div>
+        <!-- Back face -->
+        <div class="absolute flex h-full w-full rotate-y-180 items-center justify-center rounded-lg border bg-blue-600 text-xl font-bold text-white backface-hidden">À bientôt !</div>
+    </div>
+</div>

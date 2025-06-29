@@ -1,0 +1,34 @@
+<style type="text/tailwindcss">
+    @theme {
+    }
+
+    .root {
+        @apply h-screen w-screen bg-gray-100;
+    }
+
+    .to-center {
+        background: red;
+        width: 50px;
+        height: 50px;
+    }
+</style>
+
+<!-- Via le parent -->
+<div class="root flex items-center justify-center">
+    <div class="to-center"></div>
+</div>
+
+<!-- Sans alignement flex -->
+<div class="root flex">
+    <div class="to-center m-auto"></div>
+</div>
+
+<!-- Via le parent avec grid -->
+<div class="root grid grid-cols-[1fr_auto_1fr] grid-rows-[1fr_auto_1fr]">
+    <div class="to-center col-start-2 row-start-2"></div>
+</div>
+
+<!-- Via position absolute-->
+<div class="root relative">
+    <div class="to-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+</div>

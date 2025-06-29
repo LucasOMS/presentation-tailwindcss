@@ -52,6 +52,7 @@
 
 @utility tab-* {
   tab-size: --value(--tab-size-*, integer, [integer]);
+  /* You can use --tab-size-\* if formatter breaks syntax */
 }
 
 @utility opacity-* {
@@ -80,7 +81,9 @@ Pour créer des utilitaires avec des paramètres ou des utilitaires complexes, i
 Dans le premier cas ici vous voyez l'utilisation de <code>&</code> pour référencer le nom de l'utilitaire lui même.
 
 Dans le second exemple, l'astérisque représente la partie "variable" de l'utilitaire. Je peux utiliser la fonction <code>--value</code> avec le type pour que tailwind remplace par la valeur utilisée dans l'utilitaire. Si j'utilise <code>size-text-1</code>, alors <code>--value(integer)</code> sera remplacé par <code>1</code>.
-La fonction <code>--value</code> peut avoir plusieurs arguments, qu'elle résoudra de la gauche vers la droite, dans le cas où il n'y a pas à appliquer un traitement différent en fonction de la valeur. Ici sur l'utilitaire <code>tab-*</code> je référence uen variable du thème, puis un chiffre, puis un chiffre entre crochets.
+La fonction <code>--value</code> peut avoir plusieurs arguments, qu'elle résoudra de la gauche vers la droite, dans le cas où il n'y a pas à appliquer un traitement différent en fonction de la valeur. Ici sur l'utilitaire <code>tab-*</code> je référence une variable du thème, puis un chiffre, puis un chiffre entre crochets.
+
+Il est possible que votre IDE veuille absolument mettre en forme <code>--tabe-size-*</code> en séparant l'astérisque du reste, rendant le code invalide. Si c'est le cas, vous pouvez préfixer l'astérisque par un antislash. C'est un peu plus dur à lire, mais ça a le mérite de ne pas être cassé par les formatteurs. J'imagine que les formatteurs prendront ce genre de syntaxe en compte plus tard et arrêteront de nous mettre des bâtons dans les roues.
 
 Dans l'utilitaire <code>opacity-*</code>, je différencie les utilisations en fonction de la valeur, si c'est un entier, je le converti en pourcentage. Si c'est une valeur du thème ou si c'est un pourcentage, je l'utilise tel quel.
 

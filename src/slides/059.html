@@ -1,0 +1,25 @@
+<section class="slide-grid-gap grid auto-rows-max" data-steps="2">
+    <h1>UnoCSS : framwork de framework</h1>
+
+    <div class="step-1:opacity-0 transition-medium">
+        <pre><code class="language-js h-auto">export default defineConfig({
+  rules: [
+    [/^m-([\.\d]+)$/, ([_, num]) =&gt; ({ margin: `${num}px` })],
+  ],
+})</code></pre>
+    </div>
+</section>
+
+<aside>
+    <pre>
+Après vous avoir présenté Tailwind CSS, je veux juste vous parler de UnoCSS.
+
+<kbd>→</kbd>
+
+C'est un framework CSS atomique comme Tailwind, mais il va encore plus loin puisqu'il propose de générer des utilitaires à partir d'expression régulières. Cela permet donc de créer tout ce qu'on voudrait, avec plusieurs variables dans un même utilitaire. Biensur, il ne génère que ce qui est utilisé dans le projet.
+
+Je vous en parle car il est possible de l'utiliser avec un preset de tailwind 4, ce qui permet donc de partir de tailwind pour avoir "encore plus".
+
+J'émet néanmoins quelque réserve sur les possibilités qu'il ajoute, car j'y vois ici un outil qui permet de créer des utilitaires très spécifiques qui pollueront le code final. En ravanche, j'ai déjà eu le cas de tailwind refusant de me générer des utilitaires car il considère que mon code est invalide. J'avais d'ailleurs prévu un exercice avec la nouvelle fonctionnalité d'ancre, mais Tailwind semble particulièrement hostire à l"utilisation de la fonction <code>anchor()</code> dans ses utilitaires.
+    </pre>
+</aside>

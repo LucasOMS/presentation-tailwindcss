@@ -33,12 +33,16 @@ async function displayExerciseFromHash() {
 
     expectedAndAnswerElement.innerHTML = '';
 
-    // Foreach expected size, we create a div in the answerElement and display the expected image
+    // Foreach expected size and mode, we create a div in the answerElement and display the expected image
     for (const expected of exercice.expected) {
         const width = expected.size.split('x')[0];
         const height = expected.size.split('x')[1];
+        const darkMode = expected.darkMode ?? false;
 
-        const title = `Size : ${width}×${height}`;
+        let title = `Taille : ${width}×${height}`;
+        if (expected.title) {
+            title += ` - ${expected.title}`;
+        }
         const h2 = document.createElement('h2');
         h2.textContent = title;
         expectedAndAnswerElement.appendChild(h2);
@@ -70,11 +74,18 @@ async function displayExerciseFromHash() {
         expectedAndAnswer.appendChild(wrapWithTitle(answerIframe, 'Réponse'));
 
         // Attends que l'iframe soit prête
-        answerIframe.onload = () => {
+        answerIframe.onload = async () => {
             const doc = answerIframe.contentDocument || answerIframe.contentWindow.document;
             doc.open();
             doc.write(getIframeContent(answerText));
             doc.close();
+
+            if (darkMode) {
+                while (!doc.body) {
+                    await sleep(100);
+                }
+                answerIframe.contentDocument.body.classList.add('dark');
+            }
         };
 
         expectedAndAnswerElement.appendChild(expectedAndAnswer);
@@ -84,20 +95,20 @@ async function displayExerciseFromHash() {
 
     const previousButton = document.getElementById('js-previous');
     if (currentExercise === 1) {
-        previousButton.style.display = 'none';
+        previousButton.setAttribute('disabled', true);
     } else {
-        previousButton.style.display = 'block';
+        previousButton.removeAttribute('disabled');
     }
     const nextButton = document.getElementById('js-next');
     if (currentExercise >= exercises.length) {
-        nextButton.style.display = 'none';
+        nextButton.setAttribute('disabled', true);
     } else {
-        nextButton.style.display = 'block';
+        nextButton.removeAttribute('disabled');
     }
 
     function wrapWithTitle(element, title) {
         const wrapper = document.createElement('div');
-        const h2 = document.createElement('h2');
+        const h2 = document.createElement('h3');
         h2.textContent = title;
         wrapper.style.display = 'flex';
         wrapper.style.flexDirection = 'column';

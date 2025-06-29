@@ -1,0 +1,40 @@
+<style type="text/tailwindcss">
+    @theme {
+        --color-red-500: red;
+        --color-green-500: green;
+    }
+</style>
+<!-- Avec flex -->
+<div class="flex h-screen w-screen">
+    <div class="flex-1 bg-red-500"></div>
+    <div class="flex-1 bg-green-500"></div>
+</div>
+
+<!-- Avec grid -->
+<div class="h-screen w-screen grid-cols-2">
+    <div class="float-right h-screen w-[50vw] bg-red-500"></div>
+    <div class="h-screen w-[50vw] bg-green-500"></div>
+</div>
+
+<!-- Avec un seul enfant -->
+<div class="h-screen w-screen bg-green-500">
+    <div class="h-screen w-[50vw] bg-red-500"></div>
+</div>
+
+<!-- Deux enfants sans flex ni grid (inline) -->
+<div class="h-screen w-screen">
+    <div class="inline-block h-screen w-[50vw] bg-red-500"></div>
+    <div class="-ml-[5px] inline-block h-screen w-[50vw] bg-green-500"></div>
+</div>
+
+<!-- Deux enfants sans flex ni grid (float) -->
+<div class="h-screen w-screen">
+    <div class="float-right h-screen w-[50vw] bg-green-500"></div>
+    <div class="h-screen w-[50vw] bg-red-500"></div>
+</div>
+
+<!-- With only one element (gradient background) -->
+<div class="h-screen w-screen bg-linear-to-r from-red-500 from-50% to-green-500 to-50%"></div>
+
+<!-- With before and after -->
+<div class="relative h-screen w-screen before:absolute before:left-0 before:h-full before:w-1/2 before:bg-red-500 after:absolute after:right-0 after:h-full after:w-1/2 after:bg-green-500"></div>

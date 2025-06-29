@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Playwright - TP Riviera Dev</title>
+        <script src="public/tailwind-cdn.js"></script>
+    </head>
+    <body>
+        <style type="text/tailwindcss">
+            /* Mandatory for the iframe to works without considering global color-scheme */
+            @custom-variant dark (&:where(.dark, .dark *));
+
+            :root {
+                --padding-card: --spacing(8);
+            }
+
+            @theme {
+                /* Define custom theme variables here */
+                --radius-card: --spacing(6);
+            }
+
+            /* Add utilities here */
+
+            /* Usefull to use parent rounded corners */
+            @utility rounded-t-inherit {
+                border-top-right-radius: inherit;
+                border-top-left-radius: inherit;
+            }
+
+            @utility rounded-b-inherit {
+                border-bottom-right-radius: inherit;
+                border-bottom-left-radius: inherit;
+            }
+
+            @layer components {
+                /* Because I repeat it a lot, and because I don't have a framework to declare it as a component, I use Tailwind component to factorize it */
+                .offer-list-item {
+                    @apply flex items-center justify-between border-neutral-500/50 px-4 py-3 text-lg font-bold text-neutral-800 not-first:border-t-1 first:pt-4 last:pb-4 dark:text-neutral-100;
+
+                    margin-left: calc(var(--padding-card) / -2);
+                    margin-right: calc(var(--padding-card) / -2);
+                }
+            }
+
+            /* Relevant infos :
+           The gradient is from bottom left to top right : --color-pink-500, --color-red-500, --color-yellow-500
+           For checkmark and cross, use html entities &check; and &cross;
+           Checkmark use --color-green-600
+           Cross use --color-red-500
+
+         */
+
+            /* Following code is relevant for the exercise */
+            /* Simulate a body using 100% */
+            div.root {
+                overflow: auto;
+                height: 100vh;
+                width: 100vw;
+                padding: 16px;
+                background-color: #f0f0f0;
+            }
+        </style>
+        <!-- Don't remove .root, define your HTML as children -->
+        <div class="root">
+            <div class="group rounded-card relative mx-auto max-w-(--card-max-width) cursor-pointer bg-gray-50 p-(--padding-card) text-center shadow-xl transition-transform duration-300 hover:scale-102 hover:shadow-2xl dark:bg-neutral-900">
+                <!-- Here I use flex because prettier adds a newline that add a space between 49 and .99 -->
+                <div class="rounded-t-inherit -mx-(--padding-card) -mt-(--padding-card) flex items-baseline justify-center bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 pt-3 pb-6 text-6xl font-bold text-white dark:bg-clip-text dark:text-transparent">
+                    <span>49</span>
+                    <span class="text-4xl">.99</span>
+                    <span>€</span>
+                </div>
+
+                <!-- Container for the gradient bg -->
+                <ul class="rounded-b-inherit -mx-(--padding-card) -mb-(--padding-card) px-(--padding-card) pb-(--padding-card) dark:bg-neutral-800">
+                    <li class="offer-list-item">
+                        <div>Support 24/24</div>
+                        <div class="text-green-600">&check;</div>
+                    </li>
+
+                    <li class="offer-list-item">
+                        <div>Outils en ligne</div>
+                        <div class="text-green-600">&check;</div>
+                    </li>
+
+                    <li class="offer-list-item">
+                        <div>Confidentialité</div>
+                        <div class="text-green-600">&check;</div>
+                    </li>
+
+                    <li class="offer-list-item">
+                        <div>Crédits illimités</div>
+                        <div class="text-red-500">&cross;</div>
+                    </li>
+                </ul>
+
+                <button class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 cursor-pointer rounded-full bg-gradient-to-tr from-pink-500 via-red-500 via-75% to-yellow-500 px-5 py-3 text-lg font-bold text-white group-hover:shadow">Voir l'offre</button>
+            </div>
+        </div>
+    </body>
+</html>

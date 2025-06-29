@@ -1,0 +1,34 @@
+<style type="text/tailwindcss">
+    /* Mandatory for the iframe to works without considering global color-scheme */
+    @custom-variant dark (&:where(.dark, .dark *));
+
+    :root {
+        --padding-card: --spacing(8);
+    }
+
+    @theme {
+        /* Define custom theme variables here */
+    }
+
+    /* Add utilities here */
+
+    /* Relevant infos :
+       The gradient is from bottom left to top right : --color-pink-500, --color-red-500, --color-yellow-500
+       For checkmark and cross, use html entities &check; and &cross;
+       Checkmark use --color-green-600
+       Cross use --color-red-500
+
+     */
+
+    /* Following code is relevant for the exercise */
+    /* Simulate a body using 100% */
+    div.root {
+        overflow: auto;
+        height: 100vh;
+        width: 100vw;
+        padding: 16px;
+        background-color: #f0f0f0;
+    }
+</style>
+<!-- Don't remove .root, define your HTML as children -->
+<div class="root"></div>

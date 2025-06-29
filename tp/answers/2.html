@@ -1,10 +1,41 @@
 <style type="text/tailwindcss">
+    /* Css variables to use */
+    :root {
+        --card-max-width: 300px;
+    }
+
     @theme {
-        --color-red-500: red;
-        --color-green-500: green;
+        /* Define custom theme variables here */
+    }
+
+    /* Relavant colors :
+       - Primary: #4f46e5
+       - Primary Dark: #4338ca
+       - Soft: #f3f4f6
+       - Gray: #9b9b9b
+
+       Description can use --color-gray-600
+       Card should use 5 * --spacing border radius
+    */
+
+    /* Add utilities here */
+
+    /* Following code is relevant for the exercise */
+    /* Simulate a body using 100% */
+    div.root {
+        overflow: auto;
+        height: 100vh;
+        width: 100vw;
+        padding: 16px;
+        background-color: #ccc;
     }
 </style>
-<div class="flex h-screen w-screen test">
-    <div class="flex-1 bg-red-500"></div>
-    <div class="flex-1 bg-green-500"></div>
+<!-- The structure should not be modified, only add utilities -->
+<div class="root">
+    <div class="">
+        <img src="/public/assets/avatar.jpg" alt="Avatar" class="" />
+        <h2 class="">Marie Durand</h2>
+        <p class="">Développeuse Front-End</p>
+        <button class="">Contacter</button>
+    </div>
 </div>

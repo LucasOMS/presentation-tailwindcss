@@ -1,0 +1,167 @@
+<style type="text/tailwindcss">
+    @theme {
+    }
+
+    @property --border-gradient-direction {
+        syntax: '*';
+        inherits: false;
+        initial-value: to top right in oklab;
+    }
+
+    @property --border-gradient-from-color {
+        syntax: '<color>';
+        inherits: false;
+        initial-value: #fff;
+    }
+
+    @property --border-gradient-via-color {
+        syntax: '<color>';
+        inherits: false;
+        initial-value: #fff;
+    }
+
+    @property --border-gradient-to-color {
+        syntax: '<color>';
+        inherits: false;
+        initial-value: #fff;
+    }
+
+    @property --border-gradient-from-position {
+        syntax: '<percentage>';
+        inherits: false;
+        initial-value: 0%;
+    }
+
+    @property --border-gradient-via-position {
+        syntax: '<percentage>';
+        inherits: false;
+        initial-value: 50%;
+    }
+
+    @property --border-gradient-to-position {
+        syntax: '<percentage>';
+        inherits: false;
+        initial-value: 100%;
+    }
+
+    @property --border-gradient-stops {
+        syntax: '*';
+        inherits: false;
+    }
+
+    @property --border-gradient-via-stops {
+        syntax: '*';
+        inherits: false;
+    }
+
+    /* Base utility that define a background as a border for the element that could accept an image background */
+    /* Provided because knowing the trick is not what is relevant for this exercise */
+    @utility border-image-* {
+        position: relative;
+        border: solid calc(--value(integer) * -1px) transparent;
+
+        &:before {
+            /* Advanced CSS to make the element only take border of the element */
+            content: '';
+            position: absolute;
+            inset: calc(--value(integer) * -1px);
+            border-radius: inherit;
+            border: calc(--value(integer) * 1px) solid transparent;
+            /* Create a background taking all block to the border, and a background taking all padding to the border */
+            /* Substract overlapping areas to only keep the border */
+            mask:
+                linear-gradient(black, black) border-box,
+                linear-gradient(black, black) padding-box;
+            mask-composite: subtract;
+            /* Prevent the pseudo-element to take pointer events without defining z-indexes on element and pseudo-element */
+            pointer-events: none;
+        }
+    }
+
+    @utility border-gradient {
+        &:before {
+            --border-gradient-stops: var(--border-gradient-from-color) var(--border-gradient-from-position), var(--border-gradient-to-color) var(--border-gradient-to-position);
+            background: linear-gradient(var(--border-gradient-direction), /* Use the gradient with 3 positions if defined, otherwise use two steps gradients */ var(--border-gradient-via-stops, var(--border-gradient-stops))) border-box;
+        }
+    }
+
+    @utility border-from-* {
+        &:before {
+            --border-gradient-from-position: --value(percentage);
+            --border-gradient-from-color: --value(--color-\*);
+
+            @supports (color: color-mix(in lab, red, red)) {
+                --border-gradient-from-color: color-mix(in oklab, --value(--color-\*) calc(--modifier(integer) * 1%), transparent);
+            }
+        }
+    }
+    @utility border-via-* {
+        &:before {
+            --border-gradient-via-stops: var(--border-gradient-from-color) var(--border-gradient-from-position), var(--border-gradient-via-color) var(--border-gradient-via-position), var(--border-gradient-to-color) var(--border-gradient-to-position);
+            --border-gradient-via-position: --value(percentage);
+            --border-gradient-via-color: --value(--color-\*);
+
+            @supports (color: color-mix(in lab, red, red)) {
+                --border-gradient-via-color: color-mix(in oklab, --value(--color-\*) calc(--modifier(integer) * 1%), transparent);
+            }
+        }
+    }
+    @utility border-to-* {
+        &:before {
+            --border-gradient-to-position: --value(percentage);
+            --border-gradient-to-color: --value(--color-\*);
+
+            @supports (color: color-mix(in lab, red, red)) {
+                --border-gradient-to-color: color-mix(in oklab, --value(--color-\*) calc(--modifier(integer) * 1%), transparent);
+            }
+        }
+    }
+
+    /* All gradient directions */
+
+    @utility border-gradient-to-b {
+        &:before {
+            --border-gradient-direction: to bottom in oklab;
+        }
+    }
+    @utility border-gradient-to-bl {
+        &:before {
+            --border-gradient-direction: to bottom left in oklab;
+        }
+    }
+    @utility border-gradient-to-br {
+        &:before {
+            --border-gradient-direction: to bottom right in oklab;
+        }
+    }
+    @utility border-gradient-to-l {
+        &:before {
+            --border-gradient-direction: to left in oklab;
+        }
+    }
+    @utility border-gradient-to-r {
+        &:before {
+            --border-gradient-direction: to right in oklab;
+        }
+    }
+    @utility border-gradient-to-t {
+        &:before {
+            --border-gradient-direction: to top in oklab;
+        }
+    }
+    @utility border-gradient-to-tl {
+        &:before {
+            --border-gradient-direction: to top left in oklab;
+        }
+    }
+    @utility border-gradient-to-tr {
+        &:before {
+            --border-gradient-direction: to top right in oklab;
+        }
+    }
+</style>
+
+<!-- You should not change the structure -->
+<div class="flex h-screen w-screen items-center justify-center bg-gray-100">
+    <div class="border-image-5 border-gradient border-from-pink-500 border-via-red-500 border-to-yellow-500 border-from-20% border-via-60% border-to-80% border-gradient-to-br h-[100px] w-[100px] rounded-xl bg-gray-200"></div>
+</div>

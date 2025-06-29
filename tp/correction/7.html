@@ -1,0 +1,33 @@
+<style type="text/tailwindcss">
+    @theme {
+    }
+
+    @utility interpolate-size-keywords {
+        interpolate-size: allow-keywords;
+    }
+
+    @layer components {
+        .spoiler-box {
+            @apply overflow-clip rounded-xl border border-gray-600;
+
+            header {
+                @apply cursor-pointer bg-gray-500 p-2 text-white;
+            }
+
+            p {
+                @apply interpolate-size-keywords h-0 overflow-hidden px-2 py-0 transition-all duration-700;
+            }
+
+            &:hover p {
+                @apply h-auto py-2;
+            }
+        }
+    }
+</style>
+
+<div class="h-screen w-screen bg-gray-100 p-2">
+    <section class="spoiler-box">
+        <header>Titre du Spoiler</header>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam orci tellus, finibus sed metus eu, consequat interdum nisl. Sed bibendum condimentum finibus. Ut venenatis congue feugiat. Proin condimentum vulputate porta. Vivamus tristique laoreet lectus eu egestas. Ut sollicitudin, nulla a accumsan ultrices, urna dui venenatis augue, congue pulvinar nibh elit id libero. Integer eget suscipit tortor. Nunc tempor nisl sed odio rutrum facilisis non in urna. Duis dictum, diam ac scelerisque hendrerit, ligula ipsum semper nisl, eget aliquam ligula erat aliquam turpis. Nam mattis sem ut ex vulputate volutpat. Morbi rhoncus tortor a sagittis gravida. Nunc pharetra odio a justo suscipit congue.</p>
+    </section>
+</div>

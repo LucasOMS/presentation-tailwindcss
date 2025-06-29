@@ -1,23 +1,106 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Playwright - TP Riviera Dev</title>
-    <script src="public/tailwind-cdn.js"></script>
-    <script src="public/exercises.js"></script>
-    <script src="public/get-iframe-content.js"></script>
-    <script src="public/main.js"></script>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Playwright - TP Riviera Dev</title>
+        <script src="public/tailwind-cdn.js"></script>
+        <script src="public/spoiler-box.js"></script>
+        <script src="public/exercises.js"></script>
+        <script src="public/get-iframe-content.js"></script>
+        <script src="public/main.js"></script>
 
-<!-- ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ -->
-<!-- ⚠ This file should NOT be modified, it is the entry point for all exercises ⚠ -->
-<!-- ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ -->
+        <style>
+            body {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                padding: 16px;
+            }
 
-<div id="js-description"></div>
-<div id="js-expected-and-answer"></div>
+            h1 {
+                font-weight: bolder;
+                font-size: 1.5rem;
+                margin-bottom: 16px;
+            }
 
-<button id="js-previous" onclick="displayPreviousExercise()">Précédent</button>
-<button id="js-next" onclick="displayNextExercise()">Suivant</button>
-</body>
+            h2 {
+                font-weight: bold;
+                font-size: 1.2rem;
+                margin-bottom: 8px;
+                margin-top: 16px;
+            }
+
+            h3 {
+                padding-left: 16px;
+                font-weight: bold;
+                margin-bottom: 8px;
+
+                p + & {
+                    margin-top: 16px;
+                }
+            }
+
+            .buttons {
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                gap: 8px;
+                padding: 16px;
+                margin-top: auto; /* Align at page bottom if page is smaller than screen */
+
+                button {
+                    padding: 4px 8px;
+                    background: #049cdb;
+                    color: white;
+                    text-align: center;
+                    min-width: 100px;
+                    border-radius: 8px;
+
+                    &:hover {
+                        background: #047eb3;
+                    }
+
+                    &:not(:disabled) {
+                        cursor: pointer;
+                    }
+
+                    &:disabled {
+                        visibility: hidden;
+                    }
+                }
+            }
+
+            code {
+                background: lightgrey;
+                font-family: 'Courier New', monospace;
+                padding: 0.25em;
+                border-radius: 4px;
+                font-size: 12px;
+                user-select: all;
+            }
+
+            spoiler-box + spoiler-box {
+                margin-top: 16px;
+                display: block;
+            }
+
+            spoiler-box:last-child {
+                display: block;
+                margin-bottom: 16px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ -->
+        <!-- ⚠ This file should NOT be modified, it is the entry point for all exercises ⚠ -->
+        <!-- ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ ⚠ -->
+
+        <div id="js-description"></div>
+        <div id="js-expected-and-answer"></div>
+
+        <div class="buttons">
+            <button id="js-previous" onclick="displayPreviousExercise()">Précédent</button>
+            <button id="js-next" onclick="displayNextExercise()">Suivant</button>
+        </div>
+    </body>
 </html>

@@ -1,0 +1,55 @@
+<style type="text/tailwindcss">
+    @reference "tailwindcss";
+
+    @theme {
+        --breakpoint-sm: 151px;
+        --breakpoint-md: 226px;
+
+        /* Define custom theme variables here */
+    }
+
+    .root {
+        width: 100vw;
+        height: 100vh;
+
+        > * {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        :nth-child(1) {
+            background: yellow;
+        }
+
+        :nth-child(2) {
+            background: green;
+        }
+
+        :nth-child(3) {
+            background: blue;
+        }
+
+        :nth-child(4) {
+            background: pink;
+        }
+
+        :nth-child(5) {
+            background: red;
+        }
+
+        /* Colorblind helper */
+        > *:hover {
+            border: solid 2px black;
+        }
+    }
+</style>
+
+<!-- You should only add classes on elements, not change the structure -->
+<div class="root">
+    <div class="">1</div>
+    <div class="">2</div>
+    <div class="">3</div>
+    <div class="">4</div>
+    <div class="">5</div>
+</div>

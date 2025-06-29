@@ -1,0 +1,61 @@
+<style type="text/tailwindcss">
+    @theme {
+    }
+
+    /* Base code is from the video https://www.youtube.com/watch?v=dsZ7RN9ItR4 of Kevin Powell
+        Please check him out at https://www.youtube.com/@KevinPowell
+
+        Code pen : https://codepen.io/kevinpowell/pen/XJJwaxG
+    */
+    /* Base utility that define a background as a border for the element that could accept an image background */
+    /* Provided because knowing the trick is not what is relevant for this exercise */
+    @utility border-image-* {
+        position: relative;
+        border: solid calc(--value(integer) * -1px) transparent;
+
+        &:before {
+            /* Advanced CSS to make the element only take border of the element */
+            content: '';
+            position: absolute;
+            inset: calc(--value(integer) * -1px);
+            border-radius: inherit;
+            border: calc(--value(integer) * 1px) solid transparent;
+            /* Create a background taking all block to the border, and a background taking all padding to the border */
+            /* Substract overlapping areas to only keep the border */
+            mask:
+                linear-gradient(black, black) border-box,
+                linear-gradient(black, black) padding-box;
+            mask-composite: subtract;
+            /* Prevent the pseudo-element to take pointer events without defining z-indexes on element and pseudo-element */
+            pointer-events: none;
+        }
+    }
+
+    /*
+        Define utility border-gradient that apply a gradient bg used as a border.
+     */
+
+    /*
+        Utilities to do for color position :
+        - border-from-*
+        - border-via-*
+        - border-to-*
+     */
+
+    /*
+      Utilities to do for directions :
+        - border-gradient-to-b
+        - border-gradient-to-bl
+        - border-gradient-to-br
+        - border-gradient-to-l
+        - border-gradient-to-r
+        - border-gradient-to-t
+        - border-gradient-to-tl
+        - border-gradient-to-tr
+     */
+</style>
+
+<!-- You should not change the structure -->
+<div class="flex h-screen w-screen items-center justify-center bg-gray-100">
+    <div class="border-image-5 border-gradient border-from-pink-500 border-via-red-500 border-to-yellow-500 border-from-20% border-via-60% border-to-80% border-gradient-to-br h-[100px] w-[100px] rounded-xl bg-gray-200"></div>
+</div>
